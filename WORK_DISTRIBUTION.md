@@ -21,12 +21,12 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| Literature survey on RCA in distributed systems | All Members | ✅ Complete | `docs/literature_survey/` |
-| Research gap analysis | All Members | ✅ Complete | `docs/research_gap/` |
-| Architecture design & diagram | Mohak Harsh | ✅ Complete | `docs/architecture/` |
-| Repository setup & folder structure | Mohak Harsh | ✅ Complete | Repository root |
-| Technology stack finalization | All Members | ✅ Complete | `README.md` |
-| Dataset identification & curation plan | Aarnav Mishra | ✅ Complete | `data/README.md` |
+| Literature survey on RCA in distributed systems | All Members | Complete | `docs/literature_survey/` |
+| Research gap analysis | All Members | Complete | `docs/research_gap/` |
+| Architecture design & diagram | Mohak Harsh | Complete | `docs/architecture/` |
+| Repository setup & folder structure | Mohak Harsh | Complete | Repository root |
+| Technology stack finalization | All Members | Complete | `README.md` |
+| Dataset identification & curation plan | Aarnav Mishra | Complete | `data/README.md` |
 
 ---
 
@@ -34,14 +34,14 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| Neo4j schema design & setup | Sandarbh Gupta | 🔲 Pending | `database/` |
-| Network topology graph builder | Sandarbh Gupta | 🔲 Pending | `ai_models/graph_engine/` |
-| Fault gradient computation algorithm | Sandarbh Gupta | 🔲 Pending | `ai_models/graph_engine/` |
-| Synthetic data generation pipeline | Aarnav Mishra | 🔲 Pending | `data/synthetic/` |
-| FastAPI backend skeleton | Sandarbh Gupta | 🔲 Pending | `backend/` |
-| LangGraph multi-agent scaffold | Mohak Harsh | 🔲 Pending | `ai_models/` |
-| LLM provider integration (Gemini/GPT-4) | Mohak Harsh | 🔲 Pending | `ai_models/llm/` |
-| Docker environment setup | Sandarbh Gupta | 🔲 Pending | `docker/` |
+| Neo4j schema design & setup | Sandarbh Gupta | Pending | `database/` |
+| Network topology graph builder | Sandarbh Gupta | Pending | `ai_models/graph_engine/` |
+| Fault gradient computation algorithm | Sandarbh Gupta | Pending | `ai_models/graph_engine/` |
+| Synthetic data generation pipeline | Aarnav Mishra | Pending | `data/synthetic/` |
+| FastAPI backend skeleton | Sandarbh Gupta | Pending | `backend/` |
+| LangGraph multi-agent scaffold | Mohak Harsh | Pending | `ai_models/` |
+| LLM provider integration (Gemini/GPT-4) | Mohak Harsh | Pending | `ai_models/llm/` |
+| Docker environment setup | Sandarbh Gupta | Pending | `docker/` |
 
 ---
 
@@ -49,14 +49,14 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| **Navigator Agent** — graph traversal logic | Mohak Harsh | 🔲 Pending | `ai_models/agents/` |
-| **Navigator Agent** — fault gradient integration | Mohak Harsh + Sandarbh Gupta | 🔲 Pending | `ai_models/agents/` |
-| **Diagnoser Agent** — multimodal semantic analysis | Mohak Harsh | 🔲 Pending | `ai_models/agents/` |
-| **Diagnoser Agent** — LLM prompt engineering | Mohak Harsh | 🔲 Pending | `ai_models/llm/` |
-| **Verifier Agent** — adversarial validation protocol | Mohak Harsh | 🔲 Pending | `ai_models/agents/` |
-| Agent orchestration & state management | Mohak Harsh | 🔲 Pending | `ai_models/` |
-| Backend API endpoints for RCA | Sandarbh Gupta | 🔲 Pending | `backend/` |
-| Unit tests for agents | All Members | 🔲 Pending | `tests/` |
+| **Navigator Agent** — graph traversal logic | Mohak Harsh | Pending | `ai_models/agents/` |
+| **Navigator Agent** — fault gradient integration | Mohak Harsh + Sandarbh Gupta | Pending | `ai_models/agents/` |
+| **Diagnoser Agent** — multimodal semantic analysis | Mohak Harsh | Pending | `ai_models/agents/` |
+| **Diagnoser Agent** — LLM prompt engineering | Mohak Harsh | Pending | `ai_models/llm/` |
+| **Verifier Agent** — adversarial validation protocol | Mohak Harsh | Pending | `ai_models/agents/` |
+| Agent orchestration & state management | Mohak Harsh | Pending | `ai_models/` |
+| Backend API endpoints for RCA | Sandarbh Gupta | Pending | `backend/` |
+| Unit tests for agents | All Members | Pending | `tests/` |
 
 ---
 
@@ -64,12 +64,12 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| React/Next.js project setup | Aarnav Mishra | 🔲 Pending | `frontend/` |
-| Network graph visualization (D3.js/Cytoscape) | Aarnav Mishra | 🔲 Pending | `frontend/` |
-| Real-time agent activity dashboard | Aarnav Mishra | 🔲 Pending | `frontend/` |
-| RCA results display & confidence scores | Aarnav Mishra | 🔲 Pending | `frontend/` |
-| API integration with backend | Aarnav Mishra + Sandarbh Gupta | 🔲 Pending | `frontend/` |
-| Responsive design & UX polish | Aarnav Mishra | 🔲 Pending | `frontend/` |
+| React/Next.js project setup | Aarnav Mishra | Pending | `frontend/` |
+| Network graph visualization (D3.js/Cytoscape) | Aarnav Mishra | Pending | `frontend/` |
+| Real-time agent activity dashboard | Aarnav Mishra | Pending | `frontend/` |
+| RCA results display & confidence scores | Aarnav Mishra | Pending | `frontend/` |
+| API integration with backend | Aarnav Mishra + Sandarbh Gupta | Pending | `frontend/` |
+| Responsive design & UX polish | Aarnav Mishra | Pending | `frontend/` |
 
 ---
 
@@ -77,12 +77,12 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| Benchmark suite design | Aarnav Mishra | 🔲 Pending | `results/` |
-| Accuracy evaluation (vs. baselines) | Aarnav Mishra + Mohak Harsh | 🔲 Pending | `results/` |
-| Latency & performance profiling | Sandarbh Gupta | 🔲 Pending | `results/` |
-| Hallucination rate measurement | Mohak Harsh | 🔲 Pending | `results/` |
-| Ablation studies (agent contributions) | All Members | 🔲 Pending | `results/` |
-| Results documentation & visualizations | Aarnav Mishra | 🔲 Pending | `results/` |
+| Benchmark suite design | Aarnav Mishra | Pending | `results/` |
+| Accuracy evaluation (vs. baselines) | Aarnav Mishra + Mohak Harsh | Pending | `results/` |
+| Latency & performance profiling | Sandarbh Gupta | Pending | `results/` |
+| Hallucination rate measurement | Mohak Harsh | Pending | `results/` |
+| Ablation studies (agent contributions) | All Members | Pending | `results/` |
+| Results documentation & visualizations | Aarnav Mishra | Pending | `results/` |
 
 ---
 
@@ -90,10 +90,10 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| Final project report | All Members | 🔲 Pending | `docs/` |
-| Presentation slides | All Members | 🔲 Pending | `presentation/` |
-| Demo video / live demo preparation | Aarnav Mishra + Mohak Harsh | 🔲 Pending | `presentation/` |
-| README & documentation finalization | Mohak Harsh | 🔲 Pending | Repository root |
+| Final project report | All Members | Pending | `docs/` |
+| Presentation slides | All Members | Pending | `presentation/` |
+| Demo video / live demo preparation | Aarnav Mishra + Mohak Harsh | Pending | `presentation/` |
+| README & documentation finalization | Mohak Harsh | Pending | Repository root |
 
 ---
 

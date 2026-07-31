@@ -21,4 +21,4 @@ This folder will contain evaluation results, benchmark comparisons, performance 
 | **Agent Utilization** | Average number of agent iterations before convergence |
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

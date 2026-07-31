@@ -10,4 +10,4 @@ This folder contains the graph engine responsible for maintaining the network to
 - **Graph Serializer:** Converts Neo4j subgraphs to NetworkX format for algorithmic processing
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

@@ -11,4 +11,4 @@ This folder will contain project presentation materials, including slide decks, 
 - Poster (if applicable)
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

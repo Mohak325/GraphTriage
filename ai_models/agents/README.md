@@ -21,4 +21,4 @@ This folder contains the implementations of the three core agents in the GRAPHTR
 - Either confirms the diagnosis (with confidence score) or rejects it (triggering re-analysis)
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

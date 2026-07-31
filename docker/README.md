@@ -19,4 +19,4 @@ This folder will contain Docker configurations for containerizing and deploying 
 | Redis | 6379 | Task queue broker |
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

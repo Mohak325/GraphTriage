@@ -10,4 +10,4 @@ This folder contains the LLM provider wrappers and prompt templates used by the 
 - **Token Management:** Context window optimization and token budget allocation
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

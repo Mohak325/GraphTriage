@@ -12,4 +12,4 @@ This folder will contain downloaded or linked public benchmark datasets used for
 | Google Cluster Traces | [Google Research](https://github.com/google/cluster-data) | CSV |
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

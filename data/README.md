@@ -19,4 +19,4 @@ data/
 - **Google Cluster Traces:** Large-scale workload traces
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

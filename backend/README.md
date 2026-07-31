@@ -18,4 +18,4 @@ This folder contains the **FastAPI** backend that exposes REST endpoints for tri
 - **Documentation:** Auto-generated OpenAPI / Swagger
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

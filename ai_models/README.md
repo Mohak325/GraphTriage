@@ -20,4 +20,4 @@ ai_models/
 | Verifier | Adversarial validation of diagnosis | Hypothesis + evidence | Confirmed/rejected diagnosis |
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

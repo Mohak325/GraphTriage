@@ -5,13 +5,13 @@
 
 ---
 
-## 📌 Project Title
+## Project Title
 
 **GRAPHTRIAGE — A Graph Augmented Multi-Agent Framework for Automating Root Cause Analysis in Distributed Telecommunication and Microservice Networks**
 
 ---
 
-## 👥 Team Members
+## Team Members
 
 | Name | Role | Primary Responsibilities |
 |------|------|--------------------------|
@@ -21,7 +21,7 @@
 
 ---
 
-## 🔍 Problem Statement
+## Problem Statement
 
 Root Cause Analysis (RCA) in distributed telecommunication and microservice systems is a critical yet challenging task. Modern networks generate vast amounts of observability data — metrics, traces, and logs — that human Site Reliability Engineering (SRE) teams must manually correlate to identify failures. This process is:
 
@@ -33,7 +33,7 @@ While recent AIOps solutions leverage LLMs to automate RCA, they suffer from **h
 
 ---
 
-## 🎯 Objectives
+## Objectives
 
 1. **Design a graph-augmented multi-agent architecture** that separates topological search from semantic analysis to prevent hallucinations.
 2. **Implement a Navigator Agent** that leverages computed fault gradients to efficiently traverse the network topology graph and localize anomalies.
@@ -44,7 +44,7 @@ While recent AIOps solutions leverage LLMs to automate RCA, they suffer from **h
 
 ---
 
-## 🏗️ Proposed Architecture / Framework
+## Proposed Architecture / Framework
 
 ![GRAPHTRIAGE Architecture Diagram](docs/architecture/architecture_diagram.png)
 
@@ -83,7 +83,7 @@ If the Verifier rejects a diagnosis, the feedback loop re-engages the Navigator 
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|--------|
@@ -102,7 +102,7 @@ If the Verifier rejects a diagnosis, the feedback loop re-engages the Navigator 
 
 ---
 
-## 📊 Dataset Details
+## Dataset Details
 
 Since real-world telecom RCA datasets are proprietary and scarce, we adopt a **hybrid approach**:
 
@@ -121,7 +121,7 @@ Since real-world telecom RCA datasets are proprietary and scarce, we adopt a **h
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 GRAPHTRIAGE-SIM/
@@ -167,9 +167,9 @@ GRAPHTRIAGE-SIM/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-> ⚠️ **Note:** This repository is currently in the **planning and design phase**. Implementation will follow the approved architecture.
+> **Note:** This repository is currently in the **planning and design phase**. Implementation will follow the approved architecture.
 
 ### Prerequisites
 - Python 3.10+
@@ -195,12 +195,12 @@ docker-compose up
 
 ---
 
-## 📄 License
+## License
 
 This project is developed for academic purposes as part of the **Cloud System Architecture** course.
 
 ---
 
-## 📬 Contact
+## Contact
 
 For queries regarding this project, please reach out to any of the team members listed above.

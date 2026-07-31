@@ -12,4 +12,4 @@ This folder will contain the synthetic data generation pipeline and its outputs,
 - Simulated logs (structured JSON)
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

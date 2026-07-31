@@ -36,11 +36,11 @@ This folder contains the research gap analysis identifying the specific shortcom
 **Current State:**
 | Approach | Metrics | Traces | Logs |
 |----------|---------|--------|------|
-| CloudRanger | ✅ | ❌ | ❌ |
-| MicroScope | ❌ | ✅ | ❌ |
-| TraceAnomaly | ❌ | ✅ | ❌ |
-| AutoMAP | ✅ | ❌ | ❌ |
-| **GRAPHTRIAGE** | **✅** | **✅** | **✅** |
+| CloudRanger | Yes | No | No |
+| MicroScope | No | Yes | No |
+| TraceAnomaly | No | Yes | No |
+| AutoMAP | Yes | No | No |
+| **GRAPHTRIAGE** | **Yes** | **Yes** | **Yes** |
 
 **GRAPHTRIAGE Solution:** The **Diagnoser Agent** performs multimodal semantic analysis, correlating metrics anomalies with trace patterns and log entries to produce holistic diagnoses.
 
@@ -70,14 +70,14 @@ This folder contains the research gap analysis identifying the specific shortcom
 
 | Feature | Traditional RCA | LLM-Only RCA | Graph-Only RCA | **GRAPHTRIAGE (Ours)** |
 |---------|----------------|--------------|----------------|-----------------|
-| Automated Triage | ❌ | ✅ | ✅ | **✅** |
-| Hallucination Prevention | N/A | ❌ | N/A | **✅** |
-| Graph-Based Localization | ❌ | ❌ | ✅ | **✅** |
-| Semantic Analysis | ❌ | ✅ | ❌ | **✅** |
-| Multimodal Data Fusion | ❌ | Partial | ❌ | **✅** |
-| Adversarial Validation | ❌ | ❌ | ❌ | **✅** |
-| Multi-Agent Architecture | ❌ | ❌ | ❌ | **✅** |
-| Fault Gradient Traversal | ❌ | ❌ | ❌ | **✅** |
+| Automated Triage | No | Yes | Yes | **Yes** |
+| Hallucination Prevention | N/A | No | N/A | **Yes** |
+| Graph-Based Localization | No | No | Yes | **Yes** |
+| Semantic Analysis | No | Yes | No | **Yes** |
+| Multimodal Data Fusion | No | Partial | No | **Yes** |
+| Adversarial Validation | No | No | No | **Yes** |
+| Multi-Agent Architecture | No | No | No | **Yes** |
+| Fault Gradient Traversal | No | No | No | **Yes** |
 
 ---
 

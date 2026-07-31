@@ -24,4 +24,4 @@ This folder contains the database schema definitions, migration scripts, and con
 ```
 
 ## Status
-> 🔲 **Not yet implemented** — This folder is a placeholder for future development.
+> **Not yet implemented** — This folder is a placeholder for future development.

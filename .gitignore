@@ -1,46 +1,125 @@
-# Python
+# =============================================
+# GRAPHTRIAGE — Comprehensive .gitignore
+# =============================================
+
+# ----- Python -----
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 *.egg-info/
+*.egg
 dist/
 build/
 .eggs/
+*.whl
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual Environments & Dependencies
 venv/
 env/
 .venv/
-
-# Node.js
-node_modules/
-.next/
-out/
-
-# Environment
-.env
+wheels/
+backend/wheels/
+vendor/
+.cache/
+pip-cache/
 .env.local
 .env.production
 
-# IDE
+# ----- Node.js -----
+node_modules/
+.next/
+out/
+.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ----- Environment & Secrets -----
+.env
+*.env
+!docker/.env.example
+*.pem
+*.key
+*.crt
+*.secret
+
+# ----- IDE -----
 .vscode/
 .idea/
 *.swp
 *.swo
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
 
-# OS
+# ----- OS -----
 .DS_Store
 Thumbs.db
+Desktop.ini
+*.lnk
 
-# Neo4j
+# ----- Neo4j -----
 data/neo4j/
+neo4j/data/
+neo4j/logs/
+neo4j/import/
+neo4j/plugins/
+*.db
 
-# Docker
+# ----- Docker -----
 *.log
+docker/volumes/
 
-# Coverage
+# ----- Testing & Coverage -----
 htmlcov/
 .coverage
+.coverage.*
+coverage.xml
+*.cover
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+nosetests.xml
 
-# Misc
+# ----- Results & Profiling (keep scripts, ignore output) -----
+results/charts/*.png
+results/charts/*.svg
+results/charts/*.pdf
+results/profiling/output/
+results/ablation/output/
+
+# ----- AWS -----
+.aws/
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+!*.tfvars.example
+cdk.out/
+samconfig.toml
+
+# ----- Misc -----
 *.bak
 *.tmp
+*.cache
+*.pid
+*.seed
+cloud.docx
+implementation_plan.md
+
+# ----- Project-Specific -----
+data/benchmarks/raw/
+data/benchmarks/*.csv
+data/benchmarks/*.json
+data/synthetic/output/
+presentation/*.pptx
+presentation/*.pdf
+docs/final_report/*.pdf

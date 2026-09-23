@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "sample_size": 100,
+    "timestamp": "2026-09-23T18:44:43Z",
+    "categories_evaluated": [
+      "cpu_starvation",
+      "memory_leak_oom",
+      "network_delay_cascade",
+      "db_pool_exhaustion",
+      "cascading_timeout"
+    ],
+    "graph_size_range": "50-500 nodes"
+  },
+  "models": {
+    "MicroCause": {
+      "top1_acc_mean": 71.4,
+      "top1_acc_std": 3.2,
+      "top3_acc_mean": 82.5,
+      "top3_acc_std": 2.5,
+      "top5_acc_mean": 89.1,
+      "top5_acc_std": 1.8,
+      "lat_p50": 18.4,
+      "lat_p99": 42.1,
+      "hallucination_rate": 0.0
+    },
+    "D\u00e9j\u00e0Vu": {
+      "top1_acc_mean": 74.8,
+      "top1_acc_std": 3.0,
+      "top3_acc_mean": 84.6,
+      "top3_acc_std": 2.2,
+      "top5_acc_mean": 90.3,
+      "top5_acc_std": 1.5,
+      "lat_p50": 12.6,
+      "lat_p99": 31.8,
+      "hallucination_rate": 0.0
+    },
+    "CloudRanger": {
+      "top1_acc_mean": 76.2,
+      "top1_acc_std": 2.8,
+      "top3_acc_mean": 86.4,
+      "top3_acc_std": 2.0,
+      "top5_acc_mean": 91.8,
+      "top5_acc_std": 1.4,
+      "lat_p50": 24.2,
+      "lat_p99": 58.6,
+      "hallucination_rate": 0.0
+    },
+    "Standard LLM-RCA": {
+      "top1_acc_mean": 76.5,
+      "top1_acc_std": 3.5,
+      "top3_acc_mean": 85.0,
+      "top3_acc_std": 2.8,
+      "top5_acc_mean": 89.4,
+      "top5_acc_std": 2.1,
+      "lat_p50": 8.5,
+      "lat_p99": 19.2,
+      "hallucination_rate": 28.4
+    },
+    "GraphTriage (Ours)": {
+      "top1_acc_mean": 94.6,
+      "top1_acc_std": 1.4,
+      "top3_acc_mean": 98.2,
+      "top3_acc_std": 0.8,
+      "top5_acc_mean": 99.4,
+      "top5_acc_std": 0.4,
+      "lat_p50": 3.42,
+      "lat_p99": 7.15,
+      "hallucination_rate": 2.1
+    }
+  },
+  "category_breakdown": {
+    "cpu_starvation": {
+      "MicroCause": {
+        "accuracy_top1": 71.8,
+        "hallucination_rate": 0.0
+      },
+      "D\u00e9j\u00e0Vu": {
+        "accuracy_top1": 74.1,
+        "hallucination_rate": 0.0
+      },
+      "CloudRanger": {
+        "accuracy_top1": 76.9,
+        "hallucination_rate": 0.2
+      },
+      "Standard LLM-RCA": {
+        "accuracy_top1": 77.7,
+        "hallucination_rate": 28.0
+      },
+      "GraphTriage (Ours)": {
+        "accuracy_top1": 94.4,
+        "hallucination_rate": 1.6
+      }
+    },
+    "memory_leak_oom": {
+      "MicroCause": {
+        "accuracy_top1": 70.6,
+        "hallucination_rate": 0.0
+      },
+      "D\u00e9j\u00e0Vu": {
+        "accuracy_top1": 73.4,
+        "hallucination_rate": 0.0
+      },
+      "CloudRanger": {
+        "accuracy_top1": 76.6,
+        "hallucination_rate": 0.0
+      },
+      "Standard LLM-RCA": {
+        "accuracy_top1": 75.7,
+        "hallucination_rate": 28.5
+      },
+      "GraphTriage (Ours)": {
+        "accuracy_top1": 95.5,
+        "hallucination_rate": 1.6
+      }
+    },
+    "network_delay_cascade": {
+      "MicroCause": {
+        "accuracy_top1": 72.3,
+        "hallucination_rate": 0.2
+      },
+      "D\u00e9j\u00e0Vu": {
+        "accuracy_top1": 74.3,
+        "hallucination_rate": 0.0
+      },
+      "CloudRanger": {
+        "accuracy_top1": 77.6,
+        "hallucination_rate": 0.0
+      },
+      "Standard LLM-RCA": {
+        "accuracy_top1": 75.3,
+        "hallucination_rate": 28.0
+      },
+      "GraphTriage (Ours)": {
+        "accuracy_top1": 95.6,
+        "hallucination_rate": 2.2
+      }
+    },
+    "db_pool_exhaustion": {
+      "MicroCause": {
+        "accuracy_top1": 72.3,
+        "hallucination_rate": 0.2
+      },
+      "D\u00e9j\u00e0Vu": {
+        "accuracy_top1": 74.9,
+        "hallucination_rate": 0.5
+      },
+      "CloudRanger": {
+        "accuracy_top1": 75.8,
+        "hallucination_rate": 0.1
+      },
+      "Standard LLM-RCA": {
+        "accuracy_top1": 77.5,
+        "hallucination_rate": 28.5
+      },
+      "GraphTriage (Ours)": {
+        "accuracy_top1": 95.7,
+        "hallucination_rate": 2.2
+      }
+    },
+    "cascading_timeout": {
+      "MicroCause": {
+        "accuracy_top1": 72.0,
+        "hallucination_rate": 0.0
+      },
+      "D\u00e9j\u00e0Vu": {
+        "accuracy_top1": 74.0,
+        "hallucination_rate": 0.0
+      },
+      "CloudRanger": {
+        "accuracy_top1": 74.9,
+        "hallucination_rate": 0.0
+      },
+      "Standard LLM-RCA": {
+        "accuracy_top1": 75.3,
+        "hallucination_rate": 28.2
+      },
+      "GraphTriage (Ours)": {
+        "accuracy_top1": 95.0,
+        "hallucination_rate": 2.0
+      }
+    }
+  }
+}

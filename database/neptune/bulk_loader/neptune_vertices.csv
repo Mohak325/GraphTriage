@@ -1,0 +1,25 @@
+~id,~label,anomaly_score:Double,az:String,cidr:String,confidence:Double,cpu_cores:Int,created_at:String,description:String,error_rate:Double,failure_probability:Double,ip:String,language:String,latency_p95:Double,memory_gb:Int,metric_name:String,metric_value:Double,name:String,region:String,root_cause_confidence:Double,root_cause_service_id:String,rps:Double,severity:String,status:String,threshold:Double,timestamp:String,title:String,type:String,version:String,vpc:String
+net-public-edge,Network,,,10.0.1.0/24,,,,,,,,,,,,,Public Edge Subnet,,,,,,,,,,,,vpc-prod-main
+net-app-core,Network,,,10.0.2.0/24,,,,,,,,,,,,,Internal Mesh Core Subnet,,,,,,,,,,,,vpc-prod-main
+net-data-secure,Network,,,10.0.3.0/24,,,,,,,,,,,,,Secure Payment/Data Subnet,,,,,,,,,,,,vpc-prod-main
+host-k8s-node-01,Host,,us-east-1a,,,16,,,,,10.0.2.11,,,64,,,k8s-worker-pool-1a,us-east-1,,,,,healthy,,,,,,
+host-k8s-node-02,Host,,us-east-1b,,,16,,,,,10.0.2.12,,,64,,,k8s-worker-pool-1b,us-east-1,,,,,healthy,,,,,,
+host-k8s-node-03,Host,,us-east-1c,,,32,,,,,10.0.3.13,,,128,,,k8s-worker-pool-1c,us-east-1,,,,,degraded,,,,,,
+srv-api-gateway,Service,0.72,,,,,,,0.082,0.65,,go,420.5,,,,api-gateway,,,,3450.0,,degraded,,,,gateway,v2.4.1,
+srv-auth-service,Service,0.05,,,,,,,0.001,0.02,,rust,18.2,,,,auth-service,,,,1200.0,,healthy,,,,auth,v1.9.0,
+srv-user-service,Service,0.08,,,,,,,0.003,0.04,,python,35.0,,,,user-service,,,,850.0,,healthy,,,,business,v3.1.2,
+srv-order-service,Service,0.81,,,,,,,0.145,0.78,,java,850.0,,,,order-service,,,,920.0,,degraded,,,,business,v2.8.0,
+srv-payment-service,Service,0.96,,,,,,,0.38,0.94,,java,2450.0,,,,payment-service,,,,410.0,,critical,,,,payment,v2.1.0,
+srv-inventory-service,Service,0.65,,,,,,,0.095,0.52,,go,390.0,,,,inventory-service,,,,600.0,,degraded,,,,inventory,v1.7.4,
+srv-shipping-service,Service,0.12,,,,,,,0.005,0.06,,python,48.0,,,,shipping-service,,,,220.0,,healthy,,,,logistics,v1.4.0,
+srv-notification-service,Service,0.09,,,,,,,0.002,0.03,,node,22.0,,,,notification-service,,,,480.0,,healthy,,,,messaging,v2.0.1,
+srv-recommendation-service,Service,0.15,,,,,,,0.008,0.08,,python,85.0,,,,recommendation-service,,,,750.0,,healthy,,,,ml-service,v3.0.0,
+srv-analytics-service,Service,0.04,,,,,,,0.001,0.01,,scala,15.0,,,,analytics-service,,,,1500.0,,healthy,,,,data-pipeline,v1.2.3,
+srv-billing-service,Service,0.11,,,,,,,0.004,0.05,,java,62.0,,,,billing-service,,,,180.0,,healthy,,,,finance,v1.6.2,
+srv-search-service,Service,0.18,,,,,,,0.006,0.09,,go,55.0,,,,search-service,,,,1100.0,,healthy,,,,search,v2.2.0,
+anom-payment-conn-pool-exhausted,Anomaly,,,,0.97,,,Database connection pool saturated at 99.8%. Thread starvation observed in PaymentService worker threads.,,,,,,,db_connection_pool_active_ratio,0.998,,,,,,critical,active,0.85,2026-09-22T21:45:00Z,,,,
+anom-payment-latency-spike,Anomaly,,,,0.95,,,p95 latency exceeded 2400ms threshold by 390%. Downstream timeouts triggering.,,,,,,,http_request_duration_seconds_p95,2.45,,,,,,critical,active,0.5,2026-09-22T21:46:15Z,,,,
+anom-order-downstream-timeout,Anomaly,,,,0.91,,,Calls to PaymentService timing out after 2000ms SLA. Circuit breaker half-open.,,,,,,,downstream_timeout_rate,0.38,,,,,,high,active,0.05,2026-09-22T21:47:30Z,,,,
+anom-inventory-lock-wait,Anomaly,,,,0.84,,,Stock reservation lock wait times elevated due to hung checkout transactions.,,,,,,,db_row_lock_wait_time_ms,780.0,,,,,,medium,active,150.0,2026-09-22T21:48:00Z,,,,
+anom-gateway-504-spike,Anomaly,,,,0.89,,,Ingress 504 error rate spiked to 8.2% on /checkout and /order endpoints.,,,,,,,http_status_5xx_rate,0.082,,,,,,high,active,0.01,2026-09-22T21:49:00Z,,,,
+inc-2026-0922-001,Incident,,,,,,2026-09-22T21:50:00Z,Checkout requests failing across US-East cluster due to database connection starvation in Payment Service cascading to Order Service and API Gateway.,,,,,,,,,,,0.94,srv-payment-service,,critical,investigating,,,Cascading Checkout & Payment Failure in US-East,,,

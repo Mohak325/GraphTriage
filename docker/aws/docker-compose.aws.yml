@@ -1,0 +1,106 @@
+version: '3.8'
+
+# ==============================================================================
+# GRAPHTRIAGE — AWS Telemetry & Observability Stack (Local Emulation & Testing)
+# ==============================================================================
+# Deploys Amazon OpenSearch 2.x, OpenSearch Dashboards, and Fluent Bit log router
+# to emulate the AWS production telemetry pipeline without active cloud costs.
+# ==============================================================================
+
+networks:
+  graphtriage-aws-net:
+    driver: bridge
+
+volumes:
+  opensearch-data:
+    driver: local
+
+services:
+  # ----------------------------------------------------------------------------
+  # 1. Amazon OpenSearch (Single-Node Dev Cluster)
+  # ----------------------------------------------------------------------------
+  opensearch:
+    image: opensearchproject/opensearch:2.11.0
+    container_name: graphtriage-opensearch
+    environment:
+      - cluster.name=graphtriage-telemetry-cluster
+      - node.name=graphtriage-opensearch-01
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+      - DISABLE_SECURITY_PLUGIN=true
+      - DISABLE_INSTALL_DEMO_CONFIG=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    networks:
+      - graphtriage-aws-net
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cat/health | grep -q 'green\\|yellow'"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # ----------------------------------------------------------------------------
+  # 2. Amazon OpenSearch Dashboards
+  # ----------------------------------------------------------------------------
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2.11.0
+    container_name: graphtriage-opensearch-dashboards
+    ports:
+      - "5601:5601"
+    environment:
+      - OPENSEARCH_HOSTS=["http://opensearch:9200"]
+      - DISABLE_SECURITY_DASHBOARDS_PLUGIN=true
+    networks:
+      - graphtriage-aws-net
+    depends_on:
+      opensearch:
+        condition: service_healthy
+
+  # ----------------------------------------------------------------------------
+  # 3. Fluent Bit Log Collector & Forwarder
+  # ----------------------------------------------------------------------------
+  fluent-bit:
+    image: fluent/fluent-bit:2.2.0
+    container_name: graphtriage-fluent-bit
+    volumes:
+      - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf:ro
+      - ./fluent-bit-parsers.conf:/fluent-bit/etc/fluent-bit-parsers.conf:ro
+    ports:
+      - "2020:2020"    # Internal HTTP monitoring
+      - "24224:24224"  # Forward protocol port
+    networks:
+      - graphtriage-aws-net
+    depends_on:
+      opensearch:
+        condition: service_healthy
+
+  # ----------------------------------------------------------------------------
+  # 4. Telemetry Stream Processor Adapter
+  # ----------------------------------------------------------------------------
+  telemetry-pipeline:
+    build:
+      context: ../..
+      dockerfile: docker/Dockerfile.backend
+    container_name: graphtriage-telemetry-processor
+    command: python docker/aws/telemetry_pipeline.py
+    environment:
+      - BACKEND_URL=http://backend:8000
+      - OPENSEARCH_URL=http://opensearch:9200
+      - AWS_REGION=us-east-1
+    networks:
+      - graphtriage-aws-net
+    depends_on:
+      opensearch:
+        condition: service_healthy

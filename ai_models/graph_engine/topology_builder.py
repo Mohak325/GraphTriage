@@ -138,8 +138,8 @@ class TopologyBuilder:
         - Cycle detection
         """
         isolated_nodes = list(nx.isolates(graph))
-        in_degrees = {n: int(d) for n, d in graph.in_degree}
-        out_degrees = {n: int(d) for n, d in graph.out_degree}
+        in_degrees = {n: d for n, d in graph.in_degree}
+        out_degrees = {n: d for n, d in graph.out_degree}
 
         source_nodes = [n for n, deg in in_degrees.items() if deg == 0 and out_degrees.get(n, 0) > 0]
         sink_nodes = [n for n, deg in out_degrees.items() if deg == 0 and in_degrees.get(n, 0) > 0]

@@ -33,6 +33,18 @@ class Settings(BaseSettings):
     NEO4J_MAX_CONNECTION_POOL_SIZE: int = Field(default=50, description="Max connection pool size")
     NEO4J_CONNECTION_TIMEOUT: float = Field(default=30.0, description="Connection timeout in seconds")
 
+    # Graph Database Backend Selection
+    GRAPH_BACKEND: str = Field(default="neo4j", description="Active graph backend ('neo4j' or 'neptune')")
+
+    # AWS Cloud Services (Phase 4)
+    AWS_REGION: str = Field(default="us-east-1", description="AWS Deployment Region")
+    NEPTUNE_ENDPOINT: str = Field(
+        default="wss://localhost:8182/gremlin",
+        description="Amazon Neptune Gremlin WebSocket endpoint"
+    )
+    NEPTUNE_USE_SSL: bool = Field(default=True, description="Enable SSL for Neptune connections")
+    OPENSEARCH_URL: str = Field(default="http://localhost:9200", description="Amazon OpenSearch URL")
+
     # Redis (Celery broker + event cache)
     REDIS_URL: str = Field(default="redis://localhost:6379/0", description="Redis connection URL")
 

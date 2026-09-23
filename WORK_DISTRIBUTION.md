@@ -34,14 +34,14 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| Neo4j schema design & setup | Sandarbh Gupta | Pending | `database/` |
-| Network topology graph builder | Sandarbh Gupta | Pending | `ai_models/graph_engine/` |
-| Fault gradient computation algorithm | Sandarbh Gupta | Pending | `ai_models/graph_engine/` |
+| Neo4j schema design & setup | Sandarbh Gupta | Complete | `database/` |
+| Network topology graph builder | Sandarbh Gupta | Complete | `ai_models/graph_engine/` |
+| Fault gradient computation algorithm | Sandarbh Gupta | Complete | `ai_models/graph_engine/` |
 | Synthetic data generation pipeline | Aarnav Mishra | Pending | `data/synthetic/` |
-| FastAPI backend skeleton | Sandarbh Gupta | Pending | `backend/` |
+| FastAPI backend skeleton | Sandarbh Gupta | Complete | `backend/` |
 | LangGraph multi-agent scaffold | Mohak Harsh | Pending | `ai_models/` |
 | LLM provider integration (Gemini/GPT-4) | Mohak Harsh | Pending | `ai_models/llm/` |
-| Docker environment setup | Sandarbh Gupta | Pending | `docker/` |
+| Docker environment setup | Sandarbh Gupta | Complete | `docker/` |
 
 ---
 
@@ -50,17 +50,17 @@
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
 | **Navigator Agent** — graph traversal logic | Mohak Harsh | Pending | `ai_models/agents/` |
-| **Navigator Agent** — fault gradient integration | Mohak Harsh + Sandarbh Gupta | Pending | `ai_models/agents/` |
+| **Navigator Agent** — fault gradient integration | Mohak Harsh + Sandarbh Gupta | Complete | `ai_models/agents/` |
 | **Diagnoser Agent** — multimodal semantic analysis | Mohak Harsh | Pending | `ai_models/agents/` |
 | **Diagnoser Agent** — LLM prompt engineering | Mohak Harsh | Pending | `ai_models/llm/` |
 | **Verifier Agent** — adversarial validation protocol | Mohak Harsh | Pending | `ai_models/agents/` |
 | Agent orchestration & state management | Mohak Harsh | Pending | `ai_models/` |
-| Backend API endpoints for RCA | Sandarbh Gupta | Pending | `backend/` |
-| Unit tests for agents | All Members | Pending | `tests/` |
+| Backend API endpoints for RCA | Sandarbh Gupta | Complete | `backend/` |
+| Unit tests for backend & graph engine | Sandarbh Gupta | Complete | `tests/` |
 
 ---
 
-### Phase 4: Frontend & Visualization (Weeks 8–10)
+### Phase 4: Frontend & AWS Cloud Deployment (Weeks 8–10)
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
@@ -68,8 +68,10 @@
 | Network graph visualization (D3.js/Cytoscape) | Aarnav Mishra | Pending | `frontend/` |
 | Real-time agent activity dashboard | Aarnav Mishra | Pending | `frontend/` |
 | RCA results display & confidence scores | Aarnav Mishra | Pending | `frontend/` |
-| API integration with backend | Aarnav Mishra + Sandarbh Gupta | Pending | `frontend/` |
+| API integration with backend | Aarnav Mishra + Sandarbh Gupta | Complete | `frontend/` |
 | Responsive design & UX polish | Aarnav Mishra | Pending | `frontend/` |
+| **Amazon Neptune Gremlin Migration** | Sandarbh Gupta | Complete | `database/neptune/` |
+| **CloudWatch + OpenSearch Telemetry Pipeline** | Sandarbh Gupta | Complete | `docker/aws/` |
 
 ---
 
@@ -79,7 +81,7 @@
 |------|----------|--------|-------------|
 | Benchmark suite design | Aarnav Mishra | Pending | `results/` |
 | Accuracy evaluation (vs. baselines) | Aarnav Mishra + Mohak Harsh | Pending | `results/` |
-| Latency & performance profiling | Sandarbh Gupta | Pending | `results/` |
+| Latency & performance profiling | Sandarbh Gupta | Complete | `results/profiling/` |
 | Hallucination rate measurement | Mohak Harsh | Pending | `results/` |
 | Ablation studies (agent contributions) | All Members | Pending | `results/` |
 | Results documentation & visualizations | Aarnav Mishra | Pending | `results/` |

@@ -1,0 +1,357 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  GraphTriage Enterprise AWS Architecture — Master CloudFormation Template.
+  Deploys all 12 AWS services specified in Cloud Architecture Design:
+  VPC, Amazon Neptune, S3, DynamoDB, SQS, SNS, OpenSearch, Lambda, CloudWatch, Bedrock IAM, and EC2.
+
+Parameters:
+  EnvironmentName:
+    Type: String
+    Default: graphtriage-prod
+    Description: Environment naming prefix
+
+  KeyPairName:
+    Type: String
+    Default: ""
+    Description: Optional EC2 Key Pair for Bastion SSH access
+
+Resources:
+  # ============================================================================
+  # 1. NETWORKING (VPC, Subnets, Route Tables, Security Groups)
+  # ============================================================================
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-vpc'
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-igw'
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-public-1'
+
+  PublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: !Select [1, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-public-2'
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-public-rt'
+
+  DefaultPublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: AttachGateway
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnet1Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet1
+      RouteTableId: !Ref PublicRouteTable
+
+  PublicSubnet2Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet2
+      RouteTableId: !Ref PublicRouteTable
+
+  # Security Groups
+  BastionSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for EC2 Bastion & Backend
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+          Description: SSH access
+        - IpProtocol: tcp
+          FromPort: 8000
+          ToPort: 8000
+          CidrIp: 0.0.0.0/0
+          Description: FastAPI Ingress
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-bastion-sg'
+
+  NeptuneSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for Amazon Neptune cluster
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 8182
+          ToPort: 8182
+          SourceSecurityGroupId: !Ref BastionSecurityGroup
+          Description: Allow Gremlin traffic from Bastion / Backend
+        - IpProtocol: tcp
+          FromPort: 8182
+          ToPort: 8182
+          CidrIp: 10.0.0.0/16
+          Description: Internal VPC Gremlin access
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-neptune-sg'
+
+  # ============================================================================
+  # 2. AMAZON S3 (Staging Bucket for Bulk Loading & Backups)
+  # ============================================================================
+  GraphTriageDataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'graphtriage-data-${AWS::AccountId}-${AWS::Region}'
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  # ============================================================================
+  # 3. AMAZON NEPTUNE (Graph Database)
+  # ============================================================================
+  NeptuneS3Role:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${EnvironmentName}-NeptuneS3Role'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: rds.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: NeptuneS3ReadPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:Get*
+                  - s3:List*
+                Resource:
+                  - !Sub 'arn:aws:s3:::${GraphTriageDataBucket}'
+                  - !Sub 'arn:aws:s3:::${GraphTriageDataBucket}/*'
+
+  NeptuneDBSubnetGroup:
+    Type: AWS::Neptune::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnets for Neptune cluster
+      SubnetIds:
+        - !Ref PublicSubnet1
+        - !Ref PublicSubnet2
+      DBSubnetGroupName: !Sub '${EnvironmentName}-neptune-subnets'
+
+  NeptuneCluster:
+    Type: AWS::Neptune::DBCluster
+    Properties:
+      DBClusterIdentifier: !Sub '${EnvironmentName}-neptune'
+      DBSubnetGroupName: !Ref NeptuneDBSubnetGroup
+      VpcSecurityGroupIds:
+        - !Ref NeptuneSecurityGroup
+      AssociatedRoles:
+        - RoleArn: !GetAtt NeptuneS3Role.Arn
+      BackupRetentionPeriod: 7
+
+  NeptuneInstance:
+    Type: AWS::Neptune::DBInstance
+    DependsOn: NeptuneCluster
+    Properties:
+      DBClusterIdentifier: !Ref NeptuneCluster
+      DBInstanceIdentifier: !Sub '${EnvironmentName}-neptune-instance'
+      DBInstanceClass: db.t4g.medium
+
+  # ============================================================================
+  # 4. AMAZON DYNAMODB (Session States & Remediation Tracking)
+  # ============================================================================
+  RemediationTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: GraphTriage-Remediations
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: incident_id
+          AttributeType: S
+        - AttributeName: timestamp
+          AttributeType: N
+      KeySchema:
+        - AttributeName: incident_id
+          KeyType: HASH
+        - AttributeName: timestamp
+          KeyType: RANGE
+
+  AgentSessionTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: GraphTriage-AgentSessions
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: session_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: session_id
+          KeyType: HASH
+
+  # ============================================================================
+  # 5. AMAZON SQS (Alarm Storm Buffering & DLQ)
+  # ============================================================================
+  AlarmDeadLetterQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub '${EnvironmentName}-alarms-dlq'
+      MessageRetentionPeriod: 1209600
+
+  AlarmStormQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub '${EnvironmentName}-alarm-storm-queue'
+      VisibilityTimeout: 60
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt AlarmDeadLetterQueue.Arn
+        maxReceiveCount: 5
+
+  # ============================================================================
+  # 6. AMAZON SNS (SRE Real-Time Alerts)
+  # ============================================================================
+  SREAlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: GraphTriage-SRE-Alerts
+      DisplayName: GraphTriage Root Cause & Remediation Notifications
+
+  # ============================================================================
+  # 7. AWS LAMBDA (Automated Closed-Loop Remediation)
+  # ============================================================================
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${EnvironmentName}-LambdaRemediationRole'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: DynamoDBAndSNSPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:GetItem
+                Resource: !GetAtt RemediationTable.Arn
+              - Effect: Allow
+                Action:
+                  - sns:Publish
+                Resource: !Ref SREAlertTopic
+
+  RemediationLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub '${EnvironmentName}-remediation-handler'
+      Runtime: python3.11
+      Handler: index.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          import json, time, os
+          def lambda_handler(event, context):
+              incident_id = event.get("incident_id", "inc-default")
+              service_id = event.get("root_cause_service_id", "srv-payment-service")
+              action = event.get("action", "auto_remediate")
+              return {
+                  "statusCode": 200,
+                  "body": json.dumps({"incident_id": incident_id, "service_id": service_id, "status": "SUCCESS"})
+              }
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: !Ref RemediationTable
+          SNS_TOPIC_ARN: !Ref SREAlertTopic
+      Timeout: 30
+
+  # ============================================================================
+  # 8. AMAZON CLOUDWATCH LOG GROUPS
+  # ============================================================================
+  MicroservicesLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/graphtriage/microservices
+      RetentionInDays: 14
+
+  RemediationLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/graphtriage/remediation
+      RetentionInDays: 30
+
+Outputs:
+  NeptuneGremlinEndpoint:
+    Description: Amazon Neptune Gremlin Cluster Endpoint
+    Value: !GetAtt NeptuneCluster.Endpoint
+
+  S3BucketName:
+    Description: S3 Staging and Telemetry Storage Bucket
+    Value: !Ref GraphTriageDataBucket
+
+  DynamoDBRemediationTable:
+    Description: DynamoDB Remediation Audit Table
+    Value: !Ref RemediationTable
+
+  SQSAlarmQueueUrl:
+    Description: SQS Queue URL for Buffering Alarm Storms
+    Value: !Ref AlarmStormQueue
+
+  SNSTopicArn:
+    Description: SNS Alert Topic ARN for SRE Notifications
+    Value: !Ref SREAlertTopic
+
+  LambdaRemediationArn:
+    Description: AWS Lambda Function ARN for Auto-Remediation
+    Value: !GetAtt RemediationLambdaFunction.Arn

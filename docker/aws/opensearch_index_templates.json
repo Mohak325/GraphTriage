@@ -1,0 +1,94 @@
+{
+  "index_templates": [
+    {
+      "name": "graphtriage-metrics-template",
+      "index_patterns": ["graphtriage-metrics-*"],
+      "template": {
+        "settings": {
+          "number_of_shards": 2,
+          "number_of_replicas": 1,
+          "refresh_interval": "5s",
+          "index.mapping.total_fields.limit": 2000
+        },
+        "mappings": {
+          "properties": {
+            "@timestamp": { "type": "date" },
+            "service_id": { "type": "keyword" },
+            "service_name": { "type": "keyword" },
+            "metric_name": { "type": "keyword" },
+            "metric_type": { "type": "keyword" },
+            "value": { "type": "double" },
+            "unit": { "type": "keyword" },
+            "host_id": { "type": "keyword" },
+            "container_id": { "type": "keyword" },
+            "environment": { "type": "keyword" },
+            "dimensions": { "type": "object", "dynamic": true }
+          }
+        }
+      },
+      "priority": 100
+    },
+    {
+      "name": "graphtriage-traces-template",
+      "index_patterns": ["graphtriage-traces-*"],
+      "template": {
+        "settings": {
+          "number_of_shards": 3,
+          "number_of_replicas": 1,
+          "refresh_interval": "5s"
+        },
+        "mappings": {
+          "properties": {
+            "@timestamp": { "type": "date" },
+            "trace_id": { "type": "keyword" },
+            "span_id": { "type": "keyword" },
+            "parent_span_id": { "type": "keyword" },
+            "caller_service_id": { "type": "keyword" },
+            "callee_service_id": { "type": "keyword" },
+            "endpoint": { "type": "keyword" },
+            "http_method": { "type": "keyword" },
+            "http_status": { "type": "integer" },
+            "duration_ms": { "type": "double" },
+            "is_error": { "type": "boolean" },
+            "error_type": { "type": "keyword" },
+            "error_message": { "type": "text" },
+            "environment": { "type": "keyword" }
+          }
+        }
+      },
+      "priority": 100
+    },
+    {
+      "name": "graphtriage-logs-template",
+      "index_patterns": ["graphtriage-logs-*"],
+      "template": {
+        "settings": {
+          "number_of_shards": 2,
+          "number_of_replicas": 1,
+          "refresh_interval": "5s"
+        },
+        "mappings": {
+          "properties": {
+            "@timestamp": { "type": "date" },
+            "service_id": { "type": "keyword" },
+            "service_name": { "type": "keyword" },
+            "log_level": { "type": "keyword" },
+            "message": {
+              "type": "text",
+              "fields": {
+                "keyword": { "type": "keyword", "ignore_above": 512 }
+              }
+            },
+            "trace_id": { "type": "keyword" },
+            "span_id": { "type": "keyword" },
+            "exception_class": { "type": "keyword" },
+            "stack_trace": { "type": "text" },
+            "environment": { "type": "keyword" },
+            "cluster": { "type": "keyword" }
+          }
+        }
+      },
+      "priority": 100
+    }
+  ]
+}

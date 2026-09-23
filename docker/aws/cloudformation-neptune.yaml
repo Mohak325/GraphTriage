@@ -1,0 +1,206 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  GraphTriage AWS Cloud Infrastructure: VPC, Subnets, Security Groups,
+  S3 Staging Bucket, IAM Roles, and Amazon Neptune DB Cluster for Root Cause Analysis.
+
+Parameters:
+  EnvironmentName:
+    Type: String
+    Default: graphtriage-dev
+    Description: Environment identifier prefix
+
+  NeptuneInstanceClass:
+    Type: String
+    Default: db.t4g.medium
+    AllowedValues:
+      - db.t4g.medium
+      - db.t3.medium
+      - db.r5.large
+      - db.r6g.large
+    Description: Neptune DB instance compute size (t4g.medium recommended for development)
+
+Resources:
+  # ----------------------------------------------------------------------------
+  # 1. NETWORKING: VPC, Subnets & Internet Gateway
+  # ----------------------------------------------------------------------------
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-vpc'
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-igw'
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  # Two subnets across two AZs (Neptune requirement)
+  SubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-subnet-a'
+
+  SubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: !Select [1, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-subnet-b'
+
+  RouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-public-rt'
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: AttachGateway
+    Properties:
+      RouteTableId: !Ref RouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  SubnetARouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref SubnetA
+      RouteTableId: !Ref RouteTable
+
+  SubnetBRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref SubnetB
+      RouteTableId: !Ref RouteTable
+
+  # ----------------------------------------------------------------------------
+  # 2. SECURITY GROUP: Port 8182 for Gremlin
+  # ----------------------------------------------------------------------------
+  NeptuneSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for GraphTriage Neptune Cluster
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 8182
+          ToPort: 8182
+          CidrIp: 10.0.0.0/16
+          Description: Allow Gremlin WebSocket access from VPC
+      Tags:
+        - Key: Name
+          Value: !Sub '${EnvironmentName}-neptune-sg'
+
+  # ----------------------------------------------------------------------------
+  # 3. S3 BUCKET & IAM ROLE FOR BULK LOADING
+  # ----------------------------------------------------------------------------
+  S3BulkLoadBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'graphtriage-neptune-bulkload-${AWS::AccountId}-${AWS::Region}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  NeptuneS3LoadRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${EnvironmentName}-NeptuneS3AccessRole'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: rds.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: NeptuneS3ReadPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:Get*
+                  - s3:List*
+                Resource:
+                  - !Sub 'arn:aws:s3:::${S3BulkLoadBucket}'
+                  - !Sub 'arn:aws:s3:::${S3BulkLoadBucket}/*'
+
+  # ----------------------------------------------------------------------------
+  # 4. AMAZON NEPTUNE CLUSTER & INSTANCE
+  # ----------------------------------------------------------------------------
+  NeptuneDBSubnetGroup:
+    Type: AWS::Neptune::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnets for GraphTriage Neptune cluster
+      SubnetIds:
+        - !Ref SubnetA
+        - !Ref SubnetB
+      DBSubnetGroupName: !Sub '${EnvironmentName}-neptune-subnet-group'
+
+  NeptuneDBCluster:
+    Type: AWS::Neptune::DBCluster
+    Properties:
+      DBClusterIdentifier: !Sub '${EnvironmentName}-neptune-cluster'
+      DBSubnetGroupName: !Ref NeptuneDBSubnetGroup
+      VpcSecurityGroupIds:
+        - !Ref NeptuneSecurityGroup
+      IamAuthEnabled: false
+      AssociatedRoles:
+        - RoleArn: !GetAtt NeptuneS3LoadRole.Arn
+      BackupRetentionPeriod: 1
+
+  NeptuneDBInstance:
+    Type: AWS::Neptune::DBInstance
+    DependsOn: NeptuneDBCluster
+    Properties:
+      DBClusterIdentifier: !Ref NeptuneDBCluster
+      DBInstanceIdentifier: !Sub '${EnvironmentName}-neptune-instance-1'
+      DBInstanceClass: !Ref NeptuneInstanceClass
+
+Outputs:
+  NeptuneEndpoint:
+    Description: Neptune Cluster Read/Write Gremlin Endpoint
+    Value: !GetAtt NeptuneDBCluster.Endpoint
+
+  NeptunePort:
+    Description: Neptune Gremlin Port
+    Value: !GetAtt NeptuneDBCluster.Port
+
+  S3StagingBucket:
+    Description: S3 Staging Bucket for CSV Bulk Loading
+    Value: !Ref S3BulkLoadBucket
+
+  NeptuneS3LoadRoleArn:
+    Description: IAM Role ARN for Neptune Bulk Loader API
+    Value: !GetAtt NeptuneS3LoadRole.Arn
+
+  VpcId:
+    Description: VPC ID
+    Value: !Ref VPC

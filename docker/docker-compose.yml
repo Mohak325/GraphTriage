@@ -1,0 +1,133 @@
+# =============================================
+# GRAPHTRIAGE — Docker Compose (Development)
+# =============================================
+# Usage:
+#   cd docker/
+#   cp .env.example .env   # Fill in your API key
+#   docker compose up -d
+# =============================================
+
+services:
+  # ----- FastAPI Backend -----
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    container_name: graphtriage-backend
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    environment:
+      - NEO4J_URI=${NEO4J_URI:-bolt://neo4j:7687}
+      - NEO4J_AUTH=${NEO4J_AUTH:-neo4j/graphtriage_dev}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000}
+      - DEBUG=${DEBUG:-true}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ../backend:/app/backend
+      - ../ai_models:/app/ai_models
+    depends_on:
+      neo4j:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - graphtriage-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ----- Neo4j Graph Database -----
+  neo4j:
+    image: neo4j:5-community
+    container_name: graphtriage-neo4j
+    ports:
+      - "${NEO4J_HTTP_PORT:-7474}:7474"   # HTTP Browser
+      - "${NEO4J_BOLT_PORT:-7687}:7687"   # Bolt Protocol
+    environment:
+      - NEO4J_AUTH=${NEO4J_AUTH:-neo4j/graphtriage_dev}
+      - NEO4J_PLUGINS=["apoc"]
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4J_dbms_security_procedures_unrestricted=apoc.*
+      - NEO4J_dbms_memory_heap_initial__size=256m
+      - NEO4J_dbms_memory_heap_max__size=512m
+      - NEO4J_dbms_memory_pagecache_size=256m
+    volumes:
+      - neo4j-data:/data
+      - neo4j-logs:/logs
+      - ../database:/var/lib/neo4j/import
+    networks:
+      - graphtriage-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:7474 || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # ----- Redis (Celery Broker + Pub/Sub) -----
+  redis:
+    image: redis:7-alpine
+    container_name: graphtriage-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - graphtriage-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+
+  # ----- Celery Worker (Async RCA Tasks) -----
+  celery-worker:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    container_name: graphtriage-celery
+    command: celery -A backend.celery_app worker --loglevel=info --concurrency=2
+    environment:
+      - NEO4J_URI=${NEO4J_URI:-bolt://neo4j:7687}
+      - NEO4J_AUTH=${NEO4J_AUTH:-neo4j/graphtriage_dev}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ../backend:/app/backend
+      - ../ai_models:/app/ai_models
+    depends_on:
+      redis:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+    networks:
+      - graphtriage-net
+    restart: unless-stopped
+
+# ----- Networks -----
+networks:
+  graphtriage-net:
+    driver: bridge
+    name: graphtriage-net
+
+# ----- Volumes -----
+volumes:
+  neo4j-data:
+    name: graphtriage-neo4j-data
+  neo4j-logs:
+    name: graphtriage-neo4j-logs
+  redis-data:
+    name: graphtriage-redis-data

@@ -1,0 +1,1242 @@
+{
+  "logs": [
+    {
+      "timestamp": "2026-09-23T18:24:45.492140+00:00",
+      "service": "rabbitmq-orders",
+      "level": "INFO",
+      "trace_id": "3de8f2901f3b4202af3b0cafca61bbc6",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:24:45.492140+00:00",
+      "service": "cart-service",
+      "level": "INFO",
+      "trace_id": "0865b295668946629b25fe43eadc16e3",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:24:46.492140+00:00",
+      "service": "search-service-cluster-2",
+      "level": "INFO",
+      "trace_id": "f857f420224f4daaa00514b89000cd50",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:24:47.492140+00:00",
+      "service": "postgres-replica",
+      "level": "INFO",
+      "trace_id": "36259e9582084c658962bbf9fe6fe3cd",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:24:48.492140+00:00",
+      "service": "analytics-collector",
+      "level": "INFO",
+      "trace_id": "c6a49364453143a39632e6e70f69cb01",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:24:48.492140+00:00",
+      "service": "kafka-broker-1",
+      "level": "INFO",
+      "trace_id": "93886ce0bf2e4a72aa6d6507eee90239",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:24:53.492140+00:00",
+      "service": "discount-service",
+      "level": "INFO",
+      "trace_id": "9974a57e626f4f62ad673ff7e3c69215",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:24:53.492140+00:00",
+      "service": "search-service",
+      "level": "INFO",
+      "trace_id": "7befe70d76bf4bc99426482046acec6b",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:24:59.492140+00:00",
+      "service": "web-frontend-cluster-2",
+      "level": "INFO",
+      "trace_id": "90b9b4183023417d94b70e89c64f73fa",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:08.492140+00:00",
+      "service": "recommendation-engine",
+      "level": "INFO",
+      "trace_id": "ffd89ee5908d42f3b3023c010f7ab43e",
+      "message": "Cache hit for query key",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:09.492140+00:00",
+      "service": "admin-portal-cluster-2",
+      "level": "INFO",
+      "trace_id": "b68d673f5ab94b249bd6302e91eff3e7",
+      "message": "Cache hit for query key",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:20.492140+00:00",
+      "service": "email-service",
+      "level": "INFO",
+      "trace_id": "01dd077d82ca406aadbfbeb5f37d62ea",
+      "message": "Cache hit for query key",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:25.492140+00:00",
+      "service": "api-gateway",
+      "level": "WARN",
+      "trace_id": "a617ce4e5a174f22a28e696fc9f54482",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:29.492140+00:00",
+      "service": "report-generator",
+      "level": "INFO",
+      "trace_id": "cd3829ea51ab4a1d8c59082d94b8812f",
+      "message": "Cache hit for query key",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:29.492140+00:00",
+      "service": "mysql-cluster",
+      "level": "INFO",
+      "trace_id": "42f7611528a04fa692d43c10863ea9be",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:43.492140+00:00",
+      "service": "public-bff",
+      "level": "INFO",
+      "trace_id": "b82da24dcea448d5bb10c61efb04e2be",
+      "message": "Cache hit for query key",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:48.492140+00:00",
+      "service": "fraud-detection",
+      "level": "INFO",
+      "trace_id": "3f5a72254c414ec7ac4beeb07ce387cb",
+      "message": "Cache hit for query key",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:25:53.492140+00:00",
+      "service": "rabbitmq-orders",
+      "level": "INFO",
+      "trace_id": "f3347786ebba4223a0cadc725c9bf5d5",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:15.492140+00:00",
+      "service": "elasticsearch-cluster",
+      "level": "INFO",
+      "trace_id": "5c241d0e3aa744bdaeae3556dd2e1c06",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:15.492140+00:00",
+      "service": "catalog-service",
+      "level": "INFO",
+      "trace_id": "7dd5ddc0d9df48c6bdcb9aa3d51c0417",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-5"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:22.492140+00:00",
+      "service": "kafka-broker-3",
+      "level": "WARN",
+      "trace_id": "71dfa85ca78d4af38ee76f9857566e86",
+      "message": "Connection retry attempt 2 of 3 triggered",
+      "thread": "worker-5"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:36.492140+00:00",
+      "service": "web-frontend-cluster-2",
+      "level": "INFO",
+      "trace_id": "980c38ceb41d4eb8a8c97a3139f3043c",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:45.492140+00:00",
+      "service": "redis-cache-master",
+      "level": "INFO",
+      "trace_id": "660e178644b04437b9859cb20472ce39",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:46.492140+00:00",
+      "service": "push-notification",
+      "level": "WARN",
+      "trace_id": "ff047c1523f643758cae2ada5d1b8bc6",
+      "message": "Downstream response latency exceeding SLA (threshold: 300ms)",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:47.492140+00:00",
+      "service": "search-service",
+      "level": "INFO",
+      "trace_id": "ceafaec913c5416aaebb33e26ac3b8f7",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-5"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:50.492140+00:00",
+      "service": "discount-service",
+      "level": "INFO",
+      "trace_id": "a401553eb57d44bea195d501a62627a4",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:51.492140+00:00",
+      "service": "pricing-engine",
+      "level": "INFO",
+      "trace_id": "0d310d5a8c11462c9d8ef3deeb4dfeba",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:55.492140+00:00",
+      "service": "auth-service-cluster-2",
+      "level": "INFO",
+      "trace_id": "b111bcd6e53145f4ab370a8a7a0a32dc",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:26:59.492140+00:00",
+      "service": "recommendation-engine",
+      "level": "INFO",
+      "trace_id": "31cfe8c93b7042998921b0c6f05864c1",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:01.492140+00:00",
+      "service": "web-frontend",
+      "level": "INFO",
+      "trace_id": "0b87ae762455441184293ec151c9dd2e",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:02.492140+00:00",
+      "service": "redis-session-store",
+      "level": "WARN",
+      "trace_id": "24d637f1840b43b6a39d38b29d2a774d",
+      "message": "Downstream response latency exceeding SLA (threshold: 300ms)",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:04.492140+00:00",
+      "service": "email-service",
+      "level": "INFO",
+      "trace_id": "e915479d9a034aaf90f7d0b4a2acb426",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:15.492140+00:00",
+      "service": "public-bff",
+      "level": "INFO",
+      "trace_id": "7f41d19a14a84dbab2353ea2ea3b6987",
+      "message": "Cache hit for query key",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:18.492140+00:00",
+      "service": "ingress-lb-cluster-2",
+      "level": "INFO",
+      "trace_id": "c3368e151732432985fbdef309297106",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:29.492140+00:00",
+      "service": "sqs-notification-queue",
+      "level": "INFO",
+      "trace_id": "b8fa7828900c4d27b524d530e3d784ea",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:35.492140+00:00",
+      "service": "warehouse-dispatcher",
+      "level": "INFO",
+      "trace_id": "1abd48c6117f4c3dacdc593f81439785",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-5"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:39.492140+00:00",
+      "service": "auth-service-cluster-2",
+      "level": "INFO",
+      "trace_id": "cbd4f1f301dc4fcca928a29f7eb34d5f",
+      "message": "Cache hit for query key",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:39.492140+00:00",
+      "service": "mobile-frontend",
+      "level": "INFO",
+      "trace_id": "c85d797737314b878a80718f9b697965",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:41.492140+00:00",
+      "service": "order-orchestrator-cluster-2",
+      "level": "INFO",
+      "trace_id": "db5370722f744384bb2a4d1c26f3be48",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:27:46.492140+00:00",
+      "service": "redis-cache-master",
+      "level": "INFO",
+      "trace_id": "2b20b01c61724f7eb33f26fb17a5e9a5",
+      "message": "Cache hit for query key",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:06.492140+00:00",
+      "service": "recommendation-engine-cluster-2",
+      "level": "INFO",
+      "trace_id": "1338e5d63ac444f4b7c12dae4cb2349a",
+      "message": "Cache hit for query key",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:11.492140+00:00",
+      "service": "push-notification",
+      "level": "INFO",
+      "trace_id": "1b42245f1182407f92050042b2b0d301",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:11.492140+00:00",
+      "service": "redis-cache-master",
+      "level": "INFO",
+      "trace_id": "7db4bb71ef254c6ca144e266f3998375",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:12.492140+00:00",
+      "service": "push-notification",
+      "level": "INFO",
+      "trace_id": "dc31207c634649019880995d29f58399",
+      "message": "Cache hit for query key",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:30.492140+00:00",
+      "service": "web-frontend",
+      "level": "INFO",
+      "trace_id": "625b25ae683b4ab292b8c648cd764d2a",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:31.492140+00:00",
+      "service": "search-service",
+      "level": "INFO",
+      "trace_id": "8d8528f5cc1840069c35b5937ac6240a",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:31.492140+00:00",
+      "service": "mongodb-orders",
+      "level": "INFO",
+      "trace_id": "92ff895f0ff54b17b85274b068ca9d36",
+      "message": "Cache hit for query key",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:32.492140+00:00",
+      "service": "sms-gateway",
+      "level": "INFO",
+      "trace_id": "e613760e9bc84f6ab9aa3e18a54308b5",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:42.492140+00:00",
+      "service": "mysql-cluster",
+      "level": "INFO",
+      "trace_id": "51c1ce28da384cfb96846b45d00e1cf6",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:44.492140+00:00",
+      "service": "redis-cache-master",
+      "level": "INFO",
+      "trace_id": "bafee37cf156428cb5eae1cec66d9313",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:44.492140+00:00",
+      "service": "redis-cache-master",
+      "level": "INFO",
+      "trace_id": "3e2d226b1fe24dd5bf2eef2bfaa2b122",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:28:56.492140+00:00",
+      "service": "cart-service",
+      "level": "INFO",
+      "trace_id": "666288e96bda41caa0db2f0918759be4",
+      "message": "Cache hit for query key",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:05.492140+00:00",
+      "service": "elasticsearch-cluster",
+      "level": "WARN",
+      "trace_id": "67fc272461694bccb0f5681e21225ed9",
+      "message": "Connection retry attempt 2 of 3 triggered",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:06.492140+00:00",
+      "service": "auth-service-cluster-2",
+      "level": "INFO",
+      "trace_id": "e35b99e17e2d47e1be6f8f9812adf7eb",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:09.492140+00:00",
+      "service": "kafka-broker-2",
+      "level": "INFO",
+      "trace_id": "aad6b50357c44e1dab7710247e33477d",
+      "message": "Cache hit for query key",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:11.492140+00:00",
+      "service": "mobile-frontend-cluster-2",
+      "level": "INFO",
+      "trace_id": "904e85455590461ebf59af3dfd3c305b",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:16.492140+00:00",
+      "service": "search-service-cluster-2",
+      "level": "INFO",
+      "trace_id": "2087d64cc2894d4fbb331db1cd3c288d",
+      "message": "Cache hit for query key",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:27.492140+00:00",
+      "service": "neo4j-graph-db",
+      "level": "INFO",
+      "trace_id": "cf7a784d1c584824976190aa01ec22af",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:37.492140+00:00",
+      "service": "admin-portal-cluster-2",
+      "level": "ERROR",
+      "trace_id": "4cc69a0976394968a59d897372e04656",
+      "message": "HTTP 504 Gateway Timeout: Read timed out after 3000ms",
+      "thread": "worker-7",
+      "stack_trace": "org.graphtriage.exception.ServiceException: HTTP 504 Gateway Timeout: Read timed out after 3000ms\n  at admin-portal-cluster-2.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:42.492140+00:00",
+      "service": "user-profile-service-cluster-2",
+      "level": "ERROR",
+      "trace_id": "a5d6d27750b54f159c1cb5b54b11c7b9",
+      "message": "Connection refused while contacting downstream dependency",
+      "thread": "worker-4",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Connection refused while contacting downstream dependency\n  at user-profile-service-cluster-2.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:29:53.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "49f43a2f23904986b8b6fc2c0ac0bc37",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-5",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:09.492140+00:00",
+      "service": "partner-portal",
+      "level": "INFO",
+      "trace_id": "6f4012c9540241d48062e9dfee23a272",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:16.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "6bd67333fe8443b78480cf8101ada604",
+      "message": "HTTP 504 Gateway Timeout: Read timed out after 3000ms",
+      "thread": "worker-6",
+      "stack_trace": "org.graphtriage.exception.ServiceException: HTTP 504 Gateway Timeout: Read timed out after 3000ms\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:16.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "3a761820a5834c9f990753db8d47a5e8",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:16.492140+00:00",
+      "service": "web-frontend-cluster-2",
+      "level": "INFO",
+      "trace_id": "53b76559f3bf4be88e965f013fb0ab38",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:19.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "aa6485afbc05420181659d81e4ead977",
+      "message": "HTTP 504 Gateway Timeout: Read timed out after 3000ms",
+      "thread": "worker-1",
+      "stack_trace": "org.graphtriage.exception.ServiceException: HTTP 504 Gateway Timeout: Read timed out after 3000ms\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:20.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "48c6641868114a4e8fab889579074d36",
+      "message": "Connection refused while contacting downstream dependency",
+      "thread": "worker-6",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Connection refused while contacting downstream dependency\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:32.492140+00:00",
+      "service": "recommendation-engine-cluster-2",
+      "level": "INFO",
+      "trace_id": "5c8c1ce4eca740f6afbaae67813305cd",
+      "message": "Cache hit for query key",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:34.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "7c984a3d8c95475daf8050e058789f29",
+      "message": "HTTP 504 Gateway Timeout: Read timed out after 3000ms",
+      "thread": "worker-8",
+      "stack_trace": "org.graphtriage.exception.ServiceException: HTTP 504 Gateway Timeout: Read timed out after 3000ms\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:38.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "bbd1b9cbc7b44a55a4fbe3a130e5a18f",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-1",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:30:41.492140+00:00",
+      "service": "push-notification",
+      "level": "INFO",
+      "trace_id": "b61f1aee16f941f9a6f77888cacfc9df",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:31:00.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "0bab63b87309403194670eca34a9d991",
+      "message": "HTTP 504 Gateway Timeout: Read timed out after 3000ms",
+      "thread": "worker-3",
+      "stack_trace": "org.graphtriage.exception.ServiceException: HTTP 504 Gateway Timeout: Read timed out after 3000ms\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:31:08.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "CRITICAL",
+      "trace_id": "890bf4d3847243ebaf01e86fabdec094",
+      "message": "Circuit breaker OPEN: all traffic rejected for service",
+      "thread": "worker-4",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Circuit breaker OPEN: all traffic rejected for service\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:31:18.492140+00:00",
+      "service": "search-service-cluster-2",
+      "level": "WARN",
+      "trace_id": "f334c49d54034b539da4f03257f881ff",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:31:27.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "e7c3a4df5c894dca874fe38773e43685",
+      "message": "Circuit breaker approaching trip threshold for destination",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:31:28.492140+00:00",
+      "service": "ingress-lb-cluster-2",
+      "level": "ERROR",
+      "trace_id": "6cd2ee2d5cbf490fb1025b56777cf5aa",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-4",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at ingress-lb-cluster-2.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:31:35.492140+00:00",
+      "service": "elasticsearch-cluster",
+      "level": "INFO",
+      "trace_id": "82321bb0cc734907a4538d37f7f7101f",
+      "message": "Cache hit for query key",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:31:55.492140+00:00",
+      "service": "search-service",
+      "level": "INFO",
+      "trace_id": "50e9364e77eb42e1be3ced341e21a781",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:08.492140+00:00",
+      "service": "admin-portal",
+      "level": "WARN",
+      "trace_id": "8950acd3d9dd4298811ee380ad0b3d1d",
+      "message": "Circuit breaker approaching trip threshold for destination",
+      "thread": "worker-5"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:20.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "7de3a42494134f77ba68b67e8bbd008c",
+      "message": "Connection retry attempt 2 of 3 triggered",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:22.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "d7bdcc59b7f14621ae42f33a0562f50c",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-2",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:25.492140+00:00",
+      "service": "ingress-lb-cluster-2",
+      "level": "INFO",
+      "trace_id": "5abb296b9ec249349d7be620ab405cb0",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:27.492140+00:00",
+      "service": "kafka-broker-3",
+      "level": "INFO",
+      "trace_id": "8687b3e24d414ea492584edb7b7d9506",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:33.492140+00:00",
+      "service": "mobile-frontend",
+      "level": "INFO",
+      "trace_id": "505141c02a1543f3935122a69ccaa485",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-5"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:54.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "62c8e871922b4cb9adfd21191d4b7ca6",
+      "message": "Circuit breaker approaching trip threshold for destination",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:55.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "31c4b886315c45fda9ab9429903a680d",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-4",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:32:56.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "1fbd651553a940d1a4c55bc8f8c1d18f",
+      "message": "Circuit breaker approaching trip threshold for destination",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:00.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "d11af922be4f48148f74c55c21e2738d",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-8",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:08.492140+00:00",
+      "service": "web-frontend",
+      "level": "WARN",
+      "trace_id": "147abc3218f34641bb7f743929c19d9e",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:21.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "140b07e28d024bc99c8478f3b27a56a9",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:23.492140+00:00",
+      "service": "pricing-engine",
+      "level": "INFO",
+      "trace_id": "d980c08e7a164415b1dbb2bec8d96543",
+      "message": "Cache hit for query key",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:30.492140+00:00",
+      "service": "audit-logger",
+      "level": "INFO",
+      "trace_id": "5a714979e80449e08cacd7d0d21e6cef",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:32.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "CRITICAL",
+      "trace_id": "20a5ae8a2be84ac1acafb04f89a3246c",
+      "message": "Circuit breaker OPEN: all traffic rejected for service",
+      "thread": "worker-2",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Circuit breaker OPEN: all traffic rejected for service\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:34.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "d68599557e4c4f05865e797e7cbd6fd0",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:41.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "735bc38229724c0380bc7c5243561c64",
+      "message": "Downstream response latency exceeding SLA (threshold: 300ms)",
+      "thread": "worker-5"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:46.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "5f312957112f486f8e2e3c7aa6f90e3e",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-3",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:57.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "69f24fdefa614ecebf5323afc52df049",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-5",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:33:59.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "b8f05e50bb6c4c6ea2b2574d8b46853e",
+      "message": "Downstream response latency exceeding SLA (threshold: 300ms)",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:34:07.492140+00:00",
+      "service": "search-service-cluster-2",
+      "level": "INFO",
+      "trace_id": "e3c03461bcbc4d9882f379cd227e8cb9",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:34:10.492140+00:00",
+      "service": "report-generator",
+      "level": "INFO",
+      "trace_id": "83d2ed80aa2b4dae8b357115df33605d",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:34:19.492140+00:00",
+      "service": "search-service-cluster-2",
+      "level": "ERROR",
+      "trace_id": "8284454b0c394db2b65dcab31f82cb45",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-7",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at search-service-cluster-2.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:34:29.492140+00:00",
+      "service": "auth-service",
+      "level": "INFO",
+      "trace_id": "253c088c6ce8482f987b279d312019b9",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:05.492140+00:00",
+      "service": "email-service",
+      "level": "INFO",
+      "trace_id": "0f64071218e242d6b6d737fbe1f68914",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:08.492140+00:00",
+      "service": "payment-processor",
+      "level": "INFO",
+      "trace_id": "3440ccd90f7f453f84b5b06d0c5d9ef0",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:10.492140+00:00",
+      "service": "rabbitmq-orders",
+      "level": "INFO",
+      "trace_id": "ad55af1516a44fa2adca44227a7b534e",
+      "message": "Cache hit for query key",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:10.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "a3e3aaf1278c41b8b195d2c733e8f2a9",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-5",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:16.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "95798cdf72eb4fdd9da44cfa9b3419c3",
+      "message": "Connection retry attempt 2 of 3 triggered",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:21.492140+00:00",
+      "service": "push-notification",
+      "level": "INFO",
+      "trace_id": "a6c23a600b324245a02ae1d64eaafdfc",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:37.492140+00:00",
+      "service": "search-service",
+      "level": "INFO",
+      "trace_id": "e8e6184ef07545e8bd3d765595103b5c",
+      "message": "Cache hit for query key",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:38.492140+00:00",
+      "service": "public-bff",
+      "level": "ERROR",
+      "trace_id": "994da6b29103468dabb42f4d3a829578",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-2",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at public-bff.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:45.492140+00:00",
+      "service": "sms-gateway",
+      "level": "WARN",
+      "trace_id": "f2e8e6c780004154a6dbf03bbe320b2a",
+      "message": "Connection retry attempt 2 of 3 triggered",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:35:46.492140+00:00",
+      "service": "redis-cache-master",
+      "level": "WARN",
+      "trace_id": "cda28fcd312c49369111aa1fc9e44082",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:36:09.492140+00:00",
+      "service": "search-service",
+      "level": "INFO",
+      "trace_id": "c41883d486d8439b83fd0c909c93f160",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:36:11.492140+00:00",
+      "service": "admin-portal",
+      "level": "INFO",
+      "trace_id": "2b7372f9217546779f506048862aff66",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-2"
+    },
+    {
+      "timestamp": "2026-09-23T18:36:15.492140+00:00",
+      "service": "redis-session-store",
+      "level": "WARN",
+      "trace_id": "88ace1dc37384abc97a13eb5dc49317e",
+      "message": "Downstream response latency exceeding SLA (threshold: 300ms)",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:36:34.492140+00:00",
+      "service": "sms-gateway",
+      "level": "ERROR",
+      "trace_id": "908b29342094420298930cd271a442ff",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-1",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at sms-gateway.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:36:48.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "a19d0c81071b4301b1155d59a9377c6d",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-7",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:36:54.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "8cf4ad355a8745e7bf41d835355d65ef",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-6",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:36:57.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "CRITICAL",
+      "trace_id": "d72eddbe1d1f4253937b160a4cc20973",
+      "message": "CPU starvation detected: core throttling initiated at 99.8% load",
+      "thread": "worker-7",
+      "stack_trace": "org.graphtriage.exception.ServiceException: CPU starvation detected: core throttling initiated at 99.8% load\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:00.492140+00:00",
+      "service": "api-gateway-cluster-2",
+      "level": "WARN",
+      "trace_id": "4036ca5b4b2644a9af830f59d4c32b92",
+      "message": "Circuit breaker approaching trip threshold for destination",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:17.492140+00:00",
+      "service": "mysql-cluster",
+      "level": "INFO",
+      "trace_id": "19f2c62ba32646e1ab385b738f528800",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:23.492140+00:00",
+      "service": "public-bff",
+      "level": "INFO",
+      "trace_id": "59a582fca878488891964b0560c7bbfa",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:29.492140+00:00",
+      "service": "web-frontend-cluster-2",
+      "level": "WARN",
+      "trace_id": "c21b1650fbf341698c0901485d78fdf2",
+      "message": "Circuit breaker approaching trip threshold for destination",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:44.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "f0f5e90d322442da84dcc0c9653e235b",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-6",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:48.492140+00:00",
+      "service": "partner-portal-cluster-2",
+      "level": "WARN",
+      "trace_id": "9ff5451edb294d49891bdfef91c59cdd",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:51.492140+00:00",
+      "service": "user-profile-service-cluster-2",
+      "level": "INFO",
+      "trace_id": "de269194dc274f0ca8242d360306c326",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:53.492140+00:00",
+      "service": "notification-dispatcher",
+      "level": "WARN",
+      "trace_id": "ab60e3ac729745da9df16bfedd5bf603",
+      "message": "Memory utilization threshold exceeded 80%",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:57.492140+00:00",
+      "service": "email-service",
+      "level": "INFO",
+      "trace_id": "69b9f5edb9b54e63aa7b1c3224b22be7",
+      "message": "Successfully dispatched async notification task",
+      "thread": "worker-5"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:59.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "WARN",
+      "trace_id": "4d73e9c685b7430ea0b1a526d6647081",
+      "message": "Downstream response latency exceeding SLA (threshold: 300ms)",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:37:59.492140+00:00",
+      "service": "web-frontend-cluster-2",
+      "level": "INFO",
+      "trace_id": "6b579365f92a43cdb1e883b5be9f3662",
+      "message": "Connection verified with upstream pool",
+      "thread": "worker-1"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:05.492140+00:00",
+      "service": "postgres-primary",
+      "level": "INFO",
+      "trace_id": "da40e4a43c6747e89dc7e5fcdcf74c12",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:06.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "9faa3f2899d748c298a8d5907235b1b4",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-6",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:08.492140+00:00",
+      "service": "recommendation-engine-cluster-2",
+      "level": "ERROR",
+      "trace_id": "7dd2755df448445a979470e9f649be20",
+      "message": "HTTP 504 Gateway Timeout: Read timed out after 3000ms",
+      "thread": "worker-2",
+      "stack_trace": "org.graphtriage.exception.ServiceException: HTTP 504 Gateway Timeout: Read timed out after 3000ms\n  at recommendation-engine-cluster-2.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:16.492140+00:00",
+      "service": "ingress-lb-cluster-2",
+      "level": "WARN",
+      "trace_id": "4d75afec5cc944539c5326136d787f0b",
+      "message": "Connection retry attempt 2 of 3 triggered",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:18.492140+00:00",
+      "service": "report-generator",
+      "level": "INFO",
+      "trace_id": "d03cfadeb7e243bea1687ac7f86ba3e2",
+      "message": "Cache hit for query key",
+      "thread": "worker-4"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:21.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "CRITICAL",
+      "trace_id": "98f6b06adf634bfca9b0c8354120c530",
+      "message": "Circuit breaker OPEN: all traffic rejected for service",
+      "thread": "worker-6",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Circuit breaker OPEN: all traffic rejected for service\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:44.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "9a2527cc511349ff9256bba4a3055190",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-8",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:47.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "CRITICAL",
+      "trace_id": "db34bad1e1024e88b4b423c23b8082d0",
+      "message": "Critical failure in message queue consumer loop: queue exhausted",
+      "thread": "worker-3",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Critical failure in message queue consumer loop: queue exhausted\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:48.492140+00:00",
+      "service": "order-orchestrator-cluster-2",
+      "level": "INFO",
+      "trace_id": "be1fafb9f66b44a3a800bd86ae565bb5",
+      "message": "Cache hit for query key",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:55.492140+00:00",
+      "service": "admin-portal",
+      "level": "ERROR",
+      "trace_id": "5b5bfd2cb10b45178c2d866b012d47c5",
+      "message": "Thread pool saturation: active threads at 100% capacity",
+      "thread": "worker-1",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Thread pool saturation: active threads at 100% capacity\n  at admin-portal.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:55.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "db134a4c5c9144439ac6f25402cbebda",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-5",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:38:56.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "CRITICAL",
+      "trace_id": "914ca7963cd6446aa958b560f6841eb0",
+      "message": "FATAL: OutOfMemoryError in container runtime memory manager",
+      "thread": "worker-7",
+      "stack_trace": "org.graphtriage.exception.ServiceException: FATAL: OutOfMemoryError in container runtime memory manager\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:39:01.492140+00:00",
+      "service": "admin-portal-cluster-2",
+      "level": "INFO",
+      "trace_id": "aed627c7a9e548e0bff9b8e33e85a522",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-7"
+    },
+    {
+      "timestamp": "2026-09-23T18:39:12.492140+00:00",
+      "service": "recommendation-engine",
+      "level": "INFO",
+      "trace_id": "ba9470697c694016b9a8bc6d9e5358ae",
+      "message": "Request handled successfully with status 200",
+      "thread": "worker-8"
+    },
+    {
+      "timestamp": "2026-09-23T18:39:12.492140+00:00",
+      "service": "mobile-frontend",
+      "level": "WARN",
+      "trace_id": "ac0080d3038749acafc986f7eed96b7e",
+      "message": "Connection retry attempt 2 of 3 triggered",
+      "thread": "worker-3"
+    },
+    {
+      "timestamp": "2026-09-23T18:39:14.492140+00:00",
+      "service": "fraud-detection",
+      "level": "INFO",
+      "trace_id": "16fb7505437547b5b216aa80c7828f60",
+      "message": "Cache hit for query key",
+      "thread": "worker-6"
+    },
+    {
+      "timestamp": "2026-09-23T18:39:20.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "CRITICAL",
+      "trace_id": "f96a1760a01a4d749a7ae8544c7c5678",
+      "message": "Circuit breaker OPEN: all traffic rejected for service",
+      "thread": "worker-8",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Circuit breaker OPEN: all traffic rejected for service\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:39:22.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "89bfa1fed6ba434daa79d11585783a32",
+      "message": "Deadlock detected in transactional database worker pool",
+      "thread": "worker-8",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Deadlock detected in transactional database worker pool\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:39:30.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "25e92edf91294d1ea87d48812152e350",
+      "message": "Connection refused while contacting downstream dependency",
+      "thread": "worker-2",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Connection refused while contacting downstream dependency\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    },
+    {
+      "timestamp": "2026-09-23T18:39:33.492140+00:00",
+      "service": "order-orchestrator",
+      "level": "ERROR",
+      "trace_id": "bfa89741b3c84c0bb5f4cf70ced8e83a",
+      "message": "Connection refused while contacting downstream dependency",
+      "thread": "worker-8",
+      "stack_trace": "org.graphtriage.exception.ServiceException: Connection refused while contacting downstream dependency\n  at order-orchestrator.handler.ProcessRequest(handler.go:142)\n  at runtime.gopark(proc.go:362)"
+    }
+  ],
+  "count": 150
+}

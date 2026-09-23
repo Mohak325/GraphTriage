@@ -37,7 +37,7 @@
 | Neo4j schema design & setup | Sandarbh Gupta | Pending | `database/` |
 | Network topology graph builder | Sandarbh Gupta | Pending | `ai_models/graph_engine/` |
 | Fault gradient computation algorithm | Sandarbh Gupta | Pending | `ai_models/graph_engine/` |
-| Synthetic data generation pipeline | Aarnav Mishra | Pending | `data/synthetic/` |
+| Synthetic data generation pipeline | Aarnav Mishra | Complete | `data/synthetic/` |
 | FastAPI backend skeleton | Sandarbh Gupta | Pending | `backend/` |
 | LangGraph multi-agent scaffold | Mohak Harsh | Pending | `ai_models/` |
 | LLM provider integration (Gemini/GPT-4) | Mohak Harsh | Pending | `ai_models/llm/` |
@@ -64,12 +64,12 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| React/Next.js project setup | Aarnav Mishra | Pending | `frontend/` |
-| Network graph visualization (D3.js/Cytoscape) | Aarnav Mishra | Pending | `frontend/` |
-| Real-time agent activity dashboard | Aarnav Mishra | Pending | `frontend/` |
-| RCA results display & confidence scores | Aarnav Mishra | Pending | `frontend/` |
-| API integration with backend | Aarnav Mishra + Sandarbh Gupta | Pending | `frontend/` |
-| Responsive design & UX polish | Aarnav Mishra | Pending | `frontend/` |
+| React/Next.js project setup | Aarnav Mishra | Complete | `frontend/` |
+| Network graph visualization (D3.js/Cytoscape) | Aarnav Mishra | Complete | `frontend/` |
+| Real-time agent activity dashboard | Aarnav Mishra | Complete | `frontend/` |
+| RCA results display & confidence scores | Aarnav Mishra | Complete | `frontend/` |
+| API integration with backend | Aarnav Mishra + Sandarbh Gupta | Complete | `frontend/` |
+| Responsive design & UX polish | Aarnav Mishra | Complete | `frontend/` |
 
 ---
 
@@ -77,12 +77,12 @@
 
 | Task | Assignee | Status | Deliverable |
 |------|----------|--------|-------------|
-| Benchmark suite design | Aarnav Mishra | Pending | `results/` |
-| Accuracy evaluation (vs. baselines) | Aarnav Mishra + Mohak Harsh | Pending | `results/` |
+| Benchmark suite design | Aarnav Mishra | Complete | `results/` |
+| Accuracy evaluation (vs. baselines) | Aarnav Mishra + Mohak Harsh | Complete | `results/` |
 | Latency & performance profiling | Sandarbh Gupta | Pending | `results/` |
 | Hallucination rate measurement | Mohak Harsh | Pending | `results/` |
 | Ablation studies (agent contributions) | All Members | Pending | `results/` |
-| Results documentation & visualizations | Aarnav Mishra | Pending | `results/` |
+| Results documentation & visualizations | Aarnav Mishra | Complete | `results/` |
 
 ---
 
@@ -92,7 +92,7 @@
 |------|----------|--------|-------------|
 | Final project report | All Members | Pending | `docs/` |
 | Presentation slides | All Members | Pending | `presentation/` |
-| Demo video / live demo preparation | Aarnav Mishra + Mohak Harsh | Pending | `presentation/` |
+| Demo video / live demo preparation | Aarnav Mishra + Mohak Harsh | Complete | `presentation/` |
 | README & documentation finalization | Mohak Harsh | Pending | Repository root |
 
 ---

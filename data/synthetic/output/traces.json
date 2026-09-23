@@ -1,0 +1,4717 @@
+{
+  "traces": [
+    {
+      "trace_id": "9526aa993b024a7889fdd426420656b6",
+      "timestamp": "2026-09-23T18:24:35.491046+00:00",
+      "total_duration_ms": 139,
+      "status": "OK",
+      "root_service": "mobile-gateway-cluster-2",
+      "services_involved": [
+        "mobile-gateway-cluster-2",
+        "web-frontend-cluster-2",
+        "tenant-service-cluster-2",
+        "warehouse-dispatcher",
+        "mongodb-orders"
+      ],
+      "spans": [
+        {
+          "span_id": "5ffda0c0bd3e42de",
+          "parent_span_id": null,
+          "service_name": "mobile-gateway-cluster-2",
+          "operation_name": "RPC /mobile_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790187875491,
+          "duration_ms": 10,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "ebcb16cb826a493a",
+          "parent_span_id": "5ffda0c0bd3e42de",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790187875501,
+          "duration_ms": 33,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "a2a4f17f74774d28",
+          "parent_span_id": "ebcb16cb826a493a",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790187875534,
+          "duration_ms": 40,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "bd01abb8326649ab",
+          "parent_span_id": "a2a4f17f74774d28",
+          "service_name": "warehouse-dispatcher",
+          "operation_name": "RPC /warehouse_dispatcher/process",
+          "start_time_epoch_ms": 1790187875574,
+          "duration_ms": 30,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "155a222b13f346a4",
+          "parent_span_id": "bd01abb8326649ab",
+          "service_name": "mongodb-orders",
+          "operation_name": "RPC /mongodb_orders/process",
+          "start_time_epoch_ms": 1790187875604,
+          "duration_ms": 26,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "405cb74e71c147f0a709b3c1ef97e979",
+      "timestamp": "2026-09-23T18:24:50.491046+00:00",
+      "total_duration_ms": 137,
+      "status": "OK",
+      "root_service": "ingress-lb-cluster-2",
+      "services_involved": [
+        "ingress-lb-cluster-2",
+        "web-frontend-cluster-2",
+        "auth-service",
+        "cart-service-cluster-2",
+        "payment-processor",
+        "elasticsearch-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "ea4c1f9370a44d66",
+          "parent_span_id": null,
+          "service_name": "ingress-lb-cluster-2",
+          "operation_name": "RPC /ingress_lb_cluster_2/process",
+          "start_time_epoch_ms": 1790187890491,
+          "duration_ms": 36,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "97420e20d94b4f03",
+          "parent_span_id": "ea4c1f9370a44d66",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790187890527,
+          "duration_ms": 22,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "3615490aa45245ab",
+          "parent_span_id": "97420e20d94b4f03",
+          "service_name": "auth-service",
+          "operation_name": "RPC /auth_service/process",
+          "start_time_epoch_ms": 1790187890549,
+          "duration_ms": 14,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "381135c781674d9e",
+          "parent_span_id": "3615490aa45245ab",
+          "service_name": "cart-service-cluster-2",
+          "operation_name": "RPC /cart_service_cluster_2/process",
+          "start_time_epoch_ms": 1790187890563,
+          "duration_ms": 17,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "93f1b72f315c405d",
+          "parent_span_id": "381135c781674d9e",
+          "service_name": "payment-processor",
+          "operation_name": "RPC /payment_processor/process",
+          "start_time_epoch_ms": 1790187890580,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9e7c1b8bcdbb4aad",
+          "parent_span_id": "93f1b72f315c405d",
+          "service_name": "elasticsearch-cluster",
+          "operation_name": "RPC /elasticsearch_cluster/process",
+          "start_time_epoch_ms": 1790187890603,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "6b680fbe7de04a8190d969c0a88bddc4",
+      "timestamp": "2026-09-23T18:25:05.491046+00:00",
+      "total_duration_ms": 69,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "mobile-frontend",
+        "notification-dispatcher"
+      ],
+      "spans": [
+        {
+          "span_id": "296e2e6112f840e7",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790187905491,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "435dde833fa6442b",
+          "parent_span_id": "296e2e6112f840e7",
+          "service_name": "mobile-frontend",
+          "operation_name": "RPC /mobile_frontend/process",
+          "start_time_epoch_ms": 1790187905514,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "dcecd1d94ccd4b29",
+          "parent_span_id": "435dde833fa6442b",
+          "service_name": "notification-dispatcher",
+          "operation_name": "RPC /notification_dispatcher/process",
+          "start_time_epoch_ms": 1790187905552,
+          "duration_ms": 8,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "8cab1ff404ca40eabd9d1ef1d989bd22",
+      "timestamp": "2026-09-23T18:25:20.491046+00:00",
+      "total_duration_ms": 99,
+      "status": "OK",
+      "root_service": "public-bff-cluster-2",
+      "services_involved": [
+        "public-bff-cluster-2",
+        "admin-portal-cluster-2",
+        "catalog-service-cluster-2",
+        "memcached-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "807a793b954d4ae2",
+          "parent_span_id": null,
+          "service_name": "public-bff-cluster-2",
+          "operation_name": "RPC /public_bff_cluster_2/process",
+          "start_time_epoch_ms": 1790187920491,
+          "duration_ms": 12,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "d947c8d2cd6f4b9e",
+          "parent_span_id": "807a793b954d4ae2",
+          "service_name": "admin-portal-cluster-2",
+          "operation_name": "RPC /admin_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790187920503,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "bc8111b5166044ff",
+          "parent_span_id": "d947c8d2cd6f4b9e",
+          "service_name": "catalog-service-cluster-2",
+          "operation_name": "RPC /catalog_service_cluster_2/process",
+          "start_time_epoch_ms": 1790187920512,
+          "duration_ms": 39,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "21002151d46e442f",
+          "parent_span_id": "bc8111b5166044ff",
+          "service_name": "memcached-cluster",
+          "operation_name": "RPC /memcached_cluster/process",
+          "start_time_epoch_ms": 1790187920551,
+          "duration_ms": 39,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "6663d5c521b54ca39234ecc9fcb914da",
+      "timestamp": "2026-09-23T18:25:35.491046+00:00",
+      "total_duration_ms": 68,
+      "status": "OK",
+      "root_service": "public-bff-cluster-2",
+      "services_involved": [
+        "public-bff-cluster-2",
+        "partner-portal-cluster-2",
+        "tenant-service-cluster-2",
+        "catalog-service-cluster-2",
+        "cart-service-cluster-2"
+      ],
+      "spans": [
+        {
+          "span_id": "62cdda3642914ed5",
+          "parent_span_id": null,
+          "service_name": "public-bff-cluster-2",
+          "operation_name": "RPC /public_bff_cluster_2/process",
+          "start_time_epoch_ms": 1790187935491,
+          "duration_ms": 12,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "0a8cb66965e14fb5",
+          "parent_span_id": "62cdda3642914ed5",
+          "service_name": "partner-portal-cluster-2",
+          "operation_name": "RPC /partner_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790187935503,
+          "duration_ms": 13,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "bae39c9ee44a4eb9",
+          "parent_span_id": "0a8cb66965e14fb5",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790187935516,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "de4872e6bb114948",
+          "parent_span_id": "bae39c9ee44a4eb9",
+          "service_name": "catalog-service-cluster-2",
+          "operation_name": "RPC /catalog_service_cluster_2/process",
+          "start_time_epoch_ms": 1790187935539,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "3090450e1dd941cf",
+          "parent_span_id": "de4872e6bb114948",
+          "service_name": "cart-service-cluster-2",
+          "operation_name": "RPC /cart_service_cluster_2/process",
+          "start_time_epoch_ms": 1790187935550,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "d2f48f3da2d54027b402b220066fe12a",
+      "timestamp": "2026-09-23T18:25:50.491046+00:00",
+      "total_duration_ms": 95,
+      "status": "OK",
+      "root_service": "ingress-lb-cluster-2",
+      "services_involved": [
+        "ingress-lb-cluster-2",
+        "web-frontend-cluster-2",
+        "analytics-collector",
+        "postgres-replica"
+      ],
+      "spans": [
+        {
+          "span_id": "f557f07ca53f42bd",
+          "parent_span_id": null,
+          "service_name": "ingress-lb-cluster-2",
+          "operation_name": "RPC /ingress_lb_cluster_2/process",
+          "start_time_epoch_ms": 1790187950491,
+          "duration_ms": 15,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "8f6b3a5f57ed4f08",
+          "parent_span_id": "f557f07ca53f42bd",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790187950506,
+          "duration_ms": 45,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "f531b3575635436b",
+          "parent_span_id": "8f6b3a5f57ed4f08",
+          "service_name": "analytics-collector",
+          "operation_name": "RPC /analytics_collector/process",
+          "start_time_epoch_ms": 1790187950551,
+          "duration_ms": 10,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b10e6662a37448d1",
+          "parent_span_id": "f531b3575635436b",
+          "service_name": "postgres-replica",
+          "operation_name": "RPC /postgres_replica/process",
+          "start_time_epoch_ms": 1790187950561,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "f60466c01ba147899dade31a2bfdd2f2",
+      "timestamp": "2026-09-23T18:26:05.491046+00:00",
+      "total_duration_ms": 81,
+      "status": "OK",
+      "root_service": "api-gateway",
+      "services_involved": [
+        "api-gateway",
+        "partner-portal-cluster-2",
+        "auth-service"
+      ],
+      "spans": [
+        {
+          "span_id": "eb819034ff144e04",
+          "parent_span_id": null,
+          "service_name": "api-gateway",
+          "operation_name": "RPC /api_gateway/process",
+          "start_time_epoch_ms": 1790187965491,
+          "duration_ms": 35,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "270289950ec24c1b",
+          "parent_span_id": "eb819034ff144e04",
+          "service_name": "partner-portal-cluster-2",
+          "operation_name": "RPC /partner_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790187965526,
+          "duration_ms": 37,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9666057203524165",
+          "parent_span_id": "270289950ec24c1b",
+          "service_name": "auth-service",
+          "operation_name": "RPC /auth_service/process",
+          "start_time_epoch_ms": 1790187965563,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "fd871e2c5aa745d5ab099f8c2ab513f0",
+      "timestamp": "2026-09-23T18:26:20.491046+00:00",
+      "total_duration_ms": 106,
+      "status": "OK",
+      "root_service": "mobile-gateway-cluster-2",
+      "services_involved": [
+        "mobile-gateway-cluster-2",
+        "mobile-frontend",
+        "order-fulfillment-cluster-2",
+        "invoice-service"
+      ],
+      "spans": [
+        {
+          "span_id": "bb0c378f0f134386",
+          "parent_span_id": null,
+          "service_name": "mobile-gateway-cluster-2",
+          "operation_name": "RPC /mobile_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790187980491,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "bd3710b950ce44db",
+          "parent_span_id": "bb0c378f0f134386",
+          "service_name": "mobile-frontend",
+          "operation_name": "RPC /mobile_frontend/process",
+          "start_time_epoch_ms": 1790187980535,
+          "duration_ms": 26,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b0dd5239acd34625",
+          "parent_span_id": "bd3710b950ce44db",
+          "service_name": "order-fulfillment-cluster-2",
+          "operation_name": "RPC /order_fulfillment_cluster_2/process",
+          "start_time_epoch_ms": 1790187980561,
+          "duration_ms": 8,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "55ce06961b8c460e",
+          "parent_span_id": "b0dd5239acd34625",
+          "service_name": "invoice-service",
+          "operation_name": "RPC /invoice_service/process",
+          "start_time_epoch_ms": 1790187980569,
+          "duration_ms": 28,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "33bff7c0e8b248428d5d28bc3c95610d",
+      "timestamp": "2026-09-23T18:26:35.491046+00:00",
+      "total_duration_ms": 109,
+      "status": "OK",
+      "root_service": "mobile-gateway-cluster-2",
+      "services_involved": [
+        "mobile-gateway-cluster-2",
+        "admin-portal-cluster-2",
+        "catalog-service-cluster-2",
+        "memcached-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "43e0951fe6c44d4c",
+          "parent_span_id": null,
+          "service_name": "mobile-gateway-cluster-2",
+          "operation_name": "RPC /mobile_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790187995491,
+          "duration_ms": 14,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "09258b6282f9421b",
+          "parent_span_id": "43e0951fe6c44d4c",
+          "service_name": "admin-portal-cluster-2",
+          "operation_name": "RPC /admin_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790187995505,
+          "duration_ms": 40,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9b3f4906163440fb",
+          "parent_span_id": "09258b6282f9421b",
+          "service_name": "catalog-service-cluster-2",
+          "operation_name": "RPC /catalog_service_cluster_2/process",
+          "start_time_epoch_ms": 1790187995545,
+          "duration_ms": 13,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b78cb502a9e74574",
+          "parent_span_id": "9b3f4906163440fb",
+          "service_name": "memcached-cluster",
+          "operation_name": "RPC /memcached_cluster/process",
+          "start_time_epoch_ms": 1790187995558,
+          "duration_ms": 42,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "336c3f8c1c514dcab3aca9ea1007ad1a",
+      "timestamp": "2026-09-23T18:26:50.491046+00:00",
+      "total_duration_ms": 104,
+      "status": "OK",
+      "root_service": "ingress-lb-cluster-2",
+      "services_involved": [
+        "ingress-lb-cluster-2",
+        "mobile-frontend-cluster-2",
+        "billing-service"
+      ],
+      "spans": [
+        {
+          "span_id": "a42016c9ad624505",
+          "parent_span_id": null,
+          "service_name": "ingress-lb-cluster-2",
+          "operation_name": "RPC /ingress_lb_cluster_2/process",
+          "start_time_epoch_ms": 1790188010491,
+          "duration_ms": 36,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "2fee98221a1c4b1d",
+          "parent_span_id": "a42016c9ad624505",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188010527,
+          "duration_ms": 28,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "f75a3020207045dd",
+          "parent_span_id": "2fee98221a1c4b1d",
+          "service_name": "billing-service",
+          "operation_name": "RPC /billing_service/process",
+          "start_time_epoch_ms": 1790188010555,
+          "duration_ms": 40,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "cf10f51d8ebd4549a317bc96190de07d",
+      "timestamp": "2026-09-23T18:27:05.491046+00:00",
+      "total_duration_ms": 105,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "web-frontend-cluster-2",
+        "push-notification",
+        "fraud-detection"
+      ],
+      "spans": [
+        {
+          "span_id": "bb80c569217049fd",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188025491,
+          "duration_ms": 35,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "83f2559f200443e6",
+          "parent_span_id": "bb80c569217049fd",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188025526,
+          "duration_ms": 30,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "1791f8af32c94812",
+          "parent_span_id": "83f2559f200443e6",
+          "service_name": "push-notification",
+          "operation_name": "RPC /push_notification/process",
+          "start_time_epoch_ms": 1790188025556,
+          "duration_ms": 22,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "0019406a773f428b",
+          "parent_span_id": "1791f8af32c94812",
+          "service_name": "fraud-detection",
+          "operation_name": "RPC /fraud_detection/process",
+          "start_time_epoch_ms": 1790188025578,
+          "duration_ms": 18,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "b8999f8a09bf4370be2b2057deceaa53",
+      "timestamp": "2026-09-23T18:27:20.491046+00:00",
+      "total_duration_ms": 2029,
+      "status": "ERROR",
+      "root_service": "ingress-lb-cluster-2",
+      "services_involved": [
+        "ingress-lb-cluster-2",
+        "mobile-frontend-cluster-2",
+        "inventory-manager",
+        "order-orchestrator"
+      ],
+      "spans": [
+        {
+          "span_id": "9d7b47ecead047d4",
+          "parent_span_id": null,
+          "service_name": "ingress-lb-cluster-2",
+          "operation_name": "RPC /ingress_lb_cluster_2/process",
+          "start_time_epoch_ms": 1790188040491,
+          "duration_ms": 346,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 502,
+            "error": true,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9acb55b1bccc4851",
+          "parent_span_id": "9d7b47ecead047d4",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188040837,
+          "duration_ms": 178,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "99837780dcb44513",
+          "parent_span_id": "9acb55b1bccc4851",
+          "service_name": "inventory-manager",
+          "operation_name": "RPC /inventory_manager/process",
+          "start_time_epoch_ms": 1790188041015,
+          "duration_ms": 192,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 502,
+            "error": true,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "c0515e0ee183445e",
+          "parent_span_id": "99837780dcb44513",
+          "service_name": "order-orchestrator",
+          "operation_name": "RPC /order_orchestrator/process",
+          "start_time_epoch_ms": 1790188041207,
+          "duration_ms": 1313,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 504,
+            "error": true,
+            "error.type": "HighCPULatencyException",
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "1c9c496bad144bf2b074f3b6088e8c85",
+      "timestamp": "2026-09-23T18:27:35.491046+00:00",
+      "total_duration_ms": 119,
+      "status": "OK",
+      "root_service": "ingress-lb-cluster-2",
+      "services_involved": [
+        "ingress-lb-cluster-2",
+        "admin-portal-cluster-2",
+        "shipping-tracker",
+        "memcached-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "e790fe349ecf4c45",
+          "parent_span_id": null,
+          "service_name": "ingress-lb-cluster-2",
+          "operation_name": "RPC /ingress_lb_cluster_2/process",
+          "start_time_epoch_ms": 1790188055491,
+          "duration_ms": 29,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "cff61ccd1fe04595",
+          "parent_span_id": "e790fe349ecf4c45",
+          "service_name": "admin-portal-cluster-2",
+          "operation_name": "RPC /admin_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188055520,
+          "duration_ms": 36,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "23ba1baf060846a5",
+          "parent_span_id": "cff61ccd1fe04595",
+          "service_name": "shipping-tracker",
+          "operation_name": "RPC /shipping_tracker/process",
+          "start_time_epoch_ms": 1790188055556,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b88d42f494fa4d4c",
+          "parent_span_id": "23ba1baf060846a5",
+          "service_name": "memcached-cluster",
+          "operation_name": "RPC /memcached_cluster/process",
+          "start_time_epoch_ms": 1790188055594,
+          "duration_ms": 16,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "109d1d5fa9864e6791f8196b7eca181b",
+      "timestamp": "2026-09-23T18:27:50.491046+00:00",
+      "total_duration_ms": 93,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "web-frontend",
+        "discount-service",
+        "kafka-broker-2"
+      ],
+      "spans": [
+        {
+          "span_id": "e6873c703eee4821",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188070491,
+          "duration_ms": 15,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b9c571a823b349f0",
+          "parent_span_id": "e6873c703eee4821",
+          "service_name": "web-frontend",
+          "operation_name": "RPC /web_frontend/process",
+          "start_time_epoch_ms": 1790188070506,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "be1740223b2b4339",
+          "parent_span_id": "b9c571a823b349f0",
+          "service_name": "discount-service",
+          "operation_name": "RPC /discount_service/process",
+          "start_time_epoch_ms": 1790188070531,
+          "duration_ms": 10,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "37025754f1044f8f",
+          "parent_span_id": "be1740223b2b4339",
+          "service_name": "kafka-broker-2",
+          "operation_name": "RPC /kafka_broker_2/process",
+          "start_time_epoch_ms": 1790188070541,
+          "duration_ms": 43,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "28fe8b817fe34ae38deb2c6542b461a9",
+      "timestamp": "2026-09-23T18:28:05.491046+00:00",
+      "total_duration_ms": 89,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "mobile-frontend",
+        "pricing-engine",
+        "catalog-service"
+      ],
+      "spans": [
+        {
+          "span_id": "c4c7908343a54065",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188085491,
+          "duration_ms": 28,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "f34bdb91fef24716",
+          "parent_span_id": "c4c7908343a54065",
+          "service_name": "mobile-frontend",
+          "operation_name": "RPC /mobile_frontend/process",
+          "start_time_epoch_ms": 1790188085519,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "a6f550e3cf67405f",
+          "parent_span_id": "f34bdb91fef24716",
+          "service_name": "pricing-engine",
+          "operation_name": "RPC /pricing_engine/process",
+          "start_time_epoch_ms": 1790188085530,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "6cc65beb99d14e44",
+          "parent_span_id": "a6f550e3cf67405f",
+          "service_name": "catalog-service",
+          "operation_name": "RPC /catalog_service/process",
+          "start_time_epoch_ms": 1790188085550,
+          "duration_ms": 30,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "2dd0494d50b04e02b1db8fad7058c227",
+      "timestamp": "2026-09-23T18:28:20.491046+00:00",
+      "total_duration_ms": 124,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "partner-portal-cluster-2",
+        "tenant-service-cluster-2",
+        "warehouse-dispatcher",
+        "mongodb-orders"
+      ],
+      "spans": [
+        {
+          "span_id": "07194acef64d464a",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188100491,
+          "duration_ms": 19,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "d16fb072b0f14789",
+          "parent_span_id": "07194acef64d464a",
+          "service_name": "partner-portal-cluster-2",
+          "operation_name": "RPC /partner_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188100510,
+          "duration_ms": 16,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "3a4e6803b7424e15",
+          "parent_span_id": "d16fb072b0f14789",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188100526,
+          "duration_ms": 42,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "6d3a4a9d0e874796",
+          "parent_span_id": "3a4e6803b7424e15",
+          "service_name": "warehouse-dispatcher",
+          "operation_name": "RPC /warehouse_dispatcher/process",
+          "start_time_epoch_ms": 1790188100568,
+          "duration_ms": 14,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9ec9fc593a854b54",
+          "parent_span_id": "6d3a4a9d0e874796",
+          "service_name": "mongodb-orders",
+          "operation_name": "RPC /mongodb_orders/process",
+          "start_time_epoch_ms": 1790188100582,
+          "duration_ms": 33,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "2f41f45c46ab4cce99cc887d78e57b59",
+      "timestamp": "2026-09-23T18:28:35.491046+00:00",
+      "total_duration_ms": 105,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "partner-portal",
+        "tenant-service-cluster-2",
+        "memcached-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "b4a841e1130845b3",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188115491,
+          "duration_ms": 18,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "e28534b06a5d4b9b",
+          "parent_span_id": "b4a841e1130845b3",
+          "service_name": "partner-portal",
+          "operation_name": "RPC /partner_portal/process",
+          "start_time_epoch_ms": 1790188115509,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "22dc3d15c97a4480",
+          "parent_span_id": "e28534b06a5d4b9b",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188115536,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "75fd4822780c46a1",
+          "parent_span_id": "22dc3d15c97a4480",
+          "service_name": "memcached-cluster",
+          "operation_name": "RPC /memcached_cluster/process",
+          "start_time_epoch_ms": 1790188115561,
+          "duration_ms": 35,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "8f49420136ee42e980b1668b2b74d965",
+      "timestamp": "2026-09-23T18:28:50.491046+00:00",
+      "total_duration_ms": 131,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "partner-portal",
+        "order-fulfillment",
+        "catalog-service-cluster-2",
+        "memcached-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "e6fe1548ab734bd5",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188130491,
+          "duration_ms": 29,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "6e882e32c7b641f7",
+          "parent_span_id": "e6fe1548ab734bd5",
+          "service_name": "partner-portal",
+          "operation_name": "RPC /partner_portal/process",
+          "start_time_epoch_ms": 1790188130520,
+          "duration_ms": 28,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "3cd3b854c2294f67",
+          "parent_span_id": "6e882e32c7b641f7",
+          "service_name": "order-fulfillment",
+          "operation_name": "RPC /order_fulfillment/process",
+          "start_time_epoch_ms": 1790188130548,
+          "duration_ms": 39,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "4e46f7b2b7ff4ac8",
+          "parent_span_id": "3cd3b854c2294f67",
+          "service_name": "catalog-service-cluster-2",
+          "operation_name": "RPC /catalog_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188130587,
+          "duration_ms": 21,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "ae6ae2f2fcb0425c",
+          "parent_span_id": "4e46f7b2b7ff4ac8",
+          "service_name": "memcached-cluster",
+          "operation_name": "RPC /memcached_cluster/process",
+          "start_time_epoch_ms": 1790188130608,
+          "duration_ms": 14,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "930f58ec90b446bba6b0a96e20389ae1",
+      "timestamp": "2026-09-23T18:29:05.491046+00:00",
+      "total_duration_ms": 1787,
+      "status": "ERROR",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "web-frontend-cluster-2",
+        "billing-service",
+        "order-orchestrator"
+      ],
+      "spans": [
+        {
+          "span_id": "1846b98fa3934af9",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188145491,
+          "duration_ms": 338,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "35b67000a8964325",
+          "parent_span_id": "1846b98fa3934af9",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188145829,
+          "duration_ms": 371,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 502,
+            "error": true,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "088bd6ae1bb34f45",
+          "parent_span_id": "35b67000a8964325",
+          "service_name": "billing-service",
+          "operation_name": "RPC /billing_service/process",
+          "start_time_epoch_ms": 1790188146200,
+          "duration_ms": 396,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 502,
+            "error": true,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "32655e8e496a403e",
+          "parent_span_id": "088bd6ae1bb34f45",
+          "service_name": "order-orchestrator",
+          "operation_name": "RPC /order_orchestrator/process",
+          "start_time_epoch_ms": 1790188146596,
+          "duration_ms": 682,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 504,
+            "error": true,
+            "error.type": "HighCPULatencyException",
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "217962c1fed54815abee3b68c5d85c0b",
+      "timestamp": "2026-09-23T18:29:20.491046+00:00",
+      "total_duration_ms": 127,
+      "status": "OK",
+      "root_service": "mobile-gateway",
+      "services_involved": [
+        "mobile-gateway",
+        "web-frontend-cluster-2",
+        "auth-service-cluster-2",
+        "auth-service",
+        "sqs-notification-queue"
+      ],
+      "spans": [
+        {
+          "span_id": "87902c51f3ba4a7d",
+          "parent_span_id": null,
+          "service_name": "mobile-gateway",
+          "operation_name": "RPC /mobile_gateway/process",
+          "start_time_epoch_ms": 1790188160491,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9f06385406a14849",
+          "parent_span_id": "87902c51f3ba4a7d",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188160518,
+          "duration_ms": 12,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "823eef52998e49c7",
+          "parent_span_id": "9f06385406a14849",
+          "service_name": "auth-service-cluster-2",
+          "operation_name": "RPC /auth_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188160530,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "500902413c9448ec",
+          "parent_span_id": "823eef52998e49c7",
+          "service_name": "auth-service",
+          "operation_name": "RPC /auth_service/process",
+          "start_time_epoch_ms": 1790188160557,
+          "duration_ms": 17,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "fbb23e3a3c5f45ed",
+          "parent_span_id": "500902413c9448ec",
+          "service_name": "sqs-notification-queue",
+          "operation_name": "RPC /sqs_notification_queue/process",
+          "start_time_epoch_ms": 1790188160574,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "94169e20c67e4cda8ff268edf9b8e13e",
+      "timestamp": "2026-09-23T18:29:35.491046+00:00",
+      "total_duration_ms": 147,
+      "status": "OK",
+      "root_service": "mobile-gateway-cluster-2",
+      "services_involved": [
+        "mobile-gateway-cluster-2",
+        "web-frontend-cluster-2",
+        "tenant-service-cluster-2",
+        "warehouse-dispatcher"
+      ],
+      "spans": [
+        {
+          "span_id": "dac331aeb28a4adc",
+          "parent_span_id": null,
+          "service_name": "mobile-gateway-cluster-2",
+          "operation_name": "RPC /mobile_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188175491,
+          "duration_ms": 43,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "1d83de25f5074d16",
+          "parent_span_id": "dac331aeb28a4adc",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188175534,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "99b2bd3f03034991",
+          "parent_span_id": "1d83de25f5074d16",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188175559,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "1eb8095e12764abd",
+          "parent_span_id": "99b2bd3f03034991",
+          "service_name": "warehouse-dispatcher",
+          "operation_name": "RPC /warehouse_dispatcher/process",
+          "start_time_epoch_ms": 1790188175597,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "a952dc56aca74bbc8052e4a97c263b6e",
+      "timestamp": "2026-09-23T18:29:50.491046+00:00",
+      "total_duration_ms": 54,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "partner-portal",
+        "shipping-tracker"
+      ],
+      "spans": [
+        {
+          "span_id": "c3a7286decb14de5",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188190491,
+          "duration_ms": 19,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "f5b16943c2874888",
+          "parent_span_id": "c3a7286decb14de5",
+          "service_name": "partner-portal",
+          "operation_name": "RPC /partner_portal/process",
+          "start_time_epoch_ms": 1790188190510,
+          "duration_ms": 15,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "83db8299e8f54e8a",
+          "parent_span_id": "f5b16943c2874888",
+          "service_name": "shipping-tracker",
+          "operation_name": "RPC /shipping_tracker/process",
+          "start_time_epoch_ms": 1790188190525,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "7e9045ebceef40f090d707c9971754b8",
+      "timestamp": "2026-09-23T18:30:05.491046+00:00",
+      "total_duration_ms": 196,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "admin-portal",
+        "cart-service",
+        "cart-service-cluster-2",
+        "payment-processor",
+        "redis-cache-master"
+      ],
+      "spans": [
+        {
+          "span_id": "6aa6e617ba7846e6",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188205491,
+          "duration_ms": 17,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "4a6930213c2948b4",
+          "parent_span_id": "6aa6e617ba7846e6",
+          "service_name": "admin-portal",
+          "operation_name": "RPC /admin_portal/process",
+          "start_time_epoch_ms": 1790188205508,
+          "duration_ms": 36,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "dd3785c57f074200",
+          "parent_span_id": "4a6930213c2948b4",
+          "service_name": "cart-service",
+          "operation_name": "RPC /cart_service/process",
+          "start_time_epoch_ms": 1790188205544,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "398b95b8246e43f6",
+          "parent_span_id": "dd3785c57f074200",
+          "service_name": "cart-service-cluster-2",
+          "operation_name": "RPC /cart_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188205582,
+          "duration_ms": 35,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b3db5a724889409c",
+          "parent_span_id": "398b95b8246e43f6",
+          "service_name": "payment-processor",
+          "operation_name": "RPC /payment_processor/process",
+          "start_time_epoch_ms": 1790188205617,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "3d876447c4a4412f",
+          "parent_span_id": "b3db5a724889409c",
+          "service_name": "redis-cache-master",
+          "operation_name": "RPC /redis_cache_master/process",
+          "start_time_epoch_ms": 1790188205642,
+          "duration_ms": 45,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "67ec1edfc91d45448546affe6aee44a2",
+      "timestamp": "2026-09-23T18:30:20.491046+00:00",
+      "total_duration_ms": 84,
+      "status": "OK",
+      "root_service": "mobile-gateway-cluster-2",
+      "services_involved": [
+        "mobile-gateway-cluster-2",
+        "web-frontend-cluster-2",
+        "invoice-service"
+      ],
+      "spans": [
+        {
+          "span_id": "6b167d37513f4808",
+          "parent_span_id": null,
+          "service_name": "mobile-gateway-cluster-2",
+          "operation_name": "RPC /mobile_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188220491,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "69bf49f752cf4702",
+          "parent_span_id": "6b167d37513f4808",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188220535,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "17a7a38369264aa7",
+          "parent_span_id": "69bf49f752cf4702",
+          "service_name": "invoice-service",
+          "operation_name": "RPC /invoice_service/process",
+          "start_time_epoch_ms": 1790188220560,
+          "duration_ms": 15,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "5eb2b1c341544e269f0316ef0738ff53",
+      "timestamp": "2026-09-23T18:30:35.491046+00:00",
+      "total_duration_ms": 168,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "admin-portal",
+        "user-profile-service",
+        "audit-logger",
+        "order-fulfillment-cluster-2",
+        "catalog-service-cluster-2"
+      ],
+      "spans": [
+        {
+          "span_id": "f8e5d5cf33184a07",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188235491,
+          "duration_ms": 40,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "fc153dadf2ae4fa6",
+          "parent_span_id": "f8e5d5cf33184a07",
+          "service_name": "admin-portal",
+          "operation_name": "RPC /admin_portal/process",
+          "start_time_epoch_ms": 1790188235531,
+          "duration_ms": 13,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "a9577ec02464414f",
+          "parent_span_id": "fc153dadf2ae4fa6",
+          "service_name": "user-profile-service",
+          "operation_name": "RPC /user_profile_service/process",
+          "start_time_epoch_ms": 1790188235544,
+          "duration_ms": 16,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "30da170319824dc5",
+          "parent_span_id": "a9577ec02464414f",
+          "service_name": "audit-logger",
+          "operation_name": "RPC /audit_logger/process",
+          "start_time_epoch_ms": 1790188235560,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "76a9cc00409b47a1",
+          "parent_span_id": "30da170319824dc5",
+          "service_name": "order-fulfillment-cluster-2",
+          "operation_name": "RPC /order_fulfillment_cluster_2/process",
+          "start_time_epoch_ms": 1790188235583,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "55da5fd7741e4106",
+          "parent_span_id": "76a9cc00409b47a1",
+          "service_name": "catalog-service-cluster-2",
+          "operation_name": "RPC /catalog_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188235624,
+          "duration_ms": 35,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "cb43d98fc5b94372888c16bc7b81fe17",
+      "timestamp": "2026-09-23T18:30:50.491046+00:00",
+      "total_duration_ms": 112,
+      "status": "OK",
+      "root_service": "api-gateway",
+      "services_involved": [
+        "api-gateway",
+        "partner-portal-cluster-2",
+        "cart-service-cluster-2",
+        "payment-processor",
+        "elasticsearch-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "770c6af191b144d2",
+          "parent_span_id": null,
+          "service_name": "api-gateway",
+          "operation_name": "RPC /api_gateway/process",
+          "start_time_epoch_ms": 1790188250491,
+          "duration_ms": 8,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "bf30a0805fe141e2",
+          "parent_span_id": "770c6af191b144d2",
+          "service_name": "partner-portal-cluster-2",
+          "operation_name": "RPC /partner_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188250499,
+          "duration_ms": 24,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "00fe23319d0b45bf",
+          "parent_span_id": "bf30a0805fe141e2",
+          "service_name": "cart-service-cluster-2",
+          "operation_name": "RPC /cart_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188250523,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "1d45841971fb41ec",
+          "parent_span_id": "00fe23319d0b45bf",
+          "service_name": "payment-processor",
+          "operation_name": "RPC /payment_processor/process",
+          "start_time_epoch_ms": 1790188250532,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "36d3b773b1864305",
+          "parent_span_id": "1d45841971fb41ec",
+          "service_name": "elasticsearch-cluster",
+          "operation_name": "RPC /elasticsearch_cluster/process",
+          "start_time_epoch_ms": 1790188250559,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "5fa12315a8984c9f9cbaf6d25fcaff6a",
+      "timestamp": "2026-09-23T18:31:05.491046+00:00",
+      "total_duration_ms": 61,
+      "status": "OK",
+      "root_service": "api-gateway",
+      "services_involved": [
+        "api-gateway",
+        "mobile-frontend-cluster-2",
+        "billing-service"
+      ],
+      "spans": [
+        {
+          "span_id": "4d8fe43dca5e4c96",
+          "parent_span_id": null,
+          "service_name": "api-gateway",
+          "operation_name": "RPC /api_gateway/process",
+          "start_time_epoch_ms": 1790188265491,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "e6dd9fb654db4ae2",
+          "parent_span_id": "4d8fe43dca5e4c96",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188265500,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "6503b43d1d664a23",
+          "parent_span_id": "e6dd9fb654db4ae2",
+          "service_name": "billing-service",
+          "operation_name": "RPC /billing_service/process",
+          "start_time_epoch_ms": 1790188265525,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "9cc7e7d4994649c9b43baaa565df784a",
+      "timestamp": "2026-09-23T18:31:20.491046+00:00",
+      "total_duration_ms": 115,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "web-frontend-cluster-2",
+        "catalog-service",
+        "rabbitmq-orders"
+      ],
+      "spans": [
+        {
+          "span_id": "9dbf091d5c5f47c8",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188280491,
+          "duration_ms": 29,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "060e9601bb964a4b",
+          "parent_span_id": "9dbf091d5c5f47c8",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188280520,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "d84197d3a23a4c9f",
+          "parent_span_id": "060e9601bb964a4b",
+          "service_name": "catalog-service",
+          "operation_name": "RPC /catalog_service/process",
+          "start_time_epoch_ms": 1790188280558,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "dd2dc56b3c2a4bce",
+          "parent_span_id": "d84197d3a23a4c9f",
+          "service_name": "rabbitmq-orders",
+          "operation_name": "RPC /rabbitmq_orders/process",
+          "start_time_epoch_ms": 1790188280567,
+          "duration_ms": 39,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "f7f1b3f262494356bd8edb7da9a8639a",
+      "timestamp": "2026-09-23T18:31:35.491046+00:00",
+      "total_duration_ms": 87,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "web-frontend-cluster-2",
+        "catalog-service"
+      ],
+      "spans": [
+        {
+          "span_id": "cd1a96c9f8de4626",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188295491,
+          "duration_ms": 33,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "880d84aced8e4b17",
+          "parent_span_id": "cd1a96c9f8de4626",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188295524,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "51d6554a23534d3b",
+          "parent_span_id": "880d84aced8e4b17",
+          "service_name": "catalog-service",
+          "operation_name": "RPC /catalog_service/process",
+          "start_time_epoch_ms": 1790188295544,
+          "duration_ms": 34,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "6e6e0a5d06ad4b5eb1c27806da78b77a",
+      "timestamp": "2026-09-23T18:31:50.491046+00:00",
+      "total_duration_ms": 101,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "mobile-frontend-cluster-2",
+        "cart-service-cluster-2",
+        "neo4j-graph-db"
+      ],
+      "spans": [
+        {
+          "span_id": "b50a4916c2154104",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188310491,
+          "duration_ms": 21,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "8ec5ed96a81d40f8",
+          "parent_span_id": "b50a4916c2154104",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188310512,
+          "duration_ms": 19,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "fb76255715ad4d93",
+          "parent_span_id": "8ec5ed96a81d40f8",
+          "service_name": "cart-service-cluster-2",
+          "operation_name": "RPC /cart_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188310531,
+          "duration_ms": 30,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "13b615e019394536",
+          "parent_span_id": "fb76255715ad4d93",
+          "service_name": "neo4j-graph-db",
+          "operation_name": "RPC /neo4j_graph_db/process",
+          "start_time_epoch_ms": 1790188310561,
+          "duration_ms": 31,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "9803ba20c81a47df998906ee93878d72",
+      "timestamp": "2026-09-23T18:32:05.491046+00:00",
+      "total_duration_ms": 93,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "partner-portal",
+        "notification-dispatcher",
+        "recommendation-engine-cluster-2"
+      ],
+      "spans": [
+        {
+          "span_id": "e105a70fb32c4c15",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188325491,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9ba956840d6d4c00",
+          "parent_span_id": "e105a70fb32c4c15",
+          "service_name": "partner-portal",
+          "operation_name": "RPC /partner_portal/process",
+          "start_time_epoch_ms": 1790188325502,
+          "duration_ms": 35,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "83a6b5a8bde0489d",
+          "parent_span_id": "9ba956840d6d4c00",
+          "service_name": "notification-dispatcher",
+          "operation_name": "RPC /notification_dispatcher/process",
+          "start_time_epoch_ms": 1790188325537,
+          "duration_ms": 39,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "97b4e90e0179438a",
+          "parent_span_id": "83a6b5a8bde0489d",
+          "service_name": "recommendation-engine-cluster-2",
+          "operation_name": "RPC /recommendation_engine_cluster_2/process",
+          "start_time_epoch_ms": 1790188325576,
+          "duration_ms": 8,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "e05b675268f44e4eade6a1a4c2b8af25",
+      "timestamp": "2026-09-23T18:32:20.491046+00:00",
+      "total_duration_ms": 90,
+      "status": "OK",
+      "root_service": "api-gateway",
+      "services_involved": [
+        "api-gateway",
+        "partner-portal-cluster-2",
+        "cart-service-cluster-2"
+      ],
+      "spans": [
+        {
+          "span_id": "2ffe6e4f1de3408c",
+          "parent_span_id": null,
+          "service_name": "api-gateway",
+          "operation_name": "RPC /api_gateway/process",
+          "start_time_epoch_ms": 1790188340491,
+          "duration_ms": 26,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "5c2178edc1234180",
+          "parent_span_id": "2ffe6e4f1de3408c",
+          "service_name": "partner-portal-cluster-2",
+          "operation_name": "RPC /partner_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188340517,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "fb9357a6fae04f0c",
+          "parent_span_id": "5c2178edc1234180",
+          "service_name": "cart-service-cluster-2",
+          "operation_name": "RPC /cart_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188340542,
+          "duration_ms": 39,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "d1ee869a2f9d475f815a731d727bed72",
+      "timestamp": "2026-09-23T18:32:35.491046+00:00",
+      "total_duration_ms": 122,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "admin-portal",
+        "cart-service",
+        "cart-service-cluster-2",
+        "neo4j-graph-db"
+      ],
+      "spans": [
+        {
+          "span_id": "0df23ed357144d7c",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188355491,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "854681240a9b4f87",
+          "parent_span_id": "0df23ed357144d7c",
+          "service_name": "admin-portal",
+          "operation_name": "RPC /admin_portal/process",
+          "start_time_epoch_ms": 1790188355514,
+          "duration_ms": 28,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "4d88620affd04e98",
+          "parent_span_id": "854681240a9b4f87",
+          "service_name": "cart-service",
+          "operation_name": "RPC /cart_service/process",
+          "start_time_epoch_ms": 1790188355542,
+          "duration_ms": 32,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "ebb9b20f4a934ce0",
+          "parent_span_id": "4d88620affd04e98",
+          "service_name": "cart-service-cluster-2",
+          "operation_name": "RPC /cart_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188355574,
+          "duration_ms": 8,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "1ecc92dd7ce44620",
+          "parent_span_id": "ebb9b20f4a934ce0",
+          "service_name": "neo4j-graph-db",
+          "operation_name": "RPC /neo4j_graph_db/process",
+          "start_time_epoch_ms": 1790188355582,
+          "duration_ms": 31,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "5956f7f9ec514d7ea3c1c1d71219ba70",
+      "timestamp": "2026-09-23T18:32:50.491046+00:00",
+      "total_duration_ms": 132,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "web-frontend",
+        "discount-service",
+        "notification-dispatcher",
+        "postgres-primary"
+      ],
+      "spans": [
+        {
+          "span_id": "4a6c3d4541144bce",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188370491,
+          "duration_ms": 26,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "1e2c133f0c714ecd",
+          "parent_span_id": "4a6c3d4541144bce",
+          "service_name": "web-frontend",
+          "operation_name": "RPC /web_frontend/process",
+          "start_time_epoch_ms": 1790188370517,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "7cc7ac1e107c4fc4",
+          "parent_span_id": "1e2c133f0c714ecd",
+          "service_name": "discount-service",
+          "operation_name": "RPC /discount_service/process",
+          "start_time_epoch_ms": 1790188370537,
+          "duration_ms": 18,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "a1fb80db7739446f",
+          "parent_span_id": "7cc7ac1e107c4fc4",
+          "service_name": "notification-dispatcher",
+          "operation_name": "RPC /notification_dispatcher/process",
+          "start_time_epoch_ms": 1790188370555,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "99baa6a28df44784",
+          "parent_span_id": "a1fb80db7739446f",
+          "service_name": "postgres-primary",
+          "operation_name": "RPC /postgres_primary/process",
+          "start_time_epoch_ms": 1790188370582,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "f2d32fc3801947b9b02648418f8fe641",
+      "timestamp": "2026-09-23T18:33:05.491046+00:00",
+      "total_duration_ms": 155,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "web-frontend",
+        "tenant-service-cluster-2",
+        "warehouse-dispatcher",
+        "mongodb-orders"
+      ],
+      "spans": [
+        {
+          "span_id": "5c5e5903f446402a",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188385491,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "7801cd0dbb6a4c56",
+          "parent_span_id": "5c5e5903f446402a",
+          "service_name": "web-frontend",
+          "operation_name": "RPC /web_frontend/process",
+          "start_time_epoch_ms": 1790188385535,
+          "duration_ms": 14,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "f21ae56ed62b44fd",
+          "parent_span_id": "7801cd0dbb6a4c56",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188385549,
+          "duration_ms": 34,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "c39f9a77d13448d7",
+          "parent_span_id": "f21ae56ed62b44fd",
+          "service_name": "warehouse-dispatcher",
+          "operation_name": "RPC /warehouse_dispatcher/process",
+          "start_time_epoch_ms": 1790188385583,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "94ac1490ba62476d",
+          "parent_span_id": "c39f9a77d13448d7",
+          "service_name": "mongodb-orders",
+          "operation_name": "RPC /mongodb_orders/process",
+          "start_time_epoch_ms": 1790188385624,
+          "duration_ms": 22,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "df35ef3c018a49179b28f8c3b842f95c",
+      "timestamp": "2026-09-23T18:33:20.491046+00:00",
+      "total_duration_ms": 69,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "mobile-frontend",
+        "auth-service-cluster-2",
+        "order-fulfillment-cluster-2"
+      ],
+      "spans": [
+        {
+          "span_id": "67f2a20c499c4373",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188400491,
+          "duration_ms": 33,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "2aa29935f7fb4602",
+          "parent_span_id": "67f2a20c499c4373",
+          "service_name": "mobile-frontend",
+          "operation_name": "RPC /mobile_frontend/process",
+          "start_time_epoch_ms": 1790188400524,
+          "duration_ms": 10,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "f6d28d5bfed24bea",
+          "parent_span_id": "2aa29935f7fb4602",
+          "service_name": "auth-service-cluster-2",
+          "operation_name": "RPC /auth_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188400534,
+          "duration_ms": 13,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "07cbdffa78464f57",
+          "parent_span_id": "f6d28d5bfed24bea",
+          "service_name": "order-fulfillment-cluster-2",
+          "operation_name": "RPC /order_fulfillment_cluster_2/process",
+          "start_time_epoch_ms": 1790188400547,
+          "duration_ms": 13,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "cb451f3ae29a41dfa8449f0d2b04e295",
+      "timestamp": "2026-09-23T18:33:35.491046+00:00",
+      "total_duration_ms": 1490,
+      "status": "ERROR",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "web-frontend",
+        "order-orchestrator",
+        "order-fulfillment-cluster-2",
+        "catalog-service-cluster-2"
+      ],
+      "spans": [
+        {
+          "span_id": "73d49626af1b42ef",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188415491,
+          "duration_ms": 190,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "6798090ef72741f5",
+          "parent_span_id": "73d49626af1b42ef",
+          "service_name": "web-frontend",
+          "operation_name": "RPC /web_frontend/process",
+          "start_time_epoch_ms": 1790188415681,
+          "duration_ms": 430,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "769bdb0d28f34c2a",
+          "parent_span_id": "6798090ef72741f5",
+          "service_name": "order-orchestrator",
+          "operation_name": "RPC /order_orchestrator/process",
+          "start_time_epoch_ms": 1790188416111,
+          "duration_ms": 817,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 504,
+            "error": true,
+            "error.type": "HighCPULatencyException",
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "ce3356cf8d1c4065",
+          "parent_span_id": "769bdb0d28f34c2a",
+          "service_name": "order-fulfillment-cluster-2",
+          "operation_name": "RPC /order_fulfillment_cluster_2/process",
+          "start_time_epoch_ms": 1790188416928,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "3b37a822755446d6",
+          "parent_span_id": "ce3356cf8d1c4065",
+          "service_name": "catalog-service-cluster-2",
+          "operation_name": "RPC /catalog_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188416937,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "ad9879ff93904454a0212a8cfc4e77ed",
+      "timestamp": "2026-09-23T18:33:50.491046+00:00",
+      "total_duration_ms": 235,
+      "status": "OK",
+      "root_service": "public-bff-cluster-2",
+      "services_involved": [
+        "public-bff-cluster-2",
+        "mobile-frontend-cluster-2",
+        "inventory-manager",
+        "search-service-cluster-2",
+        "auth-service",
+        "sqs-notification-queue"
+      ],
+      "spans": [
+        {
+          "span_id": "97c75dda21144b46",
+          "parent_span_id": null,
+          "service_name": "public-bff-cluster-2",
+          "operation_name": "RPC /public_bff_cluster_2/process",
+          "start_time_epoch_ms": 1790188430491,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "dc88a602c3a94733",
+          "parent_span_id": "97c75dda21144b46",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188430532,
+          "duration_ms": 31,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "e24ccf77253942fa",
+          "parent_span_id": "dc88a602c3a94733",
+          "service_name": "inventory-manager",
+          "operation_name": "RPC /inventory_manager/process",
+          "start_time_epoch_ms": 1790188430563,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "7d6ce3daa4b44727",
+          "parent_span_id": "e24ccf77253942fa",
+          "service_name": "search-service-cluster-2",
+          "operation_name": "RPC /search_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188430604,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "7128a8612b264e34",
+          "parent_span_id": "7d6ce3daa4b44727",
+          "service_name": "auth-service",
+          "operation_name": "RPC /auth_service/process",
+          "start_time_epoch_ms": 1790188430648,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "08469d1c026a43cc",
+          "parent_span_id": "7128a8612b264e34",
+          "service_name": "sqs-notification-queue",
+          "operation_name": "RPC /sqs_notification_queue/process",
+          "start_time_epoch_ms": 1790188430692,
+          "duration_ms": 34,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "032f3925888f4e8ca33b0383d29f30b9",
+      "timestamp": "2026-09-23T18:34:05.491046+00:00",
+      "total_duration_ms": 72,
+      "status": "OK",
+      "root_service": "ingress-lb-cluster-2",
+      "services_involved": [
+        "ingress-lb-cluster-2",
+        "admin-portal-cluster-2",
+        "invoice-service"
+      ],
+      "spans": [
+        {
+          "span_id": "8a682b5f88b84861",
+          "parent_span_id": null,
+          "service_name": "ingress-lb-cluster-2",
+          "operation_name": "RPC /ingress_lb_cluster_2/process",
+          "start_time_epoch_ms": 1790188445491,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b0c26f457e654bd5",
+          "parent_span_id": "8a682b5f88b84861",
+          "service_name": "admin-portal-cluster-2",
+          "operation_name": "RPC /admin_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188445514,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "fe2ac084c43e41d0",
+          "parent_span_id": "b0c26f457e654bd5",
+          "service_name": "invoice-service",
+          "operation_name": "RPC /invoice_service/process",
+          "start_time_epoch_ms": 1790188445525,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "45cee91fff7f4399aefbc1fb4fd4ccbe",
+      "timestamp": "2026-09-23T18:34:20.491046+00:00",
+      "total_duration_ms": 82,
+      "status": "OK",
+      "root_service": "public-bff-cluster-2",
+      "services_involved": [
+        "public-bff-cluster-2",
+        "admin-portal-cluster-2",
+        "fraud-detection",
+        "kafka-broker-3"
+      ],
+      "spans": [
+        {
+          "span_id": "4e5d224d9e584414",
+          "parent_span_id": null,
+          "service_name": "public-bff-cluster-2",
+          "operation_name": "RPC /public_bff_cluster_2/process",
+          "start_time_epoch_ms": 1790188460491,
+          "duration_ms": 24,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "564a3df4a19c4ede",
+          "parent_span_id": "4e5d224d9e584414",
+          "service_name": "admin-portal-cluster-2",
+          "operation_name": "RPC /admin_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188460515,
+          "duration_ms": 29,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "297755c1a64e4a65",
+          "parent_span_id": "564a3df4a19c4ede",
+          "service_name": "fraud-detection",
+          "operation_name": "RPC /fraud_detection/process",
+          "start_time_epoch_ms": 1790188460544,
+          "duration_ms": 13,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "4e833ae3aed44810",
+          "parent_span_id": "297755c1a64e4a65",
+          "service_name": "kafka-broker-3",
+          "operation_name": "RPC /kafka_broker_3/process",
+          "start_time_epoch_ms": 1790188460557,
+          "duration_ms": 16,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "1bd04c1676a2448db7bfe33d13b7f7f7",
+      "timestamp": "2026-09-23T18:34:35.491046+00:00",
+      "total_duration_ms": 135,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "web-frontend",
+        "tenant-service-cluster-2",
+        "report-generator",
+        "discount-service",
+        "kafka-broker-2"
+      ],
+      "spans": [
+        {
+          "span_id": "fccec87589c64253",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188475491,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "ff08e019268e4a15",
+          "parent_span_id": "fccec87589c64253",
+          "service_name": "web-frontend",
+          "operation_name": "RPC /web_frontend/process",
+          "start_time_epoch_ms": 1790188475511,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "a803612e5b464a22",
+          "parent_span_id": "ff08e019268e4a15",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188475536,
+          "duration_ms": 12,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "689add8fdf164cd5",
+          "parent_span_id": "a803612e5b464a22",
+          "service_name": "report-generator",
+          "operation_name": "RPC /report_generator/process",
+          "start_time_epoch_ms": 1790188475548,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "5d73d39e0b814831",
+          "parent_span_id": "689add8fdf164cd5",
+          "service_name": "discount-service",
+          "operation_name": "RPC /discount_service/process",
+          "start_time_epoch_ms": 1790188475559,
+          "duration_ms": 30,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "5a7f474c4c9a443a",
+          "parent_span_id": "5d73d39e0b814831",
+          "service_name": "kafka-broker-2",
+          "operation_name": "RPC /kafka_broker_2/process",
+          "start_time_epoch_ms": 1790188475589,
+          "duration_ms": 37,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "1650edf3c1644144a3c24854881b1131",
+      "timestamp": "2026-09-23T18:34:50.491046+00:00",
+      "total_duration_ms": 125,
+      "status": "OK",
+      "root_service": "public-bff-cluster-2",
+      "services_involved": [
+        "public-bff-cluster-2",
+        "mobile-frontend-cluster-2",
+        "recommendation-engine-cluster-2",
+        "search-service-cluster-2",
+        "rabbitmq-orders"
+      ],
+      "spans": [
+        {
+          "span_id": "7353cc3a36d6472a",
+          "parent_span_id": null,
+          "service_name": "public-bff-cluster-2",
+          "operation_name": "RPC /public_bff_cluster_2/process",
+          "start_time_epoch_ms": 1790188490491,
+          "duration_ms": 15,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "44254d7d8521430b",
+          "parent_span_id": "7353cc3a36d6472a",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188490506,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9c39ba4b1fec449c",
+          "parent_span_id": "44254d7d8521430b",
+          "service_name": "recommendation-engine-cluster-2",
+          "operation_name": "RPC /recommendation_engine_cluster_2/process",
+          "start_time_epoch_ms": 1790188490547,
+          "duration_ms": 14,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "780ab1632d0e487f",
+          "parent_span_id": "9c39ba4b1fec449c",
+          "service_name": "search-service-cluster-2",
+          "operation_name": "RPC /search_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188490561,
+          "duration_ms": 15,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "62b52cf695b0400c",
+          "parent_span_id": "780ab1632d0e487f",
+          "service_name": "rabbitmq-orders",
+          "operation_name": "RPC /rabbitmq_orders/process",
+          "start_time_epoch_ms": 1790188490576,
+          "duration_ms": 40,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "054b910b0c9640f3a13058224411c64d",
+      "timestamp": "2026-09-23T18:35:05.491046+00:00",
+      "total_duration_ms": 130,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "partner-portal-cluster-2",
+        "tenant-service-cluster-2",
+        "memcached-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "f298bd1ff8c04e0a",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188505491,
+          "duration_ms": 36,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "8eee20488dd94cf8",
+          "parent_span_id": "f298bd1ff8c04e0a",
+          "service_name": "partner-portal-cluster-2",
+          "operation_name": "RPC /partner_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188505527,
+          "duration_ms": 39,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "001cdf40dcfd40d3",
+          "parent_span_id": "8eee20488dd94cf8",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188505566,
+          "duration_ms": 37,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "c6a726ec676c4f57",
+          "parent_span_id": "001cdf40dcfd40d3",
+          "service_name": "memcached-cluster",
+          "operation_name": "RPC /memcached_cluster/process",
+          "start_time_epoch_ms": 1790188505603,
+          "duration_ms": 18,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "cc5aa843a48243ed87449a9da876138a",
+      "timestamp": "2026-09-23T18:35:20.491046+00:00",
+      "total_duration_ms": 92,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "web-frontend",
+        "recommendation-engine",
+        "redis-cache-master"
+      ],
+      "spans": [
+        {
+          "span_id": "b725a40909dc4a9f",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188520491,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "7564ab3d1bfe4f62",
+          "parent_span_id": "b725a40909dc4a9f",
+          "service_name": "web-frontend",
+          "operation_name": "RPC /web_frontend/process",
+          "start_time_epoch_ms": 1790188520511,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9b402de9f5ba426c",
+          "parent_span_id": "7564ab3d1bfe4f62",
+          "service_name": "recommendation-engine",
+          "operation_name": "RPC /recommendation_engine/process",
+          "start_time_epoch_ms": 1790188520522,
+          "duration_ms": 43,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "7f9b85941ad54822",
+          "parent_span_id": "9b402de9f5ba426c",
+          "service_name": "redis-cache-master",
+          "operation_name": "RPC /redis_cache_master/process",
+          "start_time_epoch_ms": 1790188520565,
+          "duration_ms": 18,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "9a07bfb95ddd4f7a8e16b49d014044f0",
+      "timestamp": "2026-09-23T18:35:35.491046+00:00",
+      "total_duration_ms": 94,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "partner-portal",
+        "pricing-engine",
+        "redis-session-store"
+      ],
+      "spans": [
+        {
+          "span_id": "7c2d8ab965934970",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188535491,
+          "duration_ms": 37,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "98e6546b981445d4",
+          "parent_span_id": "7c2d8ab965934970",
+          "service_name": "partner-portal",
+          "operation_name": "RPC /partner_portal/process",
+          "start_time_epoch_ms": 1790188535528,
+          "duration_ms": 18,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "4e5080037cbf45ee",
+          "parent_span_id": "98e6546b981445d4",
+          "service_name": "pricing-engine",
+          "operation_name": "RPC /pricing_engine/process",
+          "start_time_epoch_ms": 1790188535546,
+          "duration_ms": 16,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9aa6c8330ae4461c",
+          "parent_span_id": "4e5080037cbf45ee",
+          "service_name": "redis-session-store",
+          "operation_name": "RPC /redis_session_store/process",
+          "start_time_epoch_ms": 1790188535562,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "fdb8b64b17af4ea1a8f5b4357324273d",
+      "timestamp": "2026-09-23T18:35:50.491046+00:00",
+      "total_duration_ms": 73,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "partner-portal",
+        "invoice-service"
+      ],
+      "spans": [
+        {
+          "span_id": "8d5cb3554ffa4445",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188550491,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "0767b6aedb1b43b0",
+          "parent_span_id": "8d5cb3554ffa4445",
+          "service_name": "partner-portal",
+          "operation_name": "RPC /partner_portal/process",
+          "start_time_epoch_ms": 1790188550500,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "67ae09b55cdd4c57",
+          "parent_span_id": "0767b6aedb1b43b0",
+          "service_name": "invoice-service",
+          "operation_name": "RPC /invoice_service/process",
+          "start_time_epoch_ms": 1790188550538,
+          "duration_ms": 26,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "597d3388aca540af9b16cd61d442543b",
+      "timestamp": "2026-09-23T18:36:05.491046+00:00",
+      "total_duration_ms": 120,
+      "status": "OK",
+      "root_service": "api-gateway",
+      "services_involved": [
+        "api-gateway",
+        "admin-portal",
+        "search-service",
+        "mongodb-orders"
+      ],
+      "spans": [
+        {
+          "span_id": "6928960836ab4bc3",
+          "parent_span_id": null,
+          "service_name": "api-gateway",
+          "operation_name": "RPC /api_gateway/process",
+          "start_time_epoch_ms": 1790188565491,
+          "duration_ms": 15,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9453a7637ab94294",
+          "parent_span_id": "6928960836ab4bc3",
+          "service_name": "admin-portal",
+          "operation_name": "RPC /admin_portal/process",
+          "start_time_epoch_ms": 1790188565506,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "5940f4cbfd474152",
+          "parent_span_id": "9453a7637ab94294",
+          "service_name": "search-service",
+          "operation_name": "RPC /search_service/process",
+          "start_time_epoch_ms": 1790188565533,
+          "duration_ms": 37,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "5c86ddd8da694a6d",
+          "parent_span_id": "5940f4cbfd474152",
+          "service_name": "mongodb-orders",
+          "operation_name": "RPC /mongodb_orders/process",
+          "start_time_epoch_ms": 1790188565570,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "a9e696b0906340648699be1a1be969b9",
+      "timestamp": "2026-09-23T18:36:20.491046+00:00",
+      "total_duration_ms": 91,
+      "status": "OK",
+      "root_service": "public-bff-cluster-2",
+      "services_involved": [
+        "public-bff-cluster-2",
+        "mobile-frontend",
+        "billing-service",
+        "postgres-replica"
+      ],
+      "spans": [
+        {
+          "span_id": "35c107e67dc948a6",
+          "parent_span_id": null,
+          "service_name": "public-bff-cluster-2",
+          "operation_name": "RPC /public_bff_cluster_2/process",
+          "start_time_epoch_ms": 1790188580491,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "efa77d1080794d80",
+          "parent_span_id": "35c107e67dc948a6",
+          "service_name": "mobile-frontend",
+          "operation_name": "RPC /mobile_frontend/process",
+          "start_time_epoch_ms": 1790188580502,
+          "duration_ms": 16,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "83bc2c73186a4fe9",
+          "parent_span_id": "efa77d1080794d80",
+          "service_name": "billing-service",
+          "operation_name": "RPC /billing_service/process",
+          "start_time_epoch_ms": 1790188580518,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "c6ef830daf594c9a",
+          "parent_span_id": "83bc2c73186a4fe9",
+          "service_name": "postgres-replica",
+          "operation_name": "RPC /postgres_replica/process",
+          "start_time_epoch_ms": 1790188580559,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "1420cfa114b840c58877c9ea40ec7d5f",
+      "timestamp": "2026-09-23T18:36:35.491046+00:00",
+      "total_duration_ms": 66,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "web-frontend-cluster-2",
+        "analytics-collector",
+        "postgres-replica"
+      ],
+      "spans": [
+        {
+          "span_id": "a5c64d3361bc4983",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188595491,
+          "duration_ms": 28,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "4ebe50c50a0140dd",
+          "parent_span_id": "a5c64d3361bc4983",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188595519,
+          "duration_ms": 19,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "52dc025f5c704ff7",
+          "parent_span_id": "4ebe50c50a0140dd",
+          "service_name": "analytics-collector",
+          "operation_name": "RPC /analytics_collector/process",
+          "start_time_epoch_ms": 1790188595538,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "faacdddffb754293",
+          "parent_span_id": "52dc025f5c704ff7",
+          "service_name": "postgres-replica",
+          "operation_name": "RPC /postgres_replica/process",
+          "start_time_epoch_ms": 1790188595547,
+          "duration_ms": 10,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "dc909226fee24a219c4fadd19574ddb0",
+      "timestamp": "2026-09-23T18:36:50.491046+00:00",
+      "total_duration_ms": 2312,
+      "status": "ERROR",
+      "root_service": "mobile-gateway-cluster-2",
+      "services_involved": [
+        "mobile-gateway-cluster-2",
+        "mobile-frontend-cluster-2",
+        "recommendation-engine",
+        "order-orchestrator"
+      ],
+      "spans": [
+        {
+          "span_id": "78b2db99d6a3435d",
+          "parent_span_id": null,
+          "service_name": "mobile-gateway-cluster-2",
+          "operation_name": "RPC /mobile_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188610491,
+          "duration_ms": 416,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 502,
+            "error": true,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "76155c4a1bee4fa9",
+          "parent_span_id": "78b2db99d6a3435d",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188610907,
+          "duration_ms": 387,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "a813a21bf5764313",
+          "parent_span_id": "76155c4a1bee4fa9",
+          "service_name": "recommendation-engine",
+          "operation_name": "RPC /recommendation_engine/process",
+          "start_time_epoch_ms": 1790188611294,
+          "duration_ms": 400,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "524c467bb3bf4994",
+          "parent_span_id": "a813a21bf5764313",
+          "service_name": "order-orchestrator",
+          "operation_name": "RPC /order_orchestrator/process",
+          "start_time_epoch_ms": 1790188611694,
+          "duration_ms": 1109,
+          "status": "ERROR",
+          "tags": {
+            "http.status_code": 504,
+            "error": true,
+            "error.type": "HighCPULatencyException",
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "ffc243fc0c9241bf93839f2b8e4d39dc",
+      "timestamp": "2026-09-23T18:37:05.491046+00:00",
+      "total_duration_ms": 67,
+      "status": "OK",
+      "root_service": "ingress-lb-cluster-2",
+      "services_involved": [
+        "ingress-lb-cluster-2",
+        "mobile-frontend-cluster-2",
+        "report-generator",
+        "discount-service"
+      ],
+      "spans": [
+        {
+          "span_id": "9a96cdebe2df4aab",
+          "parent_span_id": null,
+          "service_name": "ingress-lb-cluster-2",
+          "operation_name": "RPC /ingress_lb_cluster_2/process",
+          "start_time_epoch_ms": 1790188625491,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "663146361a664723",
+          "parent_span_id": "9a96cdebe2df4aab",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188625511,
+          "duration_ms": 12,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "8babb3e6a4e940be",
+          "parent_span_id": "663146361a664723",
+          "service_name": "report-generator",
+          "operation_name": "RPC /report_generator/process",
+          "start_time_epoch_ms": 1790188625523,
+          "duration_ms": 24,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9ca78dee2b9545af",
+          "parent_span_id": "8babb3e6a4e940be",
+          "service_name": "discount-service",
+          "operation_name": "RPC /discount_service/process",
+          "start_time_epoch_ms": 1790188625547,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "380caf770c6846df95efb8af886406f7",
+      "timestamp": "2026-09-23T18:37:20.491046+00:00",
+      "total_duration_ms": 193,
+      "status": "OK",
+      "root_service": "mobile-gateway-cluster-2",
+      "services_involved": [
+        "mobile-gateway-cluster-2",
+        "mobile-frontend-cluster-2",
+        "recommendation-engine-cluster-2",
+        "discount-service",
+        "kafka-broker-2"
+      ],
+      "spans": [
+        {
+          "span_id": "8a5bc7c93e064bd6",
+          "parent_span_id": null,
+          "service_name": "mobile-gateway-cluster-2",
+          "operation_name": "RPC /mobile_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188640491,
+          "duration_ms": 45,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "ec12823520a24d5d",
+          "parent_span_id": "8a5bc7c93e064bd6",
+          "service_name": "mobile-frontend-cluster-2",
+          "operation_name": "RPC /mobile_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188640536,
+          "duration_ms": 35,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "269c337df3da4255",
+          "parent_span_id": "ec12823520a24d5d",
+          "service_name": "recommendation-engine-cluster-2",
+          "operation_name": "RPC /recommendation_engine_cluster_2/process",
+          "start_time_epoch_ms": 1790188640571,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "0c75ee2c726848d5",
+          "parent_span_id": "269c337df3da4255",
+          "service_name": "discount-service",
+          "operation_name": "RPC /discount_service/process",
+          "start_time_epoch_ms": 1790188640598,
+          "duration_ms": 45,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "5b6f5fde2a3a4984",
+          "parent_span_id": "0c75ee2c726848d5",
+          "service_name": "kafka-broker-2",
+          "operation_name": "RPC /kafka_broker_2/process",
+          "start_time_epoch_ms": 1790188640643,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "6106368a6d9a4709a560511e9893c985",
+      "timestamp": "2026-09-23T18:37:35.491046+00:00",
+      "total_duration_ms": 84,
+      "status": "OK",
+      "root_service": "public-bff-cluster-2",
+      "services_involved": [
+        "public-bff-cluster-2",
+        "partner-portal-cluster-2",
+        "auth-service",
+        "sqs-notification-queue"
+      ],
+      "spans": [
+        {
+          "span_id": "605d0444cd2c4bdd",
+          "parent_span_id": null,
+          "service_name": "public-bff-cluster-2",
+          "operation_name": "RPC /public_bff_cluster_2/process",
+          "start_time_epoch_ms": 1790188655491,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "fbec6baa5c2b4315",
+          "parent_span_id": "605d0444cd2c4bdd",
+          "service_name": "partner-portal-cluster-2",
+          "operation_name": "RPC /partner_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188655500,
+          "duration_ms": 41,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9948029a9c954ac6",
+          "parent_span_id": "fbec6baa5c2b4315",
+          "service_name": "auth-service",
+          "operation_name": "RPC /auth_service/process",
+          "start_time_epoch_ms": 1790188655541,
+          "duration_ms": 13,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "57a8c21cecaa4745",
+          "parent_span_id": "9948029a9c954ac6",
+          "service_name": "sqs-notification-queue",
+          "operation_name": "RPC /sqs_notification_queue/process",
+          "start_time_epoch_ms": 1790188655554,
+          "duration_ms": 21,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "f275630838a048bd8516a22655641912",
+      "timestamp": "2026-09-23T18:37:50.491046+00:00",
+      "total_duration_ms": 112,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "web-frontend-cluster-2",
+        "discount-service",
+        "memcached-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "beb32127c7124c67",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188670491,
+          "duration_ms": 44,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "991e82360b5e4860",
+          "parent_span_id": "beb32127c7124c67",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188670535,
+          "duration_ms": 15,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "e4ee6acfc0f94758",
+          "parent_span_id": "991e82360b5e4860",
+          "service_name": "discount-service",
+          "operation_name": "RPC /discount_service/process",
+          "start_time_epoch_ms": 1790188670550,
+          "duration_ms": 30,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "edc6198a19374a80",
+          "parent_span_id": "e4ee6acfc0f94758",
+          "service_name": "memcached-cluster",
+          "operation_name": "RPC /memcached_cluster/process",
+          "start_time_epoch_ms": 1790188670580,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "cd3c1a5200674f1f952f2716850844e0",
+      "timestamp": "2026-09-23T18:38:05.491046+00:00",
+      "total_duration_ms": 126,
+      "status": "OK",
+      "root_service": "ingress-lb-cluster-2",
+      "services_involved": [
+        "ingress-lb-cluster-2",
+        "web-frontend-cluster-2",
+        "tenant-service-cluster-2",
+        "rabbitmq-orders"
+      ],
+      "spans": [
+        {
+          "span_id": "d2eb3dea8da24184",
+          "parent_span_id": null,
+          "service_name": "ingress-lb-cluster-2",
+          "operation_name": "RPC /ingress_lb_cluster_2/process",
+          "start_time_epoch_ms": 1790188685491,
+          "duration_ms": 32,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b8ae7eb119e946e1",
+          "parent_span_id": "d2eb3dea8da24184",
+          "service_name": "web-frontend-cluster-2",
+          "operation_name": "RPC /web_frontend_cluster_2/process",
+          "start_time_epoch_ms": 1790188685523,
+          "duration_ms": 22,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "3f0ac0190beb40ea",
+          "parent_span_id": "b8ae7eb119e946e1",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188685545,
+          "duration_ms": 43,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "61dbeb0b115e42a6",
+          "parent_span_id": "3f0ac0190beb40ea",
+          "service_name": "rabbitmq-orders",
+          "operation_name": "RPC /rabbitmq_orders/process",
+          "start_time_epoch_ms": 1790188685588,
+          "duration_ms": 29,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "779bb200d71742ea9b0f751f2069c894",
+      "timestamp": "2026-09-23T18:38:20.491046+00:00",
+      "total_duration_ms": 93,
+      "status": "OK",
+      "root_service": "public-bff",
+      "services_involved": [
+        "public-bff",
+        "partner-portal",
+        "invoice-service",
+        "elasticsearch-cluster"
+      ],
+      "spans": [
+        {
+          "span_id": "b18820ba7c8545bc",
+          "parent_span_id": null,
+          "service_name": "public-bff",
+          "operation_name": "RPC /public_bff/process",
+          "start_time_epoch_ms": 1790188700491,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "e5031a194a7c49e0",
+          "parent_span_id": "b18820ba7c8545bc",
+          "service_name": "partner-portal",
+          "operation_name": "RPC /partner_portal/process",
+          "start_time_epoch_ms": 1790188700516,
+          "duration_ms": 23,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "37f022c1b6614ea1",
+          "parent_span_id": "e5031a194a7c49e0",
+          "service_name": "invoice-service",
+          "operation_name": "RPC /invoice_service/process",
+          "start_time_epoch_ms": 1790188700539,
+          "duration_ms": 25,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "59231c6d52404731",
+          "parent_span_id": "37f022c1b6614ea1",
+          "service_name": "elasticsearch-cluster",
+          "operation_name": "RPC /elasticsearch_cluster/process",
+          "start_time_epoch_ms": 1790188700564,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "c75bf97ea8b24de7a93988bbcb103ced",
+      "timestamp": "2026-09-23T18:38:35.491046+00:00",
+      "total_duration_ms": 103,
+      "status": "OK",
+      "root_service": "ingress-lb",
+      "services_involved": [
+        "ingress-lb",
+        "mobile-frontend",
+        "search-service"
+      ],
+      "spans": [
+        {
+          "span_id": "b951c78b42b940d7",
+          "parent_span_id": null,
+          "service_name": "ingress-lb",
+          "operation_name": "RPC /ingress_lb/process",
+          "start_time_epoch_ms": 1790188715491,
+          "duration_ms": 34,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9931321ea3aa4bf7",
+          "parent_span_id": "b951c78b42b940d7",
+          "service_name": "mobile-frontend",
+          "operation_name": "RPC /mobile_frontend/process",
+          "start_time_epoch_ms": 1790188715525,
+          "duration_ms": 31,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "407314d424954eb2",
+          "parent_span_id": "9931321ea3aa4bf7",
+          "service_name": "search-service",
+          "operation_name": "RPC /search_service/process",
+          "start_time_epoch_ms": 1790188715556,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "2d94ac39dc38432bb866109d63eb99bb",
+      "timestamp": "2026-09-23T18:38:50.491046+00:00",
+      "total_duration_ms": 127,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "admin-portal",
+        "user-profile-service",
+        "pricing-engine"
+      ],
+      "spans": [
+        {
+          "span_id": "41bde1fe46a84f4e",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188730491,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "5f5dd775e5874120",
+          "parent_span_id": "41bde1fe46a84f4e",
+          "service_name": "admin-portal",
+          "operation_name": "RPC /admin_portal/process",
+          "start_time_epoch_ms": 1790188730529,
+          "duration_ms": 11,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "b76a1aa098044baa",
+          "parent_span_id": "5f5dd775e5874120",
+          "service_name": "user-profile-service",
+          "operation_name": "RPC /user_profile_service/process",
+          "start_time_epoch_ms": 1790188730540,
+          "duration_ms": 33,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "eab7e07d2fae430b",
+          "parent_span_id": "b76a1aa098044baa",
+          "service_name": "pricing-engine",
+          "operation_name": "RPC /pricing_engine/process",
+          "start_time_epoch_ms": 1790188730573,
+          "duration_ms": 45,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "e3dff73987944d5ab809cde1b176f64d",
+      "timestamp": "2026-09-23T18:39:05.491046+00:00",
+      "total_duration_ms": 147,
+      "status": "OK",
+      "root_service": "api-gateway",
+      "services_involved": [
+        "api-gateway",
+        "partner-portal-cluster-2",
+        "auth-service-cluster-2",
+        "order-fulfillment-cluster-2",
+        "catalog-service-cluster-2"
+      ],
+      "spans": [
+        {
+          "span_id": "4e16b6b3db78498e",
+          "parent_span_id": null,
+          "service_name": "api-gateway",
+          "operation_name": "RPC /api_gateway/process",
+          "start_time_epoch_ms": 1790188745491,
+          "duration_ms": 43,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "2e6f084494984c69",
+          "parent_span_id": "4e16b6b3db78498e",
+          "service_name": "partner-portal-cluster-2",
+          "operation_name": "RPC /partner_portal_cluster_2/process",
+          "start_time_epoch_ms": 1790188745534,
+          "duration_ms": 29,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "c15f1f202cc94378",
+          "parent_span_id": "2e6f084494984c69",
+          "service_name": "auth-service-cluster-2",
+          "operation_name": "RPC /auth_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188745563,
+          "duration_ms": 24,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "4120b0c6c6834b4b",
+          "parent_span_id": "c15f1f202cc94378",
+          "service_name": "order-fulfillment-cluster-2",
+          "operation_name": "RPC /order_fulfillment_cluster_2/process",
+          "start_time_epoch_ms": 1790188745587,
+          "duration_ms": 42,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "79cd88bb9a6e429d",
+          "parent_span_id": "4120b0c6c6834b4b",
+          "service_name": "catalog-service-cluster-2",
+          "operation_name": "RPC /catalog_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188745629,
+          "duration_ms": 9,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    },
+    {
+      "trace_id": "96885d7065bc4a269e2424d8626c8a6b",
+      "timestamp": "2026-09-23T18:39:20.491046+00:00",
+      "total_duration_ms": 131,
+      "status": "OK",
+      "root_service": "api-gateway-cluster-2",
+      "services_involved": [
+        "api-gateway-cluster-2",
+        "mobile-frontend",
+        "billing-service",
+        "tenant-service-cluster-2",
+        "report-generator"
+      ],
+      "spans": [
+        {
+          "span_id": "1d6a12e2c0024de7",
+          "parent_span_id": null,
+          "service_name": "api-gateway-cluster-2",
+          "operation_name": "RPC /api_gateway_cluster_2/process",
+          "start_time_epoch_ms": 1790188760491,
+          "duration_ms": 16,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "9fecce86d062457c",
+          "parent_span_id": "1d6a12e2c0024de7",
+          "service_name": "mobile-frontend",
+          "operation_name": "RPC /mobile_frontend/process",
+          "start_time_epoch_ms": 1790188760507,
+          "duration_ms": 20,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "ebd54600abf440b3",
+          "parent_span_id": "9fecce86d062457c",
+          "service_name": "billing-service",
+          "operation_name": "RPC /billing_service/process",
+          "start_time_epoch_ms": 1790188760527,
+          "duration_ms": 30,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "d1283ffdca7747cf",
+          "parent_span_id": "ebd54600abf440b3",
+          "service_name": "tenant-service-cluster-2",
+          "operation_name": "RPC /tenant_service_cluster_2/process",
+          "start_time_epoch_ms": 1790188760557,
+          "duration_ms": 38,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        },
+        {
+          "span_id": "87c82729d4b24457",
+          "parent_span_id": "d1283ffdca7747cf",
+          "service_name": "report-generator",
+          "operation_name": "RPC /report_generator/process",
+          "start_time_epoch_ms": 1790188760595,
+          "duration_ms": 27,
+          "status": "OK",
+          "tags": {
+            "http.status_code": 200,
+            "error": false,
+            "component": "HTTP Client",
+            "span.kind": "server"
+          }
+        }
+      ]
+    }
+  ],
+  "count": 60
+}

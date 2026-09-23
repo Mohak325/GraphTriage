@@ -1,0 +1,3326 @@
+{
+  "nodes": [
+    {
+      "id": "api-gateway",
+      "name": "api-gateway",
+      "type": "gateway",
+      "tier": "gateway",
+      "anomaly_score": 0.287,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 34.2,
+        "memory_percent": 30.8,
+        "latency_p95": 107.19999999999999,
+        "error_rate": 2.4099999999999997
+      }
+    },
+    {
+      "id": "ingress-lb",
+      "name": "ingress-lb",
+      "type": "gateway",
+      "tier": "gateway",
+      "anomaly_score": 0.297,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 37.1,
+        "memory_percent": 50.3,
+        "latency_p95": 130.5,
+        "error_rate": 2.42
+      }
+    },
+    {
+      "id": "public-bff",
+      "name": "public-bff",
+      "type": "gateway",
+      "tier": "gateway",
+      "anomaly_score": 0.267,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 27.7,
+        "memory_percent": 30.9,
+        "latency_p95": 99.3,
+        "error_rate": 2.39
+      }
+    },
+    {
+      "id": "mobile-gateway",
+      "name": "mobile-gateway",
+      "type": "gateway",
+      "tier": "gateway",
+      "anomaly_score": 0.053,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 15.8,
+        "memory_percent": 36.0,
+        "latency_p95": 49.3,
+        "error_rate": 0.69
+      }
+    },
+    {
+      "id": "web-frontend",
+      "name": "web-frontend",
+      "type": "service",
+      "tier": "frontend",
+      "anomaly_score": 0.585,
+      "status": "degraded",
+      "metrics": {
+        "cpu_percent": 21.6,
+        "memory_percent": 47.7,
+        "latency_p95": 214.2,
+        "error_rate": 4.68
+      }
+    },
+    {
+      "id": "mobile-frontend",
+      "name": "mobile-frontend",
+      "type": "service",
+      "tier": "frontend",
+      "anomaly_score": 0.121,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 39.2,
+        "memory_percent": 50.9,
+        "latency_p95": 59.5,
+        "error_rate": 1.05
+      }
+    },
+    {
+      "id": "admin-portal",
+      "name": "admin-portal",
+      "type": "service",
+      "tier": "frontend",
+      "anomaly_score": 0.442,
+      "status": "degraded",
+      "metrics": {
+        "cpu_percent": 43.7,
+        "memory_percent": 40.1,
+        "latency_p95": 147.7,
+        "error_rate": 3.59
+      }
+    },
+    {
+      "id": "partner-portal",
+      "name": "partner-portal",
+      "type": "service",
+      "tier": "frontend",
+      "anomaly_score": 0.221,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 40.4,
+        "memory_percent": 48.1,
+        "latency_p95": 104.9,
+        "error_rate": 2.13
+      }
+    },
+    {
+      "id": "auth-service",
+      "name": "auth-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 31.1,
+        "memory_percent": 59.2,
+        "latency_p95": 24.5,
+        "error_rate": 0.28
+      }
+    },
+    {
+      "id": "user-profile-service",
+      "name": "user-profile-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.059,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 39.9,
+        "memory_percent": 48.6,
+        "latency_p95": 58.099999999999994,
+        "error_rate": 0.76
+      }
+    },
+    {
+      "id": "tenant-service",
+      "name": "tenant-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 36.1,
+        "memory_percent": 31.4,
+        "latency_p95": 19.5,
+        "error_rate": 0.14
+      }
+    },
+    {
+      "id": "catalog-service",
+      "name": "catalog-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 17.4,
+        "memory_percent": 37.0,
+        "latency_p95": 23.1,
+        "error_rate": 0.35
+      }
+    },
+    {
+      "id": "search-service",
+      "name": "search-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 34.1,
+        "memory_percent": 40.9,
+        "latency_p95": 31.7,
+        "error_rate": 0.30000000000000004
+      }
+    },
+    {
+      "id": "recommendation-engine",
+      "name": "recommendation-engine",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.208,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 23.0,
+        "memory_percent": 58.1,
+        "latency_p95": 95.8,
+        "error_rate": 1.96
+      }
+    },
+    {
+      "id": "cart-service",
+      "name": "cart-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.254,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 20.1,
+        "memory_percent": 51.9,
+        "latency_p95": 93.6,
+        "error_rate": 2.2199999999999998
+      }
+    },
+    {
+      "id": "order-orchestrator",
+      "name": "order-orchestrator",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.98,
+      "status": "critical",
+      "metrics": {
+        "cpu_percent": 98.4,
+        "memory_percent": 49.2,
+        "latency_p95": 840.5,
+        "error_rate": 12.4
+      }
+    },
+    {
+      "id": "order-fulfillment",
+      "name": "order-fulfillment",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 40.3,
+        "memory_percent": 53.3,
+        "latency_p95": 19.6,
+        "error_rate": 0.02
+      }
+    },
+    {
+      "id": "payment-gateway-proxy",
+      "name": "payment-gateway-proxy",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 24.5,
+        "memory_percent": 38.0,
+        "latency_p95": 19.0,
+        "error_rate": 0.47
+      }
+    },
+    {
+      "id": "payment-processor",
+      "name": "payment-processor",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 41.3,
+        "memory_percent": 39.4,
+        "latency_p95": 38.7,
+        "error_rate": 0.34
+      }
+    },
+    {
+      "id": "fraud-detection",
+      "name": "fraud-detection",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 42.4,
+        "memory_percent": 43.8,
+        "latency_p95": 20.7,
+        "error_rate": 0.12
+      }
+    },
+    {
+      "id": "billing-service",
+      "name": "billing-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.488,
+      "status": "degraded",
+      "metrics": {
+        "cpu_percent": 31.8,
+        "memory_percent": 37.9,
+        "latency_p95": 177.70000000000002,
+        "error_rate": 4.35
+      }
+    },
+    {
+      "id": "invoice-service",
+      "name": "invoice-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 27.0,
+        "memory_percent": 36.6,
+        "latency_p95": 46.699999999999996,
+        "error_rate": 0.3
+      }
+    },
+    {
+      "id": "inventory-manager",
+      "name": "inventory-manager",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.501,
+      "status": "degraded",
+      "metrics": {
+        "cpu_percent": 17.7,
+        "memory_percent": 31.4,
+        "latency_p95": 165.9,
+        "error_rate": 4.319999999999999
+      }
+    },
+    {
+      "id": "warehouse-dispatcher",
+      "name": "warehouse-dispatcher",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 38.8,
+        "memory_percent": 42.7,
+        "latency_p95": 14.1,
+        "error_rate": 0.19
+      }
+    },
+    {
+      "id": "shipping-tracker",
+      "name": "shipping-tracker",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.097,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 44.9,
+        "memory_percent": 45.9,
+        "latency_p95": 73.1,
+        "error_rate": 1.21
+      }
+    },
+    {
+      "id": "pricing-engine",
+      "name": "pricing-engine",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.14,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 15.3,
+        "memory_percent": 51.6,
+        "latency_p95": 76.5,
+        "error_rate": 1.3900000000000001
+      }
+    },
+    {
+      "id": "discount-service",
+      "name": "discount-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 23.0,
+        "memory_percent": 49.2,
+        "latency_p95": 15.7,
+        "error_rate": 0.22
+      }
+    },
+    {
+      "id": "notification-dispatcher",
+      "name": "notification-dispatcher",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 28.6,
+        "memory_percent": 58.6,
+        "latency_p95": 42.1,
+        "error_rate": 0.16
+      }
+    },
+    {
+      "id": "email-service",
+      "name": "email-service",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 30.0,
+        "memory_percent": 35.4,
+        "latency_p95": 45.4,
+        "error_rate": 0.53
+      }
+    },
+    {
+      "id": "sms-gateway",
+      "name": "sms-gateway",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.127,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 24.0,
+        "memory_percent": 49.2,
+        "latency_p95": 70.2,
+        "error_rate": 1.1
+      }
+    },
+    {
+      "id": "push-notification",
+      "name": "push-notification",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 37.9,
+        "memory_percent": 46.2,
+        "latency_p95": 51.2,
+        "error_rate": 0.63
+      }
+    },
+    {
+      "id": "audit-logger",
+      "name": "audit-logger",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 15.0,
+        "memory_percent": 39.7,
+        "latency_p95": 14.1,
+        "error_rate": 0.5
+      }
+    },
+    {
+      "id": "analytics-collector",
+      "name": "analytics-collector",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 41.4,
+        "memory_percent": 54.9,
+        "latency_p95": 27.5,
+        "error_rate": 0.17
+      }
+    },
+    {
+      "id": "report-generator",
+      "name": "report-generator",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 41.3,
+        "memory_percent": 58.4,
+        "latency_p95": 14.8,
+        "error_rate": 0.24
+      }
+    },
+    {
+      "id": "postgres-primary",
+      "name": "postgres-primary",
+      "type": "database",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 17.1,
+        "memory_percent": 52.8,
+        "latency_p95": 37.3,
+        "error_rate": 0.06
+      }
+    },
+    {
+      "id": "postgres-replica",
+      "name": "postgres-replica",
+      "type": "database",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 29.3,
+        "memory_percent": 46.5,
+        "latency_p95": 20.7,
+        "error_rate": 0.44
+      }
+    },
+    {
+      "id": "mysql-cluster",
+      "name": "mysql-cluster",
+      "type": "database",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 27.7,
+        "memory_percent": 36.4,
+        "latency_p95": 29.8,
+        "error_rate": 0.36
+      }
+    },
+    {
+      "id": "mongodb-orders",
+      "name": "mongodb-orders",
+      "type": "database",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 21.0,
+        "memory_percent": 39.4,
+        "latency_p95": 44.8,
+        "error_rate": 0.32
+      }
+    },
+    {
+      "id": "redis-cache-master",
+      "name": "redis-cache-master",
+      "type": "cache",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 28.1,
+        "memory_percent": 45.5,
+        "latency_p95": 16.0,
+        "error_rate": 0.11
+      }
+    },
+    {
+      "id": "redis-session-store",
+      "name": "redis-session-store",
+      "type": "cache",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 25.1,
+        "memory_percent": 47.6,
+        "latency_p95": 19.6,
+        "error_rate": 0.11
+      }
+    },
+    {
+      "id": "memcached-cluster",
+      "name": "memcached-cluster",
+      "type": "cache",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 17.1,
+        "memory_percent": 48.9,
+        "latency_p95": 19.6,
+        "error_rate": 0.45
+      }
+    },
+    {
+      "id": "elasticsearch-cluster",
+      "name": "elasticsearch-cluster",
+      "type": "database",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 40.8,
+        "memory_percent": 32.1,
+        "latency_p95": 19.9,
+        "error_rate": 0.33
+      }
+    },
+    {
+      "id": "neo4j-graph-db",
+      "name": "neo4j-graph-db",
+      "type": "database",
+      "tier": "data",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 21.4,
+        "memory_percent": 34.0,
+        "latency_p95": 42.9,
+        "error_rate": 0.29
+      }
+    },
+    {
+      "id": "kafka-broker-1",
+      "name": "kafka-broker-1",
+      "type": "queue",
+      "tier": "messaging",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 29.2,
+        "memory_percent": 53.5,
+        "latency_p95": 38.6,
+        "error_rate": 0.1
+      }
+    },
+    {
+      "id": "kafka-broker-2",
+      "name": "kafka-broker-2",
+      "type": "queue",
+      "tier": "messaging",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 17.9,
+        "memory_percent": 42.9,
+        "latency_p95": 26.0,
+        "error_rate": 0.23
+      }
+    },
+    {
+      "id": "kafka-broker-3",
+      "name": "kafka-broker-3",
+      "type": "queue",
+      "tier": "messaging",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 36.9,
+        "memory_percent": 50.2,
+        "latency_p95": 44.5,
+        "error_rate": 0.05
+      }
+    },
+    {
+      "id": "rabbitmq-orders",
+      "name": "rabbitmq-orders",
+      "type": "queue",
+      "tier": "messaging",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 27.1,
+        "memory_percent": 40.2,
+        "latency_p95": 40.4,
+        "error_rate": 0.12
+      }
+    },
+    {
+      "id": "sqs-notification-queue",
+      "name": "sqs-notification-queue",
+      "type": "queue",
+      "tier": "messaging",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 20.7,
+        "memory_percent": 43.5,
+        "latency_p95": 25.9,
+        "error_rate": 0.14
+      }
+    },
+    {
+      "id": "api-gateway-cluster-2",
+      "name": "api-gateway-cluster-2",
+      "type": "gateway",
+      "tier": "gateway",
+      "anomaly_score": 0.293,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 22.5,
+        "memory_percent": 57.7,
+        "latency_p95": 114.5,
+        "error_rate": 2.77
+      }
+    },
+    {
+      "id": "ingress-lb-cluster-2",
+      "name": "ingress-lb-cluster-2",
+      "type": "gateway",
+      "tier": "gateway",
+      "anomaly_score": 0.228,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 31.5,
+        "memory_percent": 31.5,
+        "latency_p95": 113.4,
+        "error_rate": 2.24
+      }
+    },
+    {
+      "id": "public-bff-cluster-2",
+      "name": "public-bff-cluster-2",
+      "type": "gateway",
+      "tier": "gateway",
+      "anomaly_score": 0.182,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 44.1,
+        "memory_percent": 57.8,
+        "latency_p95": 94.6,
+        "error_rate": 1.54
+      }
+    },
+    {
+      "id": "mobile-gateway-cluster-2",
+      "name": "mobile-gateway-cluster-2",
+      "type": "gateway",
+      "tier": "gateway",
+      "anomaly_score": 0.186,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 29.6,
+        "memory_percent": 36.4,
+        "latency_p95": 81.0,
+        "error_rate": 1.52
+      }
+    },
+    {
+      "id": "web-frontend-cluster-2",
+      "name": "web-frontend-cluster-2",
+      "type": "service",
+      "tier": "frontend",
+      "anomaly_score": 0.263,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 26.4,
+        "memory_percent": 59.6,
+        "latency_p95": 99.7,
+        "error_rate": 2.49
+      }
+    },
+    {
+      "id": "mobile-frontend-cluster-2",
+      "name": "mobile-frontend-cluster-2",
+      "type": "service",
+      "tier": "frontend",
+      "anomaly_score": 0.085,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 28.7,
+        "memory_percent": 42.7,
+        "latency_p95": 69.1,
+        "error_rate": 1.1800000000000002
+      }
+    },
+    {
+      "id": "admin-portal-cluster-2",
+      "name": "admin-portal-cluster-2",
+      "type": "service",
+      "tier": "frontend",
+      "anomaly_score": 0.358,
+      "status": "degraded",
+      "metrics": {
+        "cpu_percent": 31.7,
+        "memory_percent": 51.6,
+        "latency_p95": 124.5,
+        "error_rate": 3.01
+      }
+    },
+    {
+      "id": "partner-portal-cluster-2",
+      "name": "partner-portal-cluster-2",
+      "type": "service",
+      "tier": "frontend",
+      "anomaly_score": 0.077,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 44.1,
+        "memory_percent": 47.4,
+        "latency_p95": 53.0,
+        "error_rate": 0.99
+      }
+    },
+    {
+      "id": "auth-service-cluster-2",
+      "name": "auth-service-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.054,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 16.7,
+        "memory_percent": 47.5,
+        "latency_p95": 44.8,
+        "error_rate": 0.86
+      }
+    },
+    {
+      "id": "user-profile-service-cluster-2",
+      "name": "user-profile-service-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 19.7,
+        "memory_percent": 58.8,
+        "latency_p95": 16.4,
+        "error_rate": 0.14
+      }
+    },
+    {
+      "id": "tenant-service-cluster-2",
+      "name": "tenant-service-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 32.9,
+        "memory_percent": 50.3,
+        "latency_p95": 34.5,
+        "error_rate": 0.45
+      }
+    },
+    {
+      "id": "catalog-service-cluster-2",
+      "name": "catalog-service-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 41.7,
+        "memory_percent": 37.4,
+        "latency_p95": 31.6,
+        "error_rate": 0.31
+      }
+    },
+    {
+      "id": "search-service-cluster-2",
+      "name": "search-service-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.058,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 27.6,
+        "memory_percent": 47.5,
+        "latency_p95": 46.7,
+        "error_rate": 0.9299999999999999
+      }
+    },
+    {
+      "id": "recommendation-engine-cluster-2",
+      "name": "recommendation-engine-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 21.1,
+        "memory_percent": 51.5,
+        "latency_p95": 25.299999999999997,
+        "error_rate": 0.34
+      }
+    },
+    {
+      "id": "cart-service-cluster-2",
+      "name": "cart-service-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 35.2,
+        "memory_percent": 39.0,
+        "latency_p95": 22.4,
+        "error_rate": 0.38
+      }
+    },
+    {
+      "id": "order-orchestrator-cluster-2",
+      "name": "order-orchestrator-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.107,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 17.2,
+        "memory_percent": 43.7,
+        "latency_p95": 77.0,
+        "error_rate": 1.3599999999999999
+      }
+    },
+    {
+      "id": "order-fulfillment-cluster-2",
+      "name": "order-fulfillment-cluster-2",
+      "type": "service",
+      "tier": "backend",
+      "anomaly_score": 0.05,
+      "status": "healthy",
+      "metrics": {
+        "cpu_percent": 17.2,
+        "memory_percent": 36.4,
+        "latency_p95": 20.8,
+        "error_rate": 0.47
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-0-api-gateway-mobile-frontend",
+      "source": "api-gateway",
+      "target": "mobile-frontend",
+      "type": "CALLS",
+      "weight": 0.75,
+      "latency_ms": 13.2
+    },
+    {
+      "id": "e-1-api-gateway-partner-portal-cluster-2",
+      "source": "api-gateway",
+      "target": "partner-portal-cluster-2",
+      "type": "CALLS",
+      "weight": 0.91,
+      "latency_ms": 10.7
+    },
+    {
+      "id": "e-2-api-gateway-admin-portal",
+      "source": "api-gateway",
+      "target": "admin-portal",
+      "type": "CALLS",
+      "weight": 1.0,
+      "latency_ms": 11.2
+    },
+    {
+      "id": "e-3-api-gateway-mobile-frontend-cluster-2",
+      "source": "api-gateway",
+      "target": "mobile-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.7,
+      "latency_ms": 13.0
+    },
+    {
+      "id": "e-4-ingress-lb-web-frontend-cluster-2",
+      "source": "ingress-lb",
+      "target": "web-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 13.8
+    },
+    {
+      "id": "e-5-ingress-lb-mobile-frontend-cluster-2",
+      "source": "ingress-lb",
+      "target": "mobile-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.92,
+      "latency_ms": 5.7
+    },
+    {
+      "id": "e-6-ingress-lb-web-frontend",
+      "source": "ingress-lb",
+      "target": "web-frontend",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 6.3
+    },
+    {
+      "id": "e-7-ingress-lb-mobile-frontend",
+      "source": "ingress-lb",
+      "target": "mobile-frontend",
+      "type": "CALLS",
+      "weight": 0.8,
+      "latency_ms": 11.6
+    },
+    {
+      "id": "e-8-public-bff-web-frontend-cluster-2",
+      "source": "public-bff",
+      "target": "web-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.97,
+      "latency_ms": 13.3
+    },
+    {
+      "id": "e-9-public-bff-partner-portal-cluster-2",
+      "source": "public-bff",
+      "target": "partner-portal-cluster-2",
+      "type": "CALLS",
+      "weight": 0.73,
+      "latency_ms": 8.7
+    },
+    {
+      "id": "e-10-public-bff-partner-portal",
+      "source": "public-bff",
+      "target": "partner-portal",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 4.0
+    },
+    {
+      "id": "e-11-public-bff-admin-portal",
+      "source": "public-bff",
+      "target": "admin-portal",
+      "type": "CALLS",
+      "weight": 0.93,
+      "latency_ms": 11.0
+    },
+    {
+      "id": "e-12-mobile-gateway-web-frontend-cluster-2",
+      "source": "mobile-gateway",
+      "target": "web-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.87,
+      "latency_ms": 8.7
+    },
+    {
+      "id": "e-13-mobile-gateway-mobile-frontend",
+      "source": "mobile-gateway",
+      "target": "mobile-frontend",
+      "type": "CALLS",
+      "weight": 0.7,
+      "latency_ms": 4.8
+    },
+    {
+      "id": "e-14-mobile-gateway-mobile-frontend-cluster-2",
+      "source": "mobile-gateway",
+      "target": "mobile-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.96,
+      "latency_ms": 13.9
+    },
+    {
+      "id": "e-15-mobile-gateway-partner-portal",
+      "source": "mobile-gateway",
+      "target": "partner-portal",
+      "type": "CALLS",
+      "weight": 0.86,
+      "latency_ms": 13.2
+    },
+    {
+      "id": "e-16-web-frontend-order-fulfillment-cluster-2",
+      "source": "web-frontend",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.77,
+      "latency_ms": 16.9
+    },
+    {
+      "id": "e-17-web-frontend-sms-gateway",
+      "source": "web-frontend",
+      "target": "sms-gateway",
+      "type": "CALLS",
+      "weight": 0.85,
+      "latency_ms": 18.7
+    },
+    {
+      "id": "e-18-web-frontend-user-profile-service",
+      "source": "web-frontend",
+      "target": "user-profile-service",
+      "type": "CALLS",
+      "weight": 0.94,
+      "latency_ms": 12.3
+    },
+    {
+      "id": "e-19-web-frontend-order-orchestrator",
+      "source": "web-frontend",
+      "target": "order-orchestrator",
+      "type": "CALLS",
+      "weight": 0.9,
+      "latency_ms": 13.8
+    },
+    {
+      "id": "e-20-web-frontend-tenant-service-cluster-2",
+      "source": "web-frontend",
+      "target": "tenant-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.52,
+      "latency_ms": 18.7
+    },
+    {
+      "id": "e-21-web-frontend-order-fulfillment",
+      "source": "web-frontend",
+      "target": "order-fulfillment",
+      "type": "CALLS",
+      "weight": 0.73,
+      "latency_ms": 26.1
+    },
+    {
+      "id": "e-22-web-frontend-recommendation-engine",
+      "source": "web-frontend",
+      "target": "recommendation-engine",
+      "type": "CALLS",
+      "weight": 0.81,
+      "latency_ms": 28.8
+    },
+    {
+      "id": "e-23-web-frontend-discount-service",
+      "source": "web-frontend",
+      "target": "discount-service",
+      "type": "CALLS",
+      "weight": 0.83,
+      "latency_ms": 13.9
+    },
+    {
+      "id": "e-24-web-frontend-catalog-service-cluster-2",
+      "source": "web-frontend",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.69,
+      "latency_ms": 29.0
+    },
+    {
+      "id": "e-25-web-frontend-cart-service-cluster-2",
+      "source": "web-frontend",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.91,
+      "latency_ms": 22.5
+    },
+    {
+      "id": "e-26-web-frontend-catalog-service",
+      "source": "web-frontend",
+      "target": "catalog-service",
+      "type": "CALLS",
+      "weight": 0.8,
+      "latency_ms": 12.5
+    },
+    {
+      "id": "e-27-mobile-frontend-notification-dispatcher",
+      "source": "mobile-frontend",
+      "target": "notification-dispatcher",
+      "type": "CALLS",
+      "weight": 0.69,
+      "latency_ms": 28.8
+    },
+    {
+      "id": "e-28-mobile-frontend-cart-service-cluster-2",
+      "source": "mobile-frontend",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.8,
+      "latency_ms": 28.1
+    },
+    {
+      "id": "e-29-mobile-frontend-order-fulfillment-cluster-2",
+      "source": "mobile-frontend",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 16.0
+    },
+    {
+      "id": "e-30-mobile-frontend-auth-service-cluster-2",
+      "source": "mobile-frontend",
+      "target": "auth-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.75,
+      "latency_ms": 10.0
+    },
+    {
+      "id": "e-31-mobile-frontend-payment-processor",
+      "source": "mobile-frontend",
+      "target": "payment-processor",
+      "type": "CALLS",
+      "weight": 0.63,
+      "latency_ms": 18.6
+    },
+    {
+      "id": "e-32-mobile-frontend-billing-service",
+      "source": "mobile-frontend",
+      "target": "billing-service",
+      "type": "CALLS",
+      "weight": 0.76,
+      "latency_ms": 23.1
+    },
+    {
+      "id": "e-33-mobile-frontend-push-notification",
+      "source": "mobile-frontend",
+      "target": "push-notification",
+      "type": "CALLS",
+      "weight": 0.71,
+      "latency_ms": 18.8
+    },
+    {
+      "id": "e-34-mobile-frontend-payment-gateway-proxy",
+      "source": "mobile-frontend",
+      "target": "payment-gateway-proxy",
+      "type": "CALLS",
+      "weight": 0.6,
+      "latency_ms": 19.5
+    },
+    {
+      "id": "e-35-mobile-frontend-pricing-engine",
+      "source": "mobile-frontend",
+      "target": "pricing-engine",
+      "type": "CALLS",
+      "weight": 0.91,
+      "latency_ms": 25.9
+    },
+    {
+      "id": "e-36-mobile-frontend-search-service",
+      "source": "mobile-frontend",
+      "target": "search-service",
+      "type": "CALLS",
+      "weight": 0.58,
+      "latency_ms": 11.7
+    },
+    {
+      "id": "e-37-mobile-frontend-cart-service",
+      "source": "mobile-frontend",
+      "target": "cart-service",
+      "type": "CALLS",
+      "weight": 0.73,
+      "latency_ms": 22.7
+    },
+    {
+      "id": "e-38-admin-portal-sms-gateway",
+      "source": "admin-portal",
+      "target": "sms-gateway",
+      "type": "CALLS",
+      "weight": 0.94,
+      "latency_ms": 22.2
+    },
+    {
+      "id": "e-39-admin-portal-recommendation-engine",
+      "source": "admin-portal",
+      "target": "recommendation-engine",
+      "type": "CALLS",
+      "weight": 0.85,
+      "latency_ms": 19.1
+    },
+    {
+      "id": "e-40-admin-portal-warehouse-dispatcher",
+      "source": "admin-portal",
+      "target": "warehouse-dispatcher",
+      "type": "CALLS",
+      "weight": 0.9,
+      "latency_ms": 21.5
+    },
+    {
+      "id": "e-41-admin-portal-notification-dispatcher",
+      "source": "admin-portal",
+      "target": "notification-dispatcher",
+      "type": "CALLS",
+      "weight": 0.82,
+      "latency_ms": 17.7
+    },
+    {
+      "id": "e-42-admin-portal-order-orchestrator",
+      "source": "admin-portal",
+      "target": "order-orchestrator",
+      "type": "CALLS",
+      "weight": 0.68,
+      "latency_ms": 13.0
+    },
+    {
+      "id": "e-43-admin-portal-report-generator",
+      "source": "admin-portal",
+      "target": "report-generator",
+      "type": "CALLS",
+      "weight": 0.81,
+      "latency_ms": 27.9
+    },
+    {
+      "id": "e-44-admin-portal-cart-service",
+      "source": "admin-portal",
+      "target": "cart-service",
+      "type": "CALLS",
+      "weight": 0.89,
+      "latency_ms": 27.7
+    },
+    {
+      "id": "e-45-admin-portal-search-service",
+      "source": "admin-portal",
+      "target": "search-service",
+      "type": "CALLS",
+      "weight": 0.85,
+      "latency_ms": 14.4
+    },
+    {
+      "id": "e-46-admin-portal-auth-service",
+      "source": "admin-portal",
+      "target": "auth-service",
+      "type": "CALLS",
+      "weight": 0.86,
+      "latency_ms": 23.9
+    },
+    {
+      "id": "e-47-admin-portal-user-profile-service",
+      "source": "admin-portal",
+      "target": "user-profile-service",
+      "type": "CALLS",
+      "weight": 0.71,
+      "latency_ms": 21.1
+    },
+    {
+      "id": "e-48-admin-portal-search-service-cluster-2",
+      "source": "admin-portal",
+      "target": "search-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.91,
+      "latency_ms": 12.4
+    },
+    {
+      "id": "e-49-partner-portal-order-fulfillment",
+      "source": "partner-portal",
+      "target": "order-fulfillment",
+      "type": "CALLS",
+      "weight": 0.9,
+      "latency_ms": 24.9
+    },
+    {
+      "id": "e-50-partner-portal-catalog-service-cluster-2",
+      "source": "partner-portal",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.71,
+      "latency_ms": 15.2
+    },
+    {
+      "id": "e-51-partner-portal-email-service",
+      "source": "partner-portal",
+      "target": "email-service",
+      "type": "CALLS",
+      "weight": 0.61,
+      "latency_ms": 22.8
+    },
+    {
+      "id": "e-52-partner-portal-tenant-service-cluster-2",
+      "source": "partner-portal",
+      "target": "tenant-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.84,
+      "latency_ms": 20.4
+    },
+    {
+      "id": "e-53-partner-portal-notification-dispatcher",
+      "source": "partner-portal",
+      "target": "notification-dispatcher",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 15.5
+    },
+    {
+      "id": "e-54-partner-portal-auth-service-cluster-2",
+      "source": "partner-portal",
+      "target": "auth-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.53,
+      "latency_ms": 15.7
+    },
+    {
+      "id": "e-55-partner-portal-audit-logger",
+      "source": "partner-portal",
+      "target": "audit-logger",
+      "type": "CALLS",
+      "weight": 0.62,
+      "latency_ms": 16.4
+    },
+    {
+      "id": "e-56-partner-portal-shipping-tracker",
+      "source": "partner-portal",
+      "target": "shipping-tracker",
+      "type": "CALLS",
+      "weight": 0.74,
+      "latency_ms": 12.8
+    },
+    {
+      "id": "e-57-partner-portal-invoice-service",
+      "source": "partner-portal",
+      "target": "invoice-service",
+      "type": "CALLS",
+      "weight": 0.6,
+      "latency_ms": 23.9
+    },
+    {
+      "id": "e-58-partner-portal-pricing-engine",
+      "source": "partner-portal",
+      "target": "pricing-engine",
+      "type": "CALLS",
+      "weight": 0.82,
+      "latency_ms": 11.3
+    },
+    {
+      "id": "e-59-partner-portal-inventory-manager",
+      "source": "partner-portal",
+      "target": "inventory-manager",
+      "type": "CALLS",
+      "weight": 0.68,
+      "latency_ms": 20.9
+    },
+    {
+      "id": "e-60-auth-service-cart-service-cluster-2",
+      "source": "auth-service",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.73,
+      "latency_ms": 20.5
+    },
+    {
+      "id": "e-61-auth-service-memcached-cluster",
+      "source": "auth-service",
+      "target": "memcached-cluster",
+      "type": "CALLS",
+      "weight": 0.85,
+      "latency_ms": 6.1
+    },
+    {
+      "id": "e-62-auth-service-mysql-cluster",
+      "source": "auth-service",
+      "target": "mysql-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.94,
+      "latency_ms": 3.8
+    },
+    {
+      "id": "e-63-auth-service-sqs-notification-queue",
+      "source": "auth-service",
+      "target": "sqs-notification-queue",
+      "type": "WRITES_TO",
+      "weight": 0.84,
+      "latency_ms": 11.2
+    },
+    {
+      "id": "e-64-user-profile-service-audit-logger",
+      "source": "user-profile-service",
+      "target": "audit-logger",
+      "type": "CALLS",
+      "weight": 0.47,
+      "latency_ms": 41.4
+    },
+    {
+      "id": "e-65-user-profile-service-pricing-engine",
+      "source": "user-profile-service",
+      "target": "pricing-engine",
+      "type": "CALLS",
+      "weight": 0.65,
+      "latency_ms": 23.3
+    },
+    {
+      "id": "e-66-user-profile-service-elasticsearch-cluster",
+      "source": "user-profile-service",
+      "target": "elasticsearch-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.98,
+      "latency_ms": 3.4
+    },
+    {
+      "id": "e-67-tenant-service-order-fulfillment-cluster-2",
+      "source": "tenant-service",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.77,
+      "latency_ms": 17.6
+    },
+    {
+      "id": "e-68-tenant-service-elasticsearch-cluster",
+      "source": "tenant-service",
+      "target": "elasticsearch-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.93,
+      "latency_ms": 11.0
+    },
+    {
+      "id": "e-69-tenant-service-redis-cache-master",
+      "source": "tenant-service",
+      "target": "redis-cache-master",
+      "type": "CALLS",
+      "weight": 0.89,
+      "latency_ms": 4.9
+    },
+    {
+      "id": "e-70-catalog-service-cart-service-cluster-2",
+      "source": "catalog-service",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.7,
+      "latency_ms": 17.8
+    },
+    {
+      "id": "e-71-catalog-service-shipping-tracker",
+      "source": "catalog-service",
+      "target": "shipping-tracker",
+      "type": "CALLS",
+      "weight": 0.41,
+      "latency_ms": 35.8
+    },
+    {
+      "id": "e-72-catalog-service-recommendation-engine-cluster-2",
+      "source": "catalog-service",
+      "target": "recommendation-engine-cluster-2",
+      "type": "CALLS",
+      "weight": 0.45,
+      "latency_ms": 32.4
+    },
+    {
+      "id": "e-73-catalog-service-catalog-service-cluster-2",
+      "source": "catalog-service",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.54,
+      "latency_ms": 30.9
+    },
+    {
+      "id": "e-74-catalog-service-elasticsearch-cluster",
+      "source": "catalog-service",
+      "target": "elasticsearch-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.99,
+      "latency_ms": 11.9
+    },
+    {
+      "id": "e-75-catalog-service-rabbitmq-orders",
+      "source": "catalog-service",
+      "target": "rabbitmq-orders",
+      "type": "WRITES_TO",
+      "weight": 0.75,
+      "latency_ms": 9.6
+    },
+    {
+      "id": "e-76-search-service-push-notification",
+      "source": "search-service",
+      "target": "push-notification",
+      "type": "CALLS",
+      "weight": 0.45,
+      "latency_ms": 21.9
+    },
+    {
+      "id": "e-77-search-service-audit-logger",
+      "source": "search-service",
+      "target": "audit-logger",
+      "type": "CALLS",
+      "weight": 0.66,
+      "latency_ms": 24.5
+    },
+    {
+      "id": "e-78-search-service-search-service-cluster-2",
+      "source": "search-service",
+      "target": "search-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.67,
+      "latency_ms": 43.5
+    },
+    {
+      "id": "e-79-search-service-discount-service",
+      "source": "search-service",
+      "target": "discount-service",
+      "type": "CALLS",
+      "weight": 0.65,
+      "latency_ms": 20.7
+    },
+    {
+      "id": "e-80-search-service-mongodb-orders",
+      "source": "search-service",
+      "target": "mongodb-orders",
+      "type": "DEPENDS_ON",
+      "weight": 0.97,
+      "latency_ms": 3.1
+    },
+    {
+      "id": "e-81-search-service-memcached-cluster",
+      "source": "search-service",
+      "target": "memcached-cluster",
+      "type": "CALLS",
+      "weight": 0.88,
+      "latency_ms": 5.6
+    },
+    {
+      "id": "e-82-search-service-kafka-broker-3",
+      "source": "search-service",
+      "target": "kafka-broker-3",
+      "type": "WRITES_TO",
+      "weight": 0.41,
+      "latency_ms": 13.3
+    },
+    {
+      "id": "e-83-recommendation-engine-discount-service",
+      "source": "recommendation-engine",
+      "target": "discount-service",
+      "type": "CALLS",
+      "weight": 0.72,
+      "latency_ms": 23.9
+    },
+    {
+      "id": "e-84-recommendation-engine-order-fulfillment-cluster-2",
+      "source": "recommendation-engine",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.48,
+      "latency_ms": 24.1
+    },
+    {
+      "id": "e-85-recommendation-engine-notification-dispatcher",
+      "source": "recommendation-engine",
+      "target": "notification-dispatcher",
+      "type": "CALLS",
+      "weight": 0.65,
+      "latency_ms": 18.8
+    },
+    {
+      "id": "e-86-recommendation-engine-order-orchestrator",
+      "source": "recommendation-engine",
+      "target": "order-orchestrator",
+      "type": "CALLS",
+      "weight": 0.32,
+      "latency_ms": 16.6
+    },
+    {
+      "id": "e-87-recommendation-engine-redis-cache-master",
+      "source": "recommendation-engine",
+      "target": "redis-cache-master",
+      "type": "CALLS",
+      "weight": 0.91,
+      "latency_ms": 8.9
+    },
+    {
+      "id": "e-88-recommendation-engine-postgres-primary",
+      "source": "recommendation-engine",
+      "target": "postgres-primary",
+      "type": "DEPENDS_ON",
+      "weight": 0.95,
+      "latency_ms": 2.5
+    },
+    {
+      "id": "e-89-cart-service-payment-gateway-proxy",
+      "source": "cart-service",
+      "target": "payment-gateway-proxy",
+      "type": "CALLS",
+      "weight": 0.74,
+      "latency_ms": 32.2
+    },
+    {
+      "id": "e-90-cart-service-cart-service-cluster-2",
+      "source": "cart-service",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.53,
+      "latency_ms": 28.2
+    },
+    {
+      "id": "e-91-cart-service-order-orchestrator",
+      "source": "cart-service",
+      "target": "order-orchestrator",
+      "type": "CALLS",
+      "weight": 0.39,
+      "latency_ms": 16.5
+    },
+    {
+      "id": "e-92-cart-service-redis-cache-master",
+      "source": "cart-service",
+      "target": "redis-cache-master",
+      "type": "CALLS",
+      "weight": 0.92,
+      "latency_ms": 5.5
+    },
+    {
+      "id": "e-93-cart-service-mongodb-orders",
+      "source": "cart-service",
+      "target": "mongodb-orders",
+      "type": "DEPENDS_ON",
+      "weight": 0.93,
+      "latency_ms": 8.2
+    },
+    {
+      "id": "e-94-order-orchestrator-payment-processor",
+      "source": "order-orchestrator",
+      "target": "payment-processor",
+      "type": "CALLS",
+      "weight": 0.34,
+      "latency_ms": 33.9
+    },
+    {
+      "id": "e-95-order-orchestrator-search-service",
+      "source": "order-orchestrator",
+      "target": "search-service",
+      "type": "CALLS",
+      "weight": 0.33,
+      "latency_ms": 19.5
+    },
+    {
+      "id": "e-96-order-orchestrator-tenant-service-cluster-2",
+      "source": "order-orchestrator",
+      "target": "tenant-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.58,
+      "latency_ms": 24.1
+    },
+    {
+      "id": "e-97-order-orchestrator-order-fulfillment-cluster-2",
+      "source": "order-orchestrator",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.8,
+      "latency_ms": 18.6
+    },
+    {
+      "id": "e-98-order-orchestrator-postgres-replica",
+      "source": "order-orchestrator",
+      "target": "postgres-replica",
+      "type": "DEPENDS_ON",
+      "weight": 0.98,
+      "latency_ms": 8.5
+    },
+    {
+      "id": "e-99-order-orchestrator-rabbitmq-orders",
+      "source": "order-orchestrator",
+      "target": "rabbitmq-orders",
+      "type": "WRITES_TO",
+      "weight": 0.42,
+      "latency_ms": 8.6
+    },
+    {
+      "id": "e-100-order-fulfillment-warehouse-dispatcher",
+      "source": "order-fulfillment",
+      "target": "warehouse-dispatcher",
+      "type": "CALLS",
+      "weight": 0.75,
+      "latency_ms": 23.9
+    },
+    {
+      "id": "e-101-order-fulfillment-order-fulfillment-cluster-2",
+      "source": "order-fulfillment",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.59,
+      "latency_ms": 27.9
+    },
+    {
+      "id": "e-102-order-fulfillment-report-generator",
+      "source": "order-fulfillment",
+      "target": "report-generator",
+      "type": "CALLS",
+      "weight": 0.58,
+      "latency_ms": 16.8
+    },
+    {
+      "id": "e-103-order-fulfillment-catalog-service-cluster-2",
+      "source": "order-fulfillment",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 18.0
+    },
+    {
+      "id": "e-104-order-fulfillment-postgres-replica",
+      "source": "order-fulfillment",
+      "target": "postgres-replica",
+      "type": "DEPENDS_ON",
+      "weight": 0.98,
+      "latency_ms": 5.3
+    },
+    {
+      "id": "e-105-payment-gateway-proxy-warehouse-dispatcher",
+      "source": "payment-gateway-proxy",
+      "target": "warehouse-dispatcher",
+      "type": "CALLS",
+      "weight": 0.63,
+      "latency_ms": 19.7
+    },
+    {
+      "id": "e-106-payment-gateway-proxy-discount-service",
+      "source": "payment-gateway-proxy",
+      "target": "discount-service",
+      "type": "CALLS",
+      "weight": 0.39,
+      "latency_ms": 17.3
+    },
+    {
+      "id": "e-107-payment-gateway-proxy-mysql-cluster",
+      "source": "payment-gateway-proxy",
+      "target": "mysql-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.96,
+      "latency_ms": 10.8
+    },
+    {
+      "id": "e-108-payment-gateway-proxy-sqs-notification-queue",
+      "source": "payment-gateway-proxy",
+      "target": "sqs-notification-queue",
+      "type": "WRITES_TO",
+      "weight": 0.86,
+      "latency_ms": 13.3
+    },
+    {
+      "id": "e-109-payment-processor-tenant-service-cluster-2",
+      "source": "payment-processor",
+      "target": "tenant-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.53,
+      "latency_ms": 32.8
+    },
+    {
+      "id": "e-110-payment-processor-elasticsearch-cluster",
+      "source": "payment-processor",
+      "target": "elasticsearch-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.95,
+      "latency_ms": 5.4
+    },
+    {
+      "id": "e-111-payment-processor-redis-cache-master",
+      "source": "payment-processor",
+      "target": "redis-cache-master",
+      "type": "CALLS",
+      "weight": 0.82,
+      "latency_ms": 11.6
+    },
+    {
+      "id": "e-112-payment-processor-kafka-broker-2",
+      "source": "payment-processor",
+      "target": "kafka-broker-2",
+      "type": "WRITES_TO",
+      "weight": 0.83,
+      "latency_ms": 12.2
+    },
+    {
+      "id": "e-113-fraud-detection-tenant-service",
+      "source": "fraud-detection",
+      "target": "tenant-service",
+      "type": "CALLS",
+      "weight": 0.65,
+      "latency_ms": 36.1
+    },
+    {
+      "id": "e-114-fraud-detection-warehouse-dispatcher",
+      "source": "fraud-detection",
+      "target": "warehouse-dispatcher",
+      "type": "CALLS",
+      "weight": 0.53,
+      "latency_ms": 35.6
+    },
+    {
+      "id": "e-115-fraud-detection-notification-dispatcher",
+      "source": "fraud-detection",
+      "target": "notification-dispatcher",
+      "type": "CALLS",
+      "weight": 0.76,
+      "latency_ms": 38.6
+    },
+    {
+      "id": "e-116-fraud-detection-neo4j-graph-db",
+      "source": "fraud-detection",
+      "target": "neo4j-graph-db",
+      "type": "DEPENDS_ON",
+      "weight": 0.82,
+      "latency_ms": 5.9
+    },
+    {
+      "id": "e-117-fraud-detection-redis-session-store",
+      "source": "fraud-detection",
+      "target": "redis-session-store",
+      "type": "CALLS",
+      "weight": 0.85,
+      "latency_ms": 3.2
+    },
+    {
+      "id": "e-118-fraud-detection-kafka-broker-3",
+      "source": "fraud-detection",
+      "target": "kafka-broker-3",
+      "type": "WRITES_TO",
+      "weight": 0.69,
+      "latency_ms": 13.2
+    },
+    {
+      "id": "e-119-billing-service-tenant-service-cluster-2",
+      "source": "billing-service",
+      "target": "tenant-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.57,
+      "latency_ms": 34.4
+    },
+    {
+      "id": "e-120-billing-service-order-orchestrator",
+      "source": "billing-service",
+      "target": "order-orchestrator",
+      "type": "CALLS",
+      "weight": 0.75,
+      "latency_ms": 39.8
+    },
+    {
+      "id": "e-121-billing-service-postgres-replica",
+      "source": "billing-service",
+      "target": "postgres-replica",
+      "type": "DEPENDS_ON",
+      "weight": 0.89,
+      "latency_ms": 8.2
+    },
+    {
+      "id": "e-122-billing-service-mongodb-orders",
+      "source": "billing-service",
+      "target": "mongodb-orders",
+      "type": "DEPENDS_ON",
+      "weight": 0.99,
+      "latency_ms": 5.3
+    },
+    {
+      "id": "e-123-invoice-service-catalog-service",
+      "source": "invoice-service",
+      "target": "catalog-service",
+      "type": "CALLS",
+      "weight": 0.38,
+      "latency_ms": 24.2
+    },
+    {
+      "id": "e-124-invoice-service-elasticsearch-cluster",
+      "source": "invoice-service",
+      "target": "elasticsearch-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.98,
+      "latency_ms": 5.0
+    },
+    {
+      "id": "e-125-inventory-manager-catalog-service-cluster-2",
+      "source": "inventory-manager",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.64,
+      "latency_ms": 36.0
+    },
+    {
+      "id": "e-126-inventory-manager-order-orchestrator",
+      "source": "inventory-manager",
+      "target": "order-orchestrator",
+      "type": "CALLS",
+      "weight": 0.77,
+      "latency_ms": 30.0
+    },
+    {
+      "id": "e-127-inventory-manager-search-service-cluster-2",
+      "source": "inventory-manager",
+      "target": "search-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.55,
+      "latency_ms": 17.4
+    },
+    {
+      "id": "e-128-inventory-manager-postgres-primary",
+      "source": "inventory-manager",
+      "target": "postgres-primary",
+      "type": "DEPENDS_ON",
+      "weight": 0.99,
+      "latency_ms": 5.0
+    },
+    {
+      "id": "e-129-warehouse-dispatcher-cart-service-cluster-2",
+      "source": "warehouse-dispatcher",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.52,
+      "latency_ms": 24.7
+    },
+    {
+      "id": "e-130-warehouse-dispatcher-mongodb-orders",
+      "source": "warehouse-dispatcher",
+      "target": "mongodb-orders",
+      "type": "DEPENDS_ON",
+      "weight": 0.98,
+      "latency_ms": 3.4
+    },
+    {
+      "id": "e-131-shipping-tracker-user-profile-service",
+      "source": "shipping-tracker",
+      "target": "user-profile-service",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 40.1
+    },
+    {
+      "id": "e-132-shipping-tracker-cart-service",
+      "source": "shipping-tracker",
+      "target": "cart-service",
+      "type": "CALLS",
+      "weight": 0.59,
+      "latency_ms": 43.5
+    },
+    {
+      "id": "e-133-shipping-tracker-warehouse-dispatcher",
+      "source": "shipping-tracker",
+      "target": "warehouse-dispatcher",
+      "type": "CALLS",
+      "weight": 0.8,
+      "latency_ms": 35.2
+    },
+    {
+      "id": "e-134-shipping-tracker-mysql-cluster",
+      "source": "shipping-tracker",
+      "target": "mysql-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.93,
+      "latency_ms": 10.3
+    },
+    {
+      "id": "e-135-shipping-tracker-memcached-cluster",
+      "source": "shipping-tracker",
+      "target": "memcached-cluster",
+      "type": "CALLS",
+      "weight": 0.92,
+      "latency_ms": 11.4
+    },
+    {
+      "id": "e-136-shipping-tracker-kafka-broker-3",
+      "source": "shipping-tracker",
+      "target": "kafka-broker-3",
+      "type": "WRITES_TO",
+      "weight": 0.51,
+      "latency_ms": 9.4
+    },
+    {
+      "id": "e-137-pricing-engine-catalog-service",
+      "source": "pricing-engine",
+      "target": "catalog-service",
+      "type": "CALLS",
+      "weight": 0.56,
+      "latency_ms": 28.3
+    },
+    {
+      "id": "e-138-pricing-engine-billing-service",
+      "source": "pricing-engine",
+      "target": "billing-service",
+      "type": "CALLS",
+      "weight": 0.44,
+      "latency_ms": 44.9
+    },
+    {
+      "id": "e-139-pricing-engine-cart-service-cluster-2",
+      "source": "pricing-engine",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.52,
+      "latency_ms": 39.4
+    },
+    {
+      "id": "e-140-pricing-engine-redis-session-store",
+      "source": "pricing-engine",
+      "target": "redis-session-store",
+      "type": "CALLS",
+      "weight": 0.82,
+      "latency_ms": 8.9
+    },
+    {
+      "id": "e-141-discount-service-notification-dispatcher",
+      "source": "discount-service",
+      "target": "notification-dispatcher",
+      "type": "CALLS",
+      "weight": 0.47,
+      "latency_ms": 25.0
+    },
+    {
+      "id": "e-142-discount-service-postgres-primary",
+      "source": "discount-service",
+      "target": "postgres-primary",
+      "type": "DEPENDS_ON",
+      "weight": 0.86,
+      "latency_ms": 11.7
+    },
+    {
+      "id": "e-143-discount-service-memcached-cluster",
+      "source": "discount-service",
+      "target": "memcached-cluster",
+      "type": "CALLS",
+      "weight": 0.99,
+      "latency_ms": 10.2
+    },
+    {
+      "id": "e-144-discount-service-kafka-broker-2",
+      "source": "discount-service",
+      "target": "kafka-broker-2",
+      "type": "WRITES_TO",
+      "weight": 0.72,
+      "latency_ms": 11.0
+    },
+    {
+      "id": "e-145-notification-dispatcher-recommendation-engine-cluster-2",
+      "source": "notification-dispatcher",
+      "target": "recommendation-engine-cluster-2",
+      "type": "CALLS",
+      "weight": 0.38,
+      "latency_ms": 27.3
+    },
+    {
+      "id": "e-146-notification-dispatcher-postgres-primary",
+      "source": "notification-dispatcher",
+      "target": "postgres-primary",
+      "type": "DEPENDS_ON",
+      "weight": 0.96,
+      "latency_ms": 4.4
+    },
+    {
+      "id": "e-147-notification-dispatcher-sqs-notification-queue",
+      "source": "notification-dispatcher",
+      "target": "sqs-notification-queue",
+      "type": "WRITES_TO",
+      "weight": 0.5,
+      "latency_ms": 13.3
+    },
+    {
+      "id": "e-148-email-service-discount-service",
+      "source": "email-service",
+      "target": "discount-service",
+      "type": "CALLS",
+      "weight": 0.34,
+      "latency_ms": 22.6
+    },
+    {
+      "id": "e-149-email-service-auth-service-cluster-2",
+      "source": "email-service",
+      "target": "auth-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.36,
+      "latency_ms": 38.2
+    },
+    {
+      "id": "e-150-email-service-tenant-service",
+      "source": "email-service",
+      "target": "tenant-service",
+      "type": "CALLS",
+      "weight": 0.73,
+      "latency_ms": 39.7
+    },
+    {
+      "id": "e-151-email-service-search-service-cluster-2",
+      "source": "email-service",
+      "target": "search-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.3,
+      "latency_ms": 41.1
+    },
+    {
+      "id": "e-152-email-service-mongodb-orders",
+      "source": "email-service",
+      "target": "mongodb-orders",
+      "type": "DEPENDS_ON",
+      "weight": 0.96,
+      "latency_ms": 4.3
+    },
+    {
+      "id": "e-153-sms-gateway-user-profile-service-cluster-2",
+      "source": "sms-gateway",
+      "target": "user-profile-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.48,
+      "latency_ms": 37.7
+    },
+    {
+      "id": "e-154-sms-gateway-catalog-service",
+      "source": "sms-gateway",
+      "target": "catalog-service",
+      "type": "CALLS",
+      "weight": 0.61,
+      "latency_ms": 37.8
+    },
+    {
+      "id": "e-155-sms-gateway-billing-service",
+      "source": "sms-gateway",
+      "target": "billing-service",
+      "type": "CALLS",
+      "weight": 0.4,
+      "latency_ms": 31.5
+    },
+    {
+      "id": "e-156-sms-gateway-order-fulfillment-cluster-2",
+      "source": "sms-gateway",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.76,
+      "latency_ms": 28.1
+    },
+    {
+      "id": "e-157-sms-gateway-redis-cache-master",
+      "source": "sms-gateway",
+      "target": "redis-cache-master",
+      "type": "CALLS",
+      "weight": 0.97,
+      "latency_ms": 3.4
+    },
+    {
+      "id": "e-158-sms-gateway-kafka-broker-3",
+      "source": "sms-gateway",
+      "target": "kafka-broker-3",
+      "type": "WRITES_TO",
+      "weight": 0.8,
+      "latency_ms": 6.1
+    },
+    {
+      "id": "e-159-push-notification-order-fulfillment",
+      "source": "push-notification",
+      "target": "order-fulfillment",
+      "type": "CALLS",
+      "weight": 0.46,
+      "latency_ms": 15.4
+    },
+    {
+      "id": "e-160-push-notification-user-profile-service",
+      "source": "push-notification",
+      "target": "user-profile-service",
+      "type": "CALLS",
+      "weight": 0.5,
+      "latency_ms": 21.7
+    },
+    {
+      "id": "e-161-push-notification-shipping-tracker",
+      "source": "push-notification",
+      "target": "shipping-tracker",
+      "type": "CALLS",
+      "weight": 0.72,
+      "latency_ms": 18.4
+    },
+    {
+      "id": "e-162-push-notification-fraud-detection",
+      "source": "push-notification",
+      "target": "fraud-detection",
+      "type": "CALLS",
+      "weight": 0.77,
+      "latency_ms": 34.4
+    },
+    {
+      "id": "e-163-push-notification-mysql-cluster",
+      "source": "push-notification",
+      "target": "mysql-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.8,
+      "latency_ms": 9.9
+    },
+    {
+      "id": "e-164-push-notification-kafka-broker-3",
+      "source": "push-notification",
+      "target": "kafka-broker-3",
+      "type": "WRITES_TO",
+      "weight": 0.41,
+      "latency_ms": 7.7
+    },
+    {
+      "id": "e-165-audit-logger-order-fulfillment-cluster-2",
+      "source": "audit-logger",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.55,
+      "latency_ms": 23.2
+    },
+    {
+      "id": "e-166-audit-logger-email-service",
+      "source": "audit-logger",
+      "target": "email-service",
+      "type": "CALLS",
+      "weight": 0.72,
+      "latency_ms": 44.4
+    },
+    {
+      "id": "e-167-audit-logger-memcached-cluster",
+      "source": "audit-logger",
+      "target": "memcached-cluster",
+      "type": "CALLS",
+      "weight": 0.91,
+      "latency_ms": 9.5
+    },
+    {
+      "id": "e-168-analytics-collector-search-service-cluster-2",
+      "source": "analytics-collector",
+      "target": "search-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.49,
+      "latency_ms": 42.7
+    },
+    {
+      "id": "e-169-analytics-collector-payment-gateway-proxy",
+      "source": "analytics-collector",
+      "target": "payment-gateway-proxy",
+      "type": "CALLS",
+      "weight": 0.55,
+      "latency_ms": 41.4
+    },
+    {
+      "id": "e-170-analytics-collector-neo4j-graph-db",
+      "source": "analytics-collector",
+      "target": "neo4j-graph-db",
+      "type": "DEPENDS_ON",
+      "weight": 0.89,
+      "latency_ms": 4.2
+    },
+    {
+      "id": "e-171-analytics-collector-postgres-replica",
+      "source": "analytics-collector",
+      "target": "postgres-replica",
+      "type": "DEPENDS_ON",
+      "weight": 0.92,
+      "latency_ms": 9.3
+    },
+    {
+      "id": "e-172-report-generator-discount-service",
+      "source": "report-generator",
+      "target": "discount-service",
+      "type": "CALLS",
+      "weight": 0.69,
+      "latency_ms": 40.6
+    },
+    {
+      "id": "e-173-report-generator-elasticsearch-cluster",
+      "source": "report-generator",
+      "target": "elasticsearch-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.81,
+      "latency_ms": 6.8
+    },
+    {
+      "id": "e-174-report-generator-postgres-primary",
+      "source": "report-generator",
+      "target": "postgres-primary",
+      "type": "DEPENDS_ON",
+      "weight": 0.88,
+      "latency_ms": 8.9
+    },
+    {
+      "id": "e-175-api-gateway-cluster-2-admin-portal",
+      "source": "api-gateway-cluster-2",
+      "target": "admin-portal",
+      "type": "CALLS",
+      "weight": 0.79,
+      "latency_ms": 13.9
+    },
+    {
+      "id": "e-176-api-gateway-cluster-2-partner-portal",
+      "source": "api-gateway-cluster-2",
+      "target": "partner-portal",
+      "type": "CALLS",
+      "weight": 0.94,
+      "latency_ms": 13.5
+    },
+    {
+      "id": "e-177-api-gateway-cluster-2-mobile-frontend",
+      "source": "api-gateway-cluster-2",
+      "target": "mobile-frontend",
+      "type": "CALLS",
+      "weight": 0.97,
+      "latency_ms": 6.3
+    },
+    {
+      "id": "e-178-api-gateway-cluster-2-web-frontend",
+      "source": "api-gateway-cluster-2",
+      "target": "web-frontend",
+      "type": "CALLS",
+      "weight": 0.77,
+      "latency_ms": 5.1
+    },
+    {
+      "id": "e-179-ingress-lb-cluster-2-admin-portal-cluster-2",
+      "source": "ingress-lb-cluster-2",
+      "target": "admin-portal-cluster-2",
+      "type": "CALLS",
+      "weight": 0.98,
+      "latency_ms": 6.6
+    },
+    {
+      "id": "e-180-ingress-lb-cluster-2-web-frontend-cluster-2",
+      "source": "ingress-lb-cluster-2",
+      "target": "web-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.75,
+      "latency_ms": 12.8
+    },
+    {
+      "id": "e-181-ingress-lb-cluster-2-mobile-frontend-cluster-2",
+      "source": "ingress-lb-cluster-2",
+      "target": "mobile-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.75,
+      "latency_ms": 8.5
+    },
+    {
+      "id": "e-182-ingress-lb-cluster-2-mobile-frontend",
+      "source": "ingress-lb-cluster-2",
+      "target": "mobile-frontend",
+      "type": "CALLS",
+      "weight": 0.75,
+      "latency_ms": 14.2
+    },
+    {
+      "id": "e-183-public-bff-cluster-2-admin-portal-cluster-2",
+      "source": "public-bff-cluster-2",
+      "target": "admin-portal-cluster-2",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 12.7
+    },
+    {
+      "id": "e-184-public-bff-cluster-2-partner-portal-cluster-2",
+      "source": "public-bff-cluster-2",
+      "target": "partner-portal-cluster-2",
+      "type": "CALLS",
+      "weight": 0.73,
+      "latency_ms": 13.6
+    },
+    {
+      "id": "e-185-public-bff-cluster-2-mobile-frontend-cluster-2",
+      "source": "public-bff-cluster-2",
+      "target": "mobile-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.96,
+      "latency_ms": 6.4
+    },
+    {
+      "id": "e-186-public-bff-cluster-2-mobile-frontend",
+      "source": "public-bff-cluster-2",
+      "target": "mobile-frontend",
+      "type": "CALLS",
+      "weight": 0.94,
+      "latency_ms": 9.1
+    },
+    {
+      "id": "e-187-mobile-gateway-cluster-2-web-frontend-cluster-2",
+      "source": "mobile-gateway-cluster-2",
+      "target": "web-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.71,
+      "latency_ms": 6.1
+    },
+    {
+      "id": "e-188-mobile-gateway-cluster-2-admin-portal-cluster-2",
+      "source": "mobile-gateway-cluster-2",
+      "target": "admin-portal-cluster-2",
+      "type": "CALLS",
+      "weight": 0.8,
+      "latency_ms": 13.5
+    },
+    {
+      "id": "e-189-mobile-gateway-cluster-2-mobile-frontend",
+      "source": "mobile-gateway-cluster-2",
+      "target": "mobile-frontend",
+      "type": "CALLS",
+      "weight": 0.99,
+      "latency_ms": 7.1
+    },
+    {
+      "id": "e-190-mobile-gateway-cluster-2-mobile-frontend-cluster-2",
+      "source": "mobile-gateway-cluster-2",
+      "target": "mobile-frontend-cluster-2",
+      "type": "CALLS",
+      "weight": 0.89,
+      "latency_ms": 8.4
+    },
+    {
+      "id": "e-191-web-frontend-cluster-2-auth-service-cluster-2",
+      "source": "web-frontend-cluster-2",
+      "target": "auth-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.76,
+      "latency_ms": 19.5
+    },
+    {
+      "id": "e-192-web-frontend-cluster-2-catalog-service",
+      "source": "web-frontend-cluster-2",
+      "target": "catalog-service",
+      "type": "CALLS",
+      "weight": 0.92,
+      "latency_ms": 16.0
+    },
+    {
+      "id": "e-193-web-frontend-cluster-2-invoice-service",
+      "source": "web-frontend-cluster-2",
+      "target": "invoice-service",
+      "type": "CALLS",
+      "weight": 0.68,
+      "latency_ms": 27.8
+    },
+    {
+      "id": "e-194-web-frontend-cluster-2-order-fulfillment-cluster-2",
+      "source": "web-frontend-cluster-2",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.88,
+      "latency_ms": 20.8
+    },
+    {
+      "id": "e-195-web-frontend-cluster-2-billing-service",
+      "source": "web-frontend-cluster-2",
+      "target": "billing-service",
+      "type": "CALLS",
+      "weight": 0.83,
+      "latency_ms": 26.0
+    },
+    {
+      "id": "e-196-web-frontend-cluster-2-tenant-service-cluster-2",
+      "source": "web-frontend-cluster-2",
+      "target": "tenant-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.9,
+      "latency_ms": 19.8
+    },
+    {
+      "id": "e-197-web-frontend-cluster-2-analytics-collector",
+      "source": "web-frontend-cluster-2",
+      "target": "analytics-collector",
+      "type": "CALLS",
+      "weight": 0.62,
+      "latency_ms": 19.7
+    },
+    {
+      "id": "e-198-web-frontend-cluster-2-discount-service",
+      "source": "web-frontend-cluster-2",
+      "target": "discount-service",
+      "type": "CALLS",
+      "weight": 0.67,
+      "latency_ms": 23.4
+    },
+    {
+      "id": "e-199-web-frontend-cluster-2-push-notification",
+      "source": "web-frontend-cluster-2",
+      "target": "push-notification",
+      "type": "CALLS",
+      "weight": 0.86,
+      "latency_ms": 24.5
+    },
+    {
+      "id": "e-200-web-frontend-cluster-2-auth-service",
+      "source": "web-frontend-cluster-2",
+      "target": "auth-service",
+      "type": "CALLS",
+      "weight": 0.88,
+      "latency_ms": 28.4
+    },
+    {
+      "id": "e-201-web-frontend-cluster-2-catalog-service-cluster-2",
+      "source": "web-frontend-cluster-2",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.94,
+      "latency_ms": 20.7
+    },
+    {
+      "id": "e-202-mobile-frontend-cluster-2-report-generator",
+      "source": "mobile-frontend-cluster-2",
+      "target": "report-generator",
+      "type": "CALLS",
+      "weight": 0.65,
+      "latency_ms": 19.1
+    },
+    {
+      "id": "e-203-mobile-frontend-cluster-2-user-profile-service",
+      "source": "mobile-frontend-cluster-2",
+      "target": "user-profile-service",
+      "type": "CALLS",
+      "weight": 0.65,
+      "latency_ms": 27.6
+    },
+    {
+      "id": "e-204-mobile-frontend-cluster-2-recommendation-engine",
+      "source": "mobile-frontend-cluster-2",
+      "target": "recommendation-engine",
+      "type": "CALLS",
+      "weight": 0.63,
+      "latency_ms": 29.0
+    },
+    {
+      "id": "e-205-mobile-frontend-cluster-2-user-profile-service-cluster-2",
+      "source": "mobile-frontend-cluster-2",
+      "target": "user-profile-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.69,
+      "latency_ms": 26.7
+    },
+    {
+      "id": "e-206-mobile-frontend-cluster-2-search-service",
+      "source": "mobile-frontend-cluster-2",
+      "target": "search-service",
+      "type": "CALLS",
+      "weight": 0.71,
+      "latency_ms": 25.0
+    },
+    {
+      "id": "e-207-mobile-frontend-cluster-2-recommendation-engine-cluster-2",
+      "source": "mobile-frontend-cluster-2",
+      "target": "recommendation-engine-cluster-2",
+      "type": "CALLS",
+      "weight": 0.52,
+      "latency_ms": 29.0
+    },
+    {
+      "id": "e-208-mobile-frontend-cluster-2-inventory-manager",
+      "source": "mobile-frontend-cluster-2",
+      "target": "inventory-manager",
+      "type": "CALLS",
+      "weight": 0.6,
+      "latency_ms": 11.4
+    },
+    {
+      "id": "e-209-mobile-frontend-cluster-2-cart-service-cluster-2",
+      "source": "mobile-frontend-cluster-2",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.93,
+      "latency_ms": 10.8
+    },
+    {
+      "id": "e-210-mobile-frontend-cluster-2-order-orchestrator-cluster-2",
+      "source": "mobile-frontend-cluster-2",
+      "target": "order-orchestrator-cluster-2",
+      "type": "CALLS",
+      "weight": 0.51,
+      "latency_ms": 14.9
+    },
+    {
+      "id": "e-211-mobile-frontend-cluster-2-order-fulfillment",
+      "source": "mobile-frontend-cluster-2",
+      "target": "order-fulfillment",
+      "type": "CALLS",
+      "weight": 0.88,
+      "latency_ms": 22.4
+    },
+    {
+      "id": "e-212-mobile-frontend-cluster-2-billing-service",
+      "source": "mobile-frontend-cluster-2",
+      "target": "billing-service",
+      "type": "CALLS",
+      "weight": 0.61,
+      "latency_ms": 19.5
+    },
+    {
+      "id": "e-213-admin-portal-cluster-2-order-orchestrator",
+      "source": "admin-portal-cluster-2",
+      "target": "order-orchestrator",
+      "type": "CALLS",
+      "weight": 0.55,
+      "latency_ms": 26.4
+    },
+    {
+      "id": "e-214-admin-portal-cluster-2-invoice-service",
+      "source": "admin-portal-cluster-2",
+      "target": "invoice-service",
+      "type": "CALLS",
+      "weight": 0.93,
+      "latency_ms": 12.2
+    },
+    {
+      "id": "e-215-admin-portal-cluster-2-catalog-service-cluster-2",
+      "source": "admin-portal-cluster-2",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.51,
+      "latency_ms": 16.2
+    },
+    {
+      "id": "e-216-admin-portal-cluster-2-shipping-tracker",
+      "source": "admin-portal-cluster-2",
+      "target": "shipping-tracker",
+      "type": "CALLS",
+      "weight": 0.8,
+      "latency_ms": 29.2
+    },
+    {
+      "id": "e-217-admin-portal-cluster-2-analytics-collector",
+      "source": "admin-portal-cluster-2",
+      "target": "analytics-collector",
+      "type": "CALLS",
+      "weight": 0.68,
+      "latency_ms": 24.3
+    },
+    {
+      "id": "e-218-admin-portal-cluster-2-fraud-detection",
+      "source": "admin-portal-cluster-2",
+      "target": "fraud-detection",
+      "type": "CALLS",
+      "weight": 0.53,
+      "latency_ms": 23.8
+    },
+    {
+      "id": "e-219-admin-portal-cluster-2-recommendation-engine",
+      "source": "admin-portal-cluster-2",
+      "target": "recommendation-engine",
+      "type": "CALLS",
+      "weight": 0.78,
+      "latency_ms": 12.0
+    },
+    {
+      "id": "e-220-admin-portal-cluster-2-notification-dispatcher",
+      "source": "admin-portal-cluster-2",
+      "target": "notification-dispatcher",
+      "type": "CALLS",
+      "weight": 0.85,
+      "latency_ms": 27.0
+    },
+    {
+      "id": "e-221-admin-portal-cluster-2-user-profile-service-cluster-2",
+      "source": "admin-portal-cluster-2",
+      "target": "user-profile-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.77,
+      "latency_ms": 12.4
+    },
+    {
+      "id": "e-222-admin-portal-cluster-2-audit-logger",
+      "source": "admin-portal-cluster-2",
+      "target": "audit-logger",
+      "type": "CALLS",
+      "weight": 0.94,
+      "latency_ms": 25.7
+    },
+    {
+      "id": "e-223-admin-portal-cluster-2-push-notification",
+      "source": "admin-portal-cluster-2",
+      "target": "push-notification",
+      "type": "CALLS",
+      "weight": 0.66,
+      "latency_ms": 18.6
+    },
+    {
+      "id": "e-224-partner-portal-cluster-2-audit-logger",
+      "source": "partner-portal-cluster-2",
+      "target": "audit-logger",
+      "type": "CALLS",
+      "weight": 0.93,
+      "latency_ms": 22.7
+    },
+    {
+      "id": "e-225-partner-portal-cluster-2-search-service",
+      "source": "partner-portal-cluster-2",
+      "target": "search-service",
+      "type": "CALLS",
+      "weight": 0.87,
+      "latency_ms": 24.1
+    },
+    {
+      "id": "e-226-partner-portal-cluster-2-cart-service-cluster-2",
+      "source": "partner-portal-cluster-2",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.7,
+      "latency_ms": 24.7
+    },
+    {
+      "id": "e-227-partner-portal-cluster-2-sms-gateway",
+      "source": "partner-portal-cluster-2",
+      "target": "sms-gateway",
+      "type": "CALLS",
+      "weight": 0.93,
+      "latency_ms": 15.4
+    },
+    {
+      "id": "e-228-partner-portal-cluster-2-auth-service",
+      "source": "partner-portal-cluster-2",
+      "target": "auth-service",
+      "type": "CALLS",
+      "weight": 0.86,
+      "latency_ms": 20.8
+    },
+    {
+      "id": "e-229-partner-portal-cluster-2-user-profile-service-cluster-2",
+      "source": "partner-portal-cluster-2",
+      "target": "user-profile-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.72,
+      "latency_ms": 18.7
+    },
+    {
+      "id": "e-230-partner-portal-cluster-2-invoice-service",
+      "source": "partner-portal-cluster-2",
+      "target": "invoice-service",
+      "type": "CALLS",
+      "weight": 0.83,
+      "latency_ms": 15.4
+    },
+    {
+      "id": "e-231-partner-portal-cluster-2-auth-service-cluster-2",
+      "source": "partner-portal-cluster-2",
+      "target": "auth-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.88,
+      "latency_ms": 26.6
+    },
+    {
+      "id": "e-232-partner-portal-cluster-2-warehouse-dispatcher",
+      "source": "partner-portal-cluster-2",
+      "target": "warehouse-dispatcher",
+      "type": "CALLS",
+      "weight": 0.54,
+      "latency_ms": 27.6
+    },
+    {
+      "id": "e-233-partner-portal-cluster-2-catalog-service",
+      "source": "partner-portal-cluster-2",
+      "target": "catalog-service",
+      "type": "CALLS",
+      "weight": 0.61,
+      "latency_ms": 19.3
+    },
+    {
+      "id": "e-234-partner-portal-cluster-2-tenant-service-cluster-2",
+      "source": "partner-portal-cluster-2",
+      "target": "tenant-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.77,
+      "latency_ms": 17.6
+    },
+    {
+      "id": "e-235-auth-service-cluster-2-order-fulfillment-cluster-2",
+      "source": "auth-service-cluster-2",
+      "target": "order-fulfillment-cluster-2",
+      "type": "CALLS",
+      "weight": 0.44,
+      "latency_ms": 24.0
+    },
+    {
+      "id": "e-236-auth-service-cluster-2-pricing-engine",
+      "source": "auth-service-cluster-2",
+      "target": "pricing-engine",
+      "type": "CALLS",
+      "weight": 0.59,
+      "latency_ms": 45.0
+    },
+    {
+      "id": "e-237-auth-service-cluster-2-auth-service",
+      "source": "auth-service-cluster-2",
+      "target": "auth-service",
+      "type": "CALLS",
+      "weight": 0.54,
+      "latency_ms": 19.5
+    },
+    {
+      "id": "e-238-auth-service-cluster-2-postgres-replica",
+      "source": "auth-service-cluster-2",
+      "target": "postgres-replica",
+      "type": "DEPENDS_ON",
+      "weight": 0.86,
+      "latency_ms": 3.5
+    },
+    {
+      "id": "e-239-auth-service-cluster-2-neo4j-graph-db",
+      "source": "auth-service-cluster-2",
+      "target": "neo4j-graph-db",
+      "type": "DEPENDS_ON",
+      "weight": 0.83,
+      "latency_ms": 8.2
+    },
+    {
+      "id": "e-240-user-profile-service-cluster-2-audit-logger",
+      "source": "user-profile-service-cluster-2",
+      "target": "audit-logger",
+      "type": "CALLS",
+      "weight": 0.77,
+      "latency_ms": 41.1
+    },
+    {
+      "id": "e-241-user-profile-service-cluster-2-push-notification",
+      "source": "user-profile-service-cluster-2",
+      "target": "push-notification",
+      "type": "CALLS",
+      "weight": 0.79,
+      "latency_ms": 22.2
+    },
+    {
+      "id": "e-242-user-profile-service-cluster-2-report-generator",
+      "source": "user-profile-service-cluster-2",
+      "target": "report-generator",
+      "type": "CALLS",
+      "weight": 0.49,
+      "latency_ms": 40.7
+    },
+    {
+      "id": "e-243-user-profile-service-cluster-2-recommendation-engine-cluster-2",
+      "source": "user-profile-service-cluster-2",
+      "target": "recommendation-engine-cluster-2",
+      "type": "CALLS",
+      "weight": 0.51,
+      "latency_ms": 24.5
+    },
+    {
+      "id": "e-244-user-profile-service-cluster-2-memcached-cluster",
+      "source": "user-profile-service-cluster-2",
+      "target": "memcached-cluster",
+      "type": "CALLS",
+      "weight": 0.89,
+      "latency_ms": 8.1
+    },
+    {
+      "id": "e-245-user-profile-service-cluster-2-redis-cache-master",
+      "source": "user-profile-service-cluster-2",
+      "target": "redis-cache-master",
+      "type": "CALLS",
+      "weight": 0.82,
+      "latency_ms": 9.0
+    },
+    {
+      "id": "e-246-tenant-service-cluster-2-report-generator",
+      "source": "tenant-service-cluster-2",
+      "target": "report-generator",
+      "type": "CALLS",
+      "weight": 0.49,
+      "latency_ms": 34.9
+    },
+    {
+      "id": "e-247-tenant-service-cluster-2-order-orchestrator-cluster-2",
+      "source": "tenant-service-cluster-2",
+      "target": "order-orchestrator-cluster-2",
+      "type": "CALLS",
+      "weight": 0.71,
+      "latency_ms": 44.4
+    },
+    {
+      "id": "e-248-tenant-service-cluster-2-catalog-service-cluster-2",
+      "source": "tenant-service-cluster-2",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.55,
+      "latency_ms": 16.1
+    },
+    {
+      "id": "e-249-tenant-service-cluster-2-warehouse-dispatcher",
+      "source": "tenant-service-cluster-2",
+      "target": "warehouse-dispatcher",
+      "type": "CALLS",
+      "weight": 0.55,
+      "latency_ms": 32.7
+    },
+    {
+      "id": "e-250-tenant-service-cluster-2-memcached-cluster",
+      "source": "tenant-service-cluster-2",
+      "target": "memcached-cluster",
+      "type": "CALLS",
+      "weight": 0.89,
+      "latency_ms": 4.3
+    },
+    {
+      "id": "e-251-tenant-service-cluster-2-rabbitmq-orders",
+      "source": "tenant-service-cluster-2",
+      "target": "rabbitmq-orders",
+      "type": "WRITES_TO",
+      "weight": 0.6,
+      "latency_ms": 12.3
+    },
+    {
+      "id": "e-252-catalog-service-cluster-2-cart-service-cluster-2",
+      "source": "catalog-service-cluster-2",
+      "target": "cart-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.72,
+      "latency_ms": 18.0
+    },
+    {
+      "id": "e-253-catalog-service-cluster-2-memcached-cluster",
+      "source": "catalog-service-cluster-2",
+      "target": "memcached-cluster",
+      "type": "CALLS",
+      "weight": 0.93,
+      "latency_ms": 5.7
+    },
+    {
+      "id": "e-254-catalog-service-cluster-2-redis-session-store",
+      "source": "catalog-service-cluster-2",
+      "target": "redis-session-store",
+      "type": "CALLS",
+      "weight": 0.83,
+      "latency_ms": 11.2
+    },
+    {
+      "id": "e-255-catalog-service-cluster-2-kafka-broker-1",
+      "source": "catalog-service-cluster-2",
+      "target": "kafka-broker-1",
+      "type": "WRITES_TO",
+      "weight": 0.45,
+      "latency_ms": 6.0
+    },
+    {
+      "id": "e-256-search-service-cluster-2-auth-service",
+      "source": "search-service-cluster-2",
+      "target": "auth-service",
+      "type": "CALLS",
+      "weight": 0.74,
+      "latency_ms": 44.1
+    },
+    {
+      "id": "e-257-search-service-cluster-2-user-profile-service-cluster-2",
+      "source": "search-service-cluster-2",
+      "target": "user-profile-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.34,
+      "latency_ms": 38.4
+    },
+    {
+      "id": "e-258-search-service-cluster-2-recommendation-engine",
+      "source": "search-service-cluster-2",
+      "target": "recommendation-engine",
+      "type": "CALLS",
+      "weight": 0.43,
+      "latency_ms": 33.7
+    },
+    {
+      "id": "e-259-search-service-cluster-2-warehouse-dispatcher",
+      "source": "search-service-cluster-2",
+      "target": "warehouse-dispatcher",
+      "type": "CALLS",
+      "weight": 0.5,
+      "latency_ms": 17.4
+    },
+    {
+      "id": "e-260-search-service-cluster-2-mysql-cluster",
+      "source": "search-service-cluster-2",
+      "target": "mysql-cluster",
+      "type": "DEPENDS_ON",
+      "weight": 0.92,
+      "latency_ms": 7.6
+    },
+    {
+      "id": "e-261-search-service-cluster-2-postgres-primary",
+      "source": "search-service-cluster-2",
+      "target": "postgres-primary",
+      "type": "DEPENDS_ON",
+      "weight": 0.87,
+      "latency_ms": 3.2
+    },
+    {
+      "id": "e-262-search-service-cluster-2-rabbitmq-orders",
+      "source": "search-service-cluster-2",
+      "target": "rabbitmq-orders",
+      "type": "WRITES_TO",
+      "weight": 0.83,
+      "latency_ms": 12.2
+    },
+    {
+      "id": "e-263-recommendation-engine-cluster-2-search-service-cluster-2",
+      "source": "recommendation-engine-cluster-2",
+      "target": "search-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.49,
+      "latency_ms": 24.5
+    },
+    {
+      "id": "e-264-recommendation-engine-cluster-2-audit-logger",
+      "source": "recommendation-engine-cluster-2",
+      "target": "audit-logger",
+      "type": "CALLS",
+      "weight": 0.66,
+      "latency_ms": 37.8
+    },
+    {
+      "id": "e-265-recommendation-engine-cluster-2-discount-service",
+      "source": "recommendation-engine-cluster-2",
+      "target": "discount-service",
+      "type": "CALLS",
+      "weight": 0.74,
+      "latency_ms": 16.1
+    },
+    {
+      "id": "e-266-recommendation-engine-cluster-2-redis-cache-master",
+      "source": "recommendation-engine-cluster-2",
+      "target": "redis-cache-master",
+      "type": "CALLS",
+      "weight": 0.82,
+      "latency_ms": 7.1
+    },
+    {
+      "id": "e-267-recommendation-engine-cluster-2-redis-session-store",
+      "source": "recommendation-engine-cluster-2",
+      "target": "redis-session-store",
+      "type": "CALLS",
+      "weight": 0.83,
+      "latency_ms": 6.8
+    },
+    {
+      "id": "e-268-cart-service-cluster-2-payment-processor",
+      "source": "cart-service-cluster-2",
+      "target": "payment-processor",
+      "type": "CALLS",
+      "weight": 0.62,
+      "latency_ms": 42.6
+    },
+    {
+      "id": "e-269-cart-service-cluster-2-neo4j-graph-db",
+      "source": "cart-service-cluster-2",
+      "target": "neo4j-graph-db",
+      "type": "DEPENDS_ON",
+      "weight": 0.82,
+      "latency_ms": 4.8
+    },
+    {
+      "id": "e-270-cart-service-cluster-2-redis-session-store",
+      "source": "cart-service-cluster-2",
+      "target": "redis-session-store",
+      "type": "CALLS",
+      "weight": 0.85,
+      "latency_ms": 6.3
+    },
+    {
+      "id": "e-271-order-orchestrator-cluster-2-recommendation-engine",
+      "source": "order-orchestrator-cluster-2",
+      "target": "recommendation-engine",
+      "type": "CALLS",
+      "weight": 0.79,
+      "latency_ms": 37.8
+    },
+    {
+      "id": "e-272-order-orchestrator-cluster-2-user-profile-service-cluster-2",
+      "source": "order-orchestrator-cluster-2",
+      "target": "user-profile-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.65,
+      "latency_ms": 18.0
+    },
+    {
+      "id": "e-273-order-orchestrator-cluster-2-redis-cache-master",
+      "source": "order-orchestrator-cluster-2",
+      "target": "redis-cache-master",
+      "type": "CALLS",
+      "weight": 0.81,
+      "latency_ms": 4.7
+    },
+    {
+      "id": "e-274-order-fulfillment-cluster-2-catalog-service-cluster-2",
+      "source": "order-fulfillment-cluster-2",
+      "target": "catalog-service-cluster-2",
+      "type": "CALLS",
+      "weight": 0.75,
+      "latency_ms": 16.4
+    },
+    {
+      "id": "e-275-order-fulfillment-cluster-2-invoice-service",
+      "source": "order-fulfillment-cluster-2",
+      "target": "invoice-service",
+      "type": "CALLS",
+      "weight": 0.7,
+      "latency_ms": 23.8
+    },
+    {
+      "id": "e-276-order-fulfillment-cluster-2-redis-session-store",
+      "source": "order-fulfillment-cluster-2",
+      "target": "redis-session-store",
+      "type": "CALLS",
+      "weight": 0.84,
+      "latency_ms": 3.4
+    },
+    {
+      "id": "e-277-order-fulfillment-cluster-2-postgres-primary",
+      "source": "order-fulfillment-cluster-2",
+      "target": "postgres-primary",
+      "type": "DEPENDS_ON",
+      "weight": 0.93,
+      "latency_ms": 2.7
+    }
+  ],
+  "fault_gradients": {
+    "api-gateway": 0.287,
+    "ingress-lb": 0.297,
+    "public-bff": 0.267,
+    "mobile-gateway": 0.053,
+    "web-frontend": 0.585,
+    "mobile-frontend": 0.121,
+    "admin-portal": 0.442,
+    "partner-portal": 0.221,
+    "auth-service": 0.05,
+    "user-profile-service": 0.059,
+    "tenant-service": 0.05,
+    "catalog-service": 0.05,
+    "search-service": 0.05,
+    "recommendation-engine": 0.208,
+    "cart-service": 0.254,
+    "order-orchestrator": 1.0,
+    "order-fulfillment": 0.05,
+    "payment-gateway-proxy": 0.05,
+    "payment-processor": 0.05,
+    "fraud-detection": 0.05,
+    "billing-service": 0.488,
+    "invoice-service": 0.05,
+    "inventory-manager": 0.501,
+    "warehouse-dispatcher": 0.05,
+    "shipping-tracker": 0.097,
+    "pricing-engine": 0.14,
+    "discount-service": 0.05,
+    "notification-dispatcher": 0.05,
+    "email-service": 0.05,
+    "sms-gateway": 0.127,
+    "push-notification": 0.05,
+    "audit-logger": 0.05,
+    "analytics-collector": 0.05,
+    "report-generator": 0.05,
+    "postgres-primary": 0.05,
+    "postgres-replica": 0.05,
+    "mysql-cluster": 0.05,
+    "mongodb-orders": 0.05,
+    "redis-cache-master": 0.05,
+    "redis-session-store": 0.05,
+    "memcached-cluster": 0.05,
+    "elasticsearch-cluster": 0.05,
+    "neo4j-graph-db": 0.05,
+    "kafka-broker-1": 0.05,
+    "kafka-broker-2": 0.05,
+    "kafka-broker-3": 0.05,
+    "rabbitmq-orders": 0.05,
+    "sqs-notification-queue": 0.05,
+    "api-gateway-cluster-2": 0.293,
+    "ingress-lb-cluster-2": 0.228,
+    "public-bff-cluster-2": 0.182,
+    "mobile-gateway-cluster-2": 0.186,
+    "web-frontend-cluster-2": 0.263,
+    "mobile-frontend-cluster-2": 0.085,
+    "admin-portal-cluster-2": 0.358,
+    "partner-portal-cluster-2": 0.077,
+    "auth-service-cluster-2": 0.054,
+    "user-profile-service-cluster-2": 0.05,
+    "tenant-service-cluster-2": 0.05,
+    "catalog-service-cluster-2": 0.05,
+    "search-service-cluster-2": 0.058,
+    "recommendation-engine-cluster-2": 0.05,
+    "cart-service-cluster-2": 0.05,
+    "order-orchestrator-cluster-2": 0.107,
+    "order-fulfillment-cluster-2": 0.05
+  },
+  "metadata": {
+    "total_nodes": 65,
+    "total_edges": 278,
+    "fault_info": {
+      "root_cause_node": "order-orchestrator",
+      "fault_type": "cpu_saturation",
+      "injected_score": 0.98,
+      "affected_node_count": 40,
+      "propagation_path": [
+        "web-frontend",
+        "api-gateway-cluster-2",
+        "mobile-gateway-cluster-2",
+        "ingress-lb",
+        "search-service-cluster-2",
+        "recommendation-engine-cluster-2",
+        "mobile-frontend-cluster-2",
+        "search-service",
+        "analytics-collector",
+        "public-bff-cluster-2",
+        "partner-portal",
+        "ingress-lb-cluster-2",
+        "shipping-tracker",
+        "admin-portal-cluster-2",
+        "admin-portal",
+        "pricing-engine",
+        "billing-service",
+        "push-notification",
+        "mobile-gateway",
+        "web-frontend-cluster-2",
+        "api-gateway",
+        "inventory-manager",
+        "email-service",
+        "mobile-frontend",
+        "order-orchestrator",
+        "sms-gateway",
+        "user-profile-service",
+        "user-profile-service-cluster-2",
+        "public-bff",
+        "notification-dispatcher",
+        "recommendation-engine",
+        "order-orchestrator-cluster-2",
+        "payment-processor",
+        "auth-service-cluster-2",
+        "tenant-service-cluster-2",
+        "cart-service",
+        "audit-logger",
+        "partner-portal-cluster-2",
+        "catalog-service",
+        "invoice-service"
+      ],
+      "fault_gradients": {
+        "api-gateway": 0.287,
+        "ingress-lb": 0.297,
+        "public-bff": 0.267,
+        "mobile-gateway": 0.053,
+        "web-frontend": 0.585,
+        "mobile-frontend": 0.121,
+        "admin-portal": 0.442,
+        "partner-portal": 0.221,
+        "auth-service": 0.05,
+        "user-profile-service": 0.059,
+        "tenant-service": 0.05,
+        "catalog-service": 0.05,
+        "search-service": 0.05,
+        "recommendation-engine": 0.208,
+        "cart-service": 0.254,
+        "order-orchestrator": 1.0,
+        "order-fulfillment": 0.05,
+        "payment-gateway-proxy": 0.05,
+        "payment-processor": 0.05,
+        "fraud-detection": 0.05,
+        "billing-service": 0.488,
+        "invoice-service": 0.05,
+        "inventory-manager": 0.501,
+        "warehouse-dispatcher": 0.05,
+        "shipping-tracker": 0.097,
+        "pricing-engine": 0.14,
+        "discount-service": 0.05,
+        "notification-dispatcher": 0.05,
+        "email-service": 0.05,
+        "sms-gateway": 0.127,
+        "push-notification": 0.05,
+        "audit-logger": 0.05,
+        "analytics-collector": 0.05,
+        "report-generator": 0.05,
+        "postgres-primary": 0.05,
+        "postgres-replica": 0.05,
+        "mysql-cluster": 0.05,
+        "mongodb-orders": 0.05,
+        "redis-cache-master": 0.05,
+        "redis-session-store": 0.05,
+        "memcached-cluster": 0.05,
+        "elasticsearch-cluster": 0.05,
+        "neo4j-graph-db": 0.05,
+        "kafka-broker-1": 0.05,
+        "kafka-broker-2": 0.05,
+        "kafka-broker-3": 0.05,
+        "rabbitmq-orders": 0.05,
+        "sqs-notification-queue": 0.05,
+        "api-gateway-cluster-2": 0.293,
+        "ingress-lb-cluster-2": 0.228,
+        "public-bff-cluster-2": 0.182,
+        "mobile-gateway-cluster-2": 0.186,
+        "web-frontend-cluster-2": 0.263,
+        "mobile-frontend-cluster-2": 0.085,
+        "admin-portal-cluster-2": 0.358,
+        "partner-portal-cluster-2": 0.077,
+        "auth-service-cluster-2": 0.054,
+        "user-profile-service-cluster-2": 0.05,
+        "tenant-service-cluster-2": 0.05,
+        "catalog-service-cluster-2": 0.05,
+        "search-service-cluster-2": 0.058,
+        "recommendation-engine-cluster-2": 0.05,
+        "cart-service-cluster-2": 0.05,
+        "order-orchestrator-cluster-2": 0.107,
+        "order-fulfillment-cluster-2": 0.05
+      }
+    }
+  }
+}

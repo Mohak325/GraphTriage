@@ -107,5 +107,8 @@ class LLMProviderFactory:
             return OpenAIProvider(model=model_name, **kwargs)
         elif provider.lower() == "gemini":
             return GeminiProvider(model=model_name, **kwargs)
+        elif provider.lower() == "bedrock":
+            from ai_models.llm.bedrock_provider import BedrockLLMProvider
+            return BedrockLLMProvider(model_id=model_name, **kwargs)
         else:
             raise ValueError(f"Unknown LLM provider: {provider}")

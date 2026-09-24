@@ -55,7 +55,7 @@ class BedrockLLMProvider:
         return self._client
 
     def invoke_model(self, prompt: str, system_prompt: Optional[str] = None) -> str:
-        """Send inference request to Amazon Bedrock with Anthropic Claude 3 payload structure."""
+        """Send inference request to Amazon Bedrock using the Converse API."""
         if self.mock_mode or not BOTO3_AVAILABLE:
             return self._mock_llm_response(prompt)
 
@@ -64,23 +64,21 @@ class BedrockLLMProvider:
             return self._mock_llm_response(prompt)
 
         try:
-            body = {
-                "anthropic_version": "bedrock-2023-05-31",
-                "max_tokens": self.max_tokens,
-                "temperature": self.temperature,
-                "messages": [
-                    {"role": "user", "content": prompt}
-                ]
+            messages = [{"role": "user", "content": [{"text": prompt}]}]
+            
+            kwargs = {
+                "modelId": self.model_id,
+                "messages": messages,
+                "inferenceConfig": {
+                    "maxTokens": self.max_tokens,
+                    "temperature": self.temperature,
+                }
             }
             if system_prompt:
-                body["system"] = system_prompt
+                kwargs["system"] = [{"text": system_prompt}]
 
-            response = client.invoke_model(
-                modelId=self.model_id,
-                body=json.dumps(body)
-            )
-            response_body = json.loads(response["body"].read())
-            return response_body["content"][0]["text"]
+            response = client.converse(**kwargs)
+            return response["output"]["message"]["content"][0]["text"]
         except Exception as e:
             logger.error(f"Amazon Bedrock invocation error: {e}")
             return self._mock_llm_response(prompt)

@@ -193,7 +193,7 @@ Resources:
         - !Ref NeptuneSecurityGroup
       AssociatedRoles:
         - RoleArn: !GetAtt NeptuneS3Role.Arn
-      BackupRetentionPeriod: 7
+      BackupRetentionPeriod: 1
 
   NeptuneInstance:
     Type: AWS::Neptune::DBInstance

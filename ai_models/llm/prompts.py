@@ -19,6 +19,9 @@ Output format — you MUST return a valid JSON object with exactly these keys:
 }
 
 Rules:
+- CRITICAL (FALSE POSITIVE REDUCTION): Do not automatically blame the node with the highest anomaly score if downstream metrics indicate a network partition.
+- CRITICAL (FALSE POSITIVE REDUCTION): Distinguish between a victim service (e.g., waiting on DB) and the culprit (e.g., DB high CPU/locks).
+- CRITICAL (FALSE POSITIVE REDUCTION): If evidence is weak or contradictory, lower your confidence score significantly (< 0.5).
 - Return ONLY the JSON object, no markdown formatting, no extra text
 - suspicious_nodes should be ordered by suspicion level (most suspicious first)
 - fault_scores should reflect your computed/adjusted scores, not just raw input scores
@@ -57,6 +60,9 @@ Output format — you MUST return a valid JSON object with exactly these keys:
 }
 
 Rules:
+- CRITICAL (FALSE POSITIVE REDUCTION): Do not automatically blame the node with the highest anomaly score if downstream metrics indicate a network partition.
+- CRITICAL (FALSE POSITIVE REDUCTION): Distinguish between a victim service (e.g., waiting on DB) and the culprit (e.g., DB high CPU/locks).
+- CRITICAL (FALSE POSITIVE REDUCTION): If evidence is weak or contradictory, lower your confidence score significantly (< 0.5).
 - Return ONLY the JSON object, no markdown formatting, no extra text
 - confidence must be between 0.0 and 1.0 — use lower values when evidence is ambiguous
 - evidence_chain should be temporally ordered and reference specific data points
@@ -94,6 +100,9 @@ Output format — you MUST return a valid JSON object with exactly these keys:
 }
 
 Rules:
+- CRITICAL (FALSE POSITIVE REDUCTION): Do not automatically blame the node with the highest anomaly score if downstream metrics indicate a network partition.
+- CRITICAL (FALSE POSITIVE REDUCTION): Distinguish between a victim service (e.g., waiting on DB) and the culprit (e.g., DB high CPU/locks).
+- CRITICAL (FALSE POSITIVE REDUCTION): If evidence is weak or contradictory, lower your confidence score significantly (< 0.5).
 - Return ONLY the JSON object, no markdown formatting, no extra text
 - You MUST generate at least 3 counterfactual questions
 - Each counterfactual must be testable against the provided data

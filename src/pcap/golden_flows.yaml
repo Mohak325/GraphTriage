@@ -1,0 +1,101 @@
+# 3GPP TS 23.502 Canonical Golden Flows for 5G Core (5GC) Signaling
+# Venue Grounding: Paper 11 (Isaac et al., IEEE ICC Workshops 2024; Jarrah et al., 2025)
+
+registration:
+  procedure_name: "5GS Registration Procedure"
+  standard_reference: "3GPP TS 23.502 Section 4.2.2.2"
+  expected_sequence:
+    - step: 1
+      message_type: "RegistrationRequest"
+      protocol: "NAS-5GS"
+      source_entity: "UE"
+      target_entity: "AMF"
+      critical: true
+    - step: 2
+      message_type: "AuthenticationRequest"
+      protocol: "NAS-5GS"
+      source_entity: "AMF"
+      target_entity: "UE"
+      critical: true
+    - step: 3
+      message_type: "AuthenticationResponse"
+      protocol: "NAS-5GS"
+      source_entity: "UE"
+      target_entity: "AMF"
+      critical: true
+    - step: 4
+      message_type: "SecurityModeCommand"
+      protocol: "NAS-5GS"
+      source_entity: "AMF"
+      target_entity: "UE"
+      critical: true
+    - step: 5
+      message_type: "SecurityModeComplete"
+      protocol: "NAS-5GS"
+      source_entity: "UE"
+      target_entity: "AMF"
+      critical: true
+    - step: 6
+      message_type: "RegistrationAccept"
+      protocol: "NAS-5GS"
+      source_entity: "AMF"
+      target_entity: "UE"
+      critical: true
+
+pdu_session_establishment:
+  procedure_name: "PDU Session Establishment Procedure"
+  standard_reference: "3GPP TS 23.502 Section 4.3.2.2"
+  expected_sequence:
+    - step: 1
+      message_type: "PDUSessionEstablishmentRequest"
+      protocol: "NAS-5GS"
+      source_entity: "UE"
+      target_entity: "AMF"
+      critical: true
+    - step: 2
+      message_type: "Nsmf_PDUSession_CreateSMContextRequest"
+      protocol: "HTTP2"
+      source_entity: "AMF"
+      target_entity: "SMF"
+      critical: true
+    - step: 3
+      message_type: "Nsmf_PDUSession_CreateSMContextResponse"
+      protocol: "HTTP2"
+      source_entity: "SMF"
+      target_entity: "AMF"
+      critical: true
+    - step: 4
+      message_type: "PFCP_SessionEstablishmentRequest"
+      protocol: "PFCP"
+      source_entity: "SMF"
+      target_entity: "UPF"
+      critical: true
+    - step: 5
+      message_type: "PFCP_SessionEstablishmentResponse"
+      protocol: "PFCP"
+      source_entity: "UPF"
+      target_entity: "SMF"
+      critical: true
+    - step: 6
+      message_type: "PDUSessionEstablishmentAccept"
+      protocol: "NAS-5GS"
+      source_entity: "AMF"
+      target_entity: "UE"
+      critical: true
+
+deregistration:
+  procedure_name: "UE-initiated Deregistration"
+  standard_reference: "3GPP TS 23.502 Section 4.2.2.3"
+  expected_sequence:
+    - step: 1
+      message_type: "DeregistrationRequest"
+      protocol: "NAS-5GS"
+      source_entity: "UE"
+      target_entity: "AMF"
+      critical: true
+    - step: 2
+      message_type: "DeregistrationAccept"
+      protocol: "NAS-5GS"
+      source_entity: "AMF"
+      target_entity: "UE"
+      critical: true

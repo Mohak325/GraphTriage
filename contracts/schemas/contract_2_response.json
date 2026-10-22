@@ -1,0 +1,294 @@
+{
+  "$defs": {
+    "ActiveProbingResults": {
+      "additionalProperties": false,
+      "properties": {
+        "probes_executed": {
+          "description": "Diagnostic probes executed",
+          "items": {
+            "type": "string"
+          },
+          "title": "Probes Executed",
+          "type": "array"
+        },
+        "isolated_cv": {
+          "description": "Isolated Configuration Variable root cause",
+          "title": "Isolated Cv",
+          "type": "string"
+        },
+        "confidence": {
+          "description": "Diagnostic probing confidence",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "isolated_cv",
+        "confidence"
+      ],
+      "title": "ActiveProbingResults",
+      "type": "object"
+    },
+    "PcapVerification": {
+      "additionalProperties": false,
+      "properties": {
+        "protocol_violation": {
+          "description": "True if signaling protocol flow was violated",
+          "title": "Protocol Violation",
+          "type": "boolean"
+        },
+        "deviating_frame": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Exact frame number where deviation occurred",
+          "title": "Deviating Frame"
+        },
+        "procedure": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "3GPP procedure name",
+          "title": "Procedure"
+        },
+        "cause_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "3GPP or HTTP/2 cause code",
+          "title": "Cause Code"
+        }
+      },
+      "required": [
+        "protocol_violation"
+      ],
+      "title": "PcapVerification",
+      "type": "object"
+    },
+    "RankedCause": {
+      "additionalProperties": false,
+      "properties": {
+        "component_id": {
+          "description": "Component identified as likely root cause",
+          "title": "Component Id",
+          "type": "string"
+        },
+        "fault_type": {
+          "description": "Specific classified fault or failure mode",
+          "title": "Fault Type",
+          "type": "string"
+        },
+        "domain": {
+          "description": "Network or cloud domain e.g. 5g_core_sba, telecom_transport",
+          "title": "Domain",
+          "type": "string"
+        },
+        "anomaly_score": {
+          "description": "Normalized anomaly score",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Anomaly Score",
+          "type": "number"
+        },
+        "method": {
+          "description": "Detection method e.g. TeleGAN-Core + MNSUAD, DTFL_transGNN",
+          "title": "Method",
+          "type": "string"
+        },
+        "xai_attributions": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/XAIAttribution"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "SHAP feature importance",
+          "title": "Xai Attributions"
+        }
+      },
+      "required": [
+        "component_id",
+        "fault_type",
+        "domain",
+        "anomaly_score",
+        "method"
+      ],
+      "title": "RankedCause",
+      "type": "object"
+    },
+    "TopologyEdge": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "description": "Source node id",
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "description": "Target node id",
+          "title": "Target",
+          "type": "string"
+        },
+        "latency_ms": {
+          "description": "Observed network link latency in milliseconds",
+          "title": "Latency Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "source",
+        "target",
+        "latency_ms"
+      ],
+      "title": "TopologyEdge",
+      "type": "object"
+    },
+    "TopologyNode": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Component identifier",
+          "title": "Id",
+          "type": "string"
+        },
+        "status": {
+          "description": "Component state e.g. anomalous, degraded, healthy",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "status"
+      ],
+      "title": "TopologyNode",
+      "type": "object"
+    },
+    "TopologySubgraph": {
+      "additionalProperties": false,
+      "properties": {
+        "nodes": {
+          "description": "Nodes involved in failure subgraph",
+          "items": {
+            "$ref": "#/$defs/TopologyNode"
+          },
+          "title": "Nodes",
+          "type": "array"
+        },
+        "edges": {
+          "description": "Directed edges in failure subgraph",
+          "items": {
+            "$ref": "#/$defs/TopologyEdge"
+          },
+          "title": "Edges",
+          "type": "array"
+        }
+      },
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "title": "TopologySubgraph",
+      "type": "object"
+    },
+    "XAIAttribution": {
+      "additionalProperties": false,
+      "properties": {
+        "kpi": {
+          "description": "KPI or feature name",
+          "title": "Kpi",
+          "type": "string"
+        },
+        "shap_value": {
+          "description": "SHAP feature attribution value",
+          "title": "Shap Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "kpi",
+        "shap_value"
+      ],
+      "title": "XAIAttribution",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Contract 2: POST /api/rca/analyze Response.",
+  "properties": {
+    "incident_id": {
+      "description": "Incident identifier",
+      "title": "Incident Id",
+      "type": "string"
+    },
+    "ranked_causes": {
+      "description": "Ranked candidate root causes",
+      "items": {
+        "$ref": "#/$defs/RankedCause"
+      },
+      "title": "Ranked Causes",
+      "type": "array"
+    },
+    "pcap_verification": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PcapVerification"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Golden Flow verification"
+    },
+    "active_probing_results": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ActiveProbingResults"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "ConfExp probing outcome"
+    },
+    "topology_subgraph": {
+      "$ref": "#/$defs/TopologySubgraph",
+      "description": "Local failure propagation subgraph"
+    }
+  },
+  "required": [
+    "incident_id",
+    "ranked_causes",
+    "topology_subgraph"
+  ],
+  "title": "RCAResponse",
+  "type": "object"
+}

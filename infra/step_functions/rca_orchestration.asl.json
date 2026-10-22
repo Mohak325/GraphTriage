@@ -1,0 +1,194 @@
+{
+  "Comment": "Carrier-Grade End-to-End Telecom Cloud RCA & SLA Liability Orchestration State Machine (Person C - Layer 4/5). SLA Target: < 60s.",
+  "StartAt": "InvokeContract2Analysis",
+  "TimeoutSeconds": 60,
+  "States": {
+    "InvokeContract2Analysis": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::http:invoke",
+      "Parameters": {
+        "ApiEndpoint": "https://api.rca.telecom.carrier.internal/api/rca/analyze",
+        "Method": "POST",
+        "Authentication": {
+          "ConnectionArn": "arn:aws:events:us-east-1:123456789012:connection/person-b-rca"
+        },
+        "RequestBody": {
+          "incident_id.$": "$.incident_id",
+          "time_window.$": "$.time_window",
+          "affected_components.$": "$.affected_components",
+          "telemetry_s3_path.$": "$.telemetry_s3_path",
+          "trigger_active_probing": true
+        }
+      },
+      "ResultPath": "$.rca_analysis",
+      "Next": "ParallelRAGAndTNAutoRCA",
+      "Retry": [
+        {
+          "ErrorEquals": ["States.Http.StatusCode.500", "States.Http.StatusCode.503"],
+          "IntervalSeconds": 1,
+          "MaxAttempts": 3,
+          "BackoffRate": 2.0
+        }
+      ]
+    },
+
+    "ParallelRAGAndTNAutoRCA": {
+      "Type": "Parallel",
+      "Comment": "Concurrent execution of NFVAgent RAG retrieval and TN-AutoRCA code synthesis",
+      "Branches": [
+        {
+          "StartAt": "NFVAgentRAGRetrieval",
+          "States": {
+            "NFVAgentRAGRetrieval": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "Parameters": {
+                "FunctionName": "arn:aws:lambda:us-east-1:123456789012:function:nfv-agent-rag-retrieval",
+                "Payload": {
+                  "incident_id.$": "$.incident_id",
+                  "affected_components.$": "$.affected_components"
+                }
+              },
+              "End": true
+            }
+          }
+        },
+        {
+          "StartAt": "TNAutoRCACodeSynthesis",
+          "States": {
+            "TNAutoRCACodeSynthesis": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::bedrock:invokeModel",
+              "Parameters": {
+                "ModelId": "anthropic.claude-3-5-sonnet-20241022-v2:0",
+                "Body": {
+                  "anthropic_version": "bedrock-2023-05-31",
+                  "max_tokens": 4096,
+                  "temperature": 0.1,
+                  "messages": [
+                    {
+                      "role": "user",
+                      "content.$": "States.Format('Synthesize graph traversal code for incident {}', $.incident_id)"
+                    }
+                  ]
+                }
+              },
+              "End": true
+            }
+          }
+        }
+      ],
+      "ResultPath": "$.agent_synthesis_results",
+      "Next": "EvaluateLASMLiability"
+    },
+
+    "EvaluateLASMLiability": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:us-east-1:123456789012:function:lasm-sla-engine",
+        "Payload": {
+          "incident_id.$": "$.incident_id",
+          "root_cause_service.$": "$.rca_analysis.ResponseBody.ranked_causes[0].component_id",
+          "actor_context.$": "$.actor_context"
+        }
+      },
+      "ResultPath": "$.sla_liability_attribution",
+      "Next": "AGORAComplianceCheck"
+    },
+
+    "AGORAComplianceCheck": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:us-east-1:123456789012:function:agora-compliance-interceptor",
+        "Payload": {
+          "incident_id.$": "$.incident_id",
+          "target_service.$": "$.rca_analysis.ResponseBody.ranked_causes[0].component_id",
+          "proposed_action": "horizontal_scale_and_pool_patch"
+        }
+      },
+      "ResultPath": "$.agora_compliance",
+      "Next": "CheckHITLRequirement"
+    },
+
+    "CheckHITLRequirement": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.require_hitl_approval",
+          "BooleanEquals": true,
+          "Next": "WaitForOperatorCryptographicApproval"
+        }
+      ],
+      "Default": "DispatchAutomatedSSMRunbook"
+    },
+
+    "WaitForOperatorCryptographicApproval": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sqs:sendMessage.waitForTaskToken",
+      "Parameters": {
+        "QueueUrl": "https://sqs.us-east-1.amazonaws.com/123456789012/hitl-operator-approval-queue",
+        "MessageBody": {
+          "task_token.$": "$$.Task.Token",
+          "incident_id.$": "$.incident_id",
+          "sla_liability.$": "$.sla_liability_attribution.Payload",
+          "remediation_action": "horizontal_scale_and_pool_patch"
+        }
+      },
+      "TimeoutSeconds": 1800,
+      "ResultPath": "$.operator_decision",
+      "Next": "VerifyApprovalDecision"
+    },
+
+    "VerifyApprovalDecision": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.operator_decision.status",
+          "StringEquals": "APPROVED",
+          "Next": "DispatchAutomatedSSMRunbook"
+        }
+      ],
+      "Default": "RemediationRejectedExit"
+    },
+
+    "DispatchAutomatedSSMRunbook": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::ssm:startAutomationExecution",
+      "Parameters": {
+        "DocumentName": "scale_amf_service",
+        "Parameters": {
+          "TargetService.$": "States.Array($.rca_analysis.ResponseBody.ranked_causes[0].component_id)",
+          "Replicas": ["4"],
+          "ClientPoolSize": ["2048"]
+        }
+      },
+      "ResultPath": "$.ssm_execution",
+      "Next": "NotifySNSSuccess"
+    },
+
+    "NotifySNSSuccess": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:us-east-1:123456789012:carrier-noc-alerts",
+        "Message": {
+          "incident_id.$": "$.incident_id",
+          "status": "REMEDIATED_AND_VERIFIED",
+          "financial_penalty_usd.$": "$.sla_liability_attribution.Payload.mrc_financial_penalty_usd"
+        }
+      },
+      "End": true
+    },
+
+    "RemediationRejectedExit": {
+      "Type": "Pass",
+      "Result": {
+        "status": "OPERATOR_REJECTED",
+        "message": "Remediation halted by operator decision."
+      },
+      "End": true
+    }
+  }
+}

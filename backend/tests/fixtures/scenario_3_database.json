@@ -1,0 +1,43 @@
+{
+  "incident_id": "INC-2026-0045",
+  "ranked_causes": [
+    {
+      "component_id": "db-pg-cluster",
+      "fault_type": "Connection Pool Exhaustion / Storage IOPS Throttling",
+      "domain": "data_service",
+      "anomaly_score": 0.938,
+      "method": "MNSUAD + TeleGAN-Core",
+      "xai_attributions": [
+        {"kpi": "pg_active_connections_pct", "shap_value": 0.58},
+        {"kpi": "ebs_disk_queue_depth", "shap_value": 0.32}
+      ]
+    },
+    {
+      "component_id": "udr-01",
+      "fault_type": "Subscription Profile Query Latency Spike",
+      "domain": "5g_core_sba",
+      "anomaly_score": 0.725,
+      "method": "TeleGAN-Core"
+    }
+  ],
+  "pcap_verification": {
+    "protocol_violation": true,
+    "deviating_frame": 112,
+    "procedure": "UDM Subscription Retrieval",
+    "cause_code": "504_GatewayTimeout"
+  },
+  "active_probing_results": {
+    "probes_executed": ["pg_isready", "udr_http2_query"],
+    "isolated_cv": "postgresql.conf.max_connections",
+    "confidence": 0.965
+  },
+  "topology_subgraph": {
+    "nodes": [
+      {"id": "db-pg-cluster", "status": "anomalous"},
+      {"id": "udr-01", "status": "degraded"}
+    ],
+    "edges": [
+      {"source": "udr-01", "target": "db-pg-cluster", "latency_ms": 185.0}
+    ]
+  }
+}

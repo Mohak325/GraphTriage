@@ -1,0 +1,67 @@
+{
+  "$defs": {
+    "TimeWindow": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "description": "Start of incident analysis window",
+          "format": "date-time",
+          "title": "Start",
+          "type": "string"
+        },
+        "end": {
+          "description": "End of incident analysis window",
+          "format": "date-time",
+          "title": "End",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "TimeWindow",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Contract 2: POST /api/rca/analyze Request.",
+  "properties": {
+    "incident_id": {
+      "description": "Unique incident identifier e.g. INC-2026-0042",
+      "title": "Incident Id",
+      "type": "string"
+    },
+    "time_window": {
+      "$ref": "#/$defs/TimeWindow",
+      "description": "Time window for telemetry analysis"
+    },
+    "affected_components": {
+      "description": "Components exhibiting anomalous KPIs or alarms",
+      "items": {
+        "type": "string"
+      },
+      "title": "Affected Components",
+      "type": "array"
+    },
+    "telemetry_s3_path": {
+      "description": "S3 URI path to raw and normalized telemetry files",
+      "title": "Telemetry S3 Path",
+      "type": "string"
+    },
+    "trigger_active_probing": {
+      "default": true,
+      "description": "Whether to trigger ConfExp active probing",
+      "title": "Trigger Active Probing",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "incident_id",
+    "time_window",
+    "affected_components",
+    "telemetry_s3_path"
+  ],
+  "title": "RCARequest",
+  "type": "object"
+}

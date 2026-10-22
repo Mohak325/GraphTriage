@@ -1,0 +1,43 @@
+{
+  "incident_id": "INC-2026-0044",
+  "ranked_causes": [
+    {
+      "component_id": "pod-db-redis",
+      "fault_type": "OOMKilled / Memory Cgroup Exhaustion",
+      "domain": "kubernetes_cnf",
+      "anomaly_score": 0.968,
+      "method": "MNSUAD",
+      "xai_attributions": [
+        {"kpi": "container_memory_working_set_bytes", "shap_value": 0.62},
+        {"kpi": "pod_restart_count_5m", "shap_value": 0.28}
+      ]
+    },
+    {
+      "component_id": "amf-01",
+      "fault_type": "Session Cache Lookup Timeout",
+      "domain": "5g_core_sba",
+      "anomaly_score": 0.540,
+      "method": "TeleGAN-Core"
+    }
+  ],
+  "pcap_verification": {
+    "protocol_violation": true,
+    "deviating_frame": 48,
+    "procedure": "Subscriber State Cache Update",
+    "cause_code": "TCP_RST"
+  },
+  "active_probing_results": {
+    "probes_executed": ["k8s_describe_pod", "redis_ping"],
+    "isolated_cv": "cgroup.memory.limits_bytes",
+    "confidence": 0.991
+  },
+  "topology_subgraph": {
+    "nodes": [
+      {"id": "pod-db-redis", "status": "anomalous"},
+      {"id": "amf-01", "status": "degraded"}
+    ],
+    "edges": [
+      {"source": "amf-01", "target": "pod-db-redis", "latency_ms": 350.2}
+    ]
+  }
+}

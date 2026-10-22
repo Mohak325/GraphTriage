@@ -1,0 +1,43 @@
+{
+  "incident_id": "INC-2026-0047",
+  "ranked_causes": [
+    {
+      "component_id": "k8s-worker-node-14",
+      "fault_type": "Kubelet CPU Throttling / CFS Bandwidth Saturation",
+      "domain": "kubernetes_cnf",
+      "anomaly_score": 0.961,
+      "method": "MNSUAD",
+      "xai_attributions": [
+        {"kpi": "node_cpu_cfs_throttled_seconds_total", "shap_value": 0.52},
+        {"kpi": "node_disk_io_time_seconds_total", "shap_value": 0.38}
+      ]
+    },
+    {
+      "component_id": "upf-edge-3",
+      "fault_type": "GTP-U Packet Buffer Overflow",
+      "domain": "5g_core_sba",
+      "anomaly_score": 0.814,
+      "method": "TeleGAN-Core"
+    }
+  ],
+  "pcap_verification": {
+    "protocol_violation": true,
+    "deviating_frame": 14,
+    "procedure": "GTP_Echo_Response",
+    "cause_code": "Path_Failure"
+  },
+  "active_probing_results": {
+    "probes_executed": ["cgroup_v2_pressure_query", "kubelet_healthz"],
+    "isolated_cv": "kubelet.config.cpu_cfs_quota_period",
+    "confidence": 0.978
+  },
+  "topology_subgraph": {
+    "nodes": [
+      {"id": "k8s-worker-node-14", "status": "anomalous"},
+      {"id": "upf-edge-3", "status": "degraded"}
+    ],
+    "edges": [
+      {"source": "k8s-worker-node-14", "target": "upf-edge-3", "latency_ms": 178.6}
+    ]
+  }
+}

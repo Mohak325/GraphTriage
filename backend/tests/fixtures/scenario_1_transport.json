@@ -1,0 +1,43 @@
+{
+  "incident_id": "INC-2026-0043",
+  "ranked_causes": [
+    {
+      "component_id": "router-core-2",
+      "fault_type": "BGP Route Flapping / Optical Link Degradation",
+      "domain": "telecom_transport",
+      "anomaly_score": 0.955,
+      "method": "DTFL_transGNN",
+      "xai_attributions": [
+        {"kpi": "interface_fec_uncorrectable_errors", "shap_value": 0.54},
+        {"kpi": "bgp_session_flaps_per_minute", "shap_value": 0.38}
+      ]
+    },
+    {
+      "component_id": "router-edge-4",
+      "fault_type": "Ingress Queue Congestion",
+      "domain": "telecom_transport",
+      "anomaly_score": 0.612,
+      "method": "MNSUAD"
+    }
+  ],
+  "pcap_verification": {
+    "protocol_violation": false,
+    "deviating_frame": null,
+    "procedure": null,
+    "cause_code": null
+  },
+  "active_probing_results": {
+    "probes_executed": ["traceroute_icmp", "bgp_keepalive_probe"],
+    "isolated_cv": "transport.link.attenuation_threshold_db",
+    "confidence": 0.972
+  },
+  "topology_subgraph": {
+    "nodes": [
+      {"id": "router-core-2", "status": "anomalous"},
+      {"id": "router-edge-4", "status": "degraded"}
+    ],
+    "edges": [
+      {"source": "router-core-2", "target": "router-edge-4", "latency_ms": 215.8}
+    ]
+  }
+}

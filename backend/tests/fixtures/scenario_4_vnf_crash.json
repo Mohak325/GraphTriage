@@ -1,0 +1,43 @@
+{
+  "incident_id": "INC-2026-0046",
+  "ranked_causes": [
+    {
+      "component_id": "smf-02",
+      "fault_type": "PDU Session Establishment Deadlock / State Corruption",
+      "domain": "5g_core_sba",
+      "anomaly_score": 0.975,
+      "method": "TeleGAN-Core + MNSUAD",
+      "xai_attributions": [
+        {"kpi": "smf_pdu_session_reject_rate", "shap_value": 0.65},
+        {"kpi": "smf_n4_pfcp_heartbeat_timeout_count", "shap_value": 0.25}
+      ]
+    },
+    {
+      "component_id": "upf-edge-3",
+      "fault_type": "PFCP Session Deletion Failure",
+      "domain": "5g_core_sba",
+      "anomaly_score": 0.710,
+      "method": "DTFL_transGNN"
+    }
+  ],
+  "pcap_verification": {
+    "protocol_violation": true,
+    "deviating_frame": 89,
+    "procedure": "PDU_Session_Establishment",
+    "cause_code": "PFCP_Association_Lost"
+  },
+  "active_probing_results": {
+    "probes_executed": ["pfcp_heartbeat_probe", "sbi_health_check"],
+    "isolated_cv": "smf.pfcp.association_timeout_ms",
+    "confidence": 0.988
+  },
+  "topology_subgraph": {
+    "nodes": [
+      {"id": "smf-02", "status": "anomalous"},
+      {"id": "upf-edge-3", "status": "degraded"}
+    ],
+    "edges": [
+      {"source": "smf-02", "target": "upf-edge-3", "latency_ms": 290.4}
+    ]
+  }
+}

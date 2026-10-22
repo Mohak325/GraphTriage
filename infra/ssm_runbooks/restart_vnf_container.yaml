@@ -1,0 +1,38 @@
+description: "Safe Container Recycling and Stateful Cache Sync Runbook (Person C)"
+schemaVersion: "0.3"
+assumeRole: "arn:aws:iam::123456789012:role/SSMAutomationRole"
+parameters:
+  TargetContainer:
+    type: String
+    default: "pod-db-redis"
+    description: "Target container or pod to recycle"
+  OperatorSignature:
+    type: String
+    default: "NOC_OPERATOR_SIG"
+
+mainSteps:
+  - name: FlushStaleCache
+    action: aws:executeScript
+    inputs:
+      Runtime: python3.11
+      Handler: flush_cache
+      Script: |
+        def flush_cache(events, context):
+            target = events["TargetContainer"]
+            print(f"Flushing deadlocked state from {target}...")
+            return {"status": "FLUSHED"}
+      InputPayload:
+        TargetContainer: "{{TargetContainer}}"
+
+  - name: GracefulContainerRestart
+    action: aws:executeScript
+    inputs:
+      Runtime: python3.11
+      Handler: restart_pod
+      Script: |
+        def restart_pod(events, context):
+            target = events["TargetContainer"]
+            print(f"Triggering Kubernetes graceful restart for {target}...")
+            return {"restarted": True}
+      InputPayload:
+        TargetContainer: "{{TargetContainer}}"

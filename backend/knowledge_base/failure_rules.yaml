@@ -1,0 +1,608 @@
+# Telecom Failure Propagation Rules Knowledge Base
+# Total Rules: 52 Rules across 4 domains (Transport, 5G Core SBA, Kubernetes CNF, Data Service)
+# Grounded in 3GPP Release 18 and ETSI NFV-MANO specifications.
+
+rules:
+  # =========================================================================
+  # DOMAIN: 5G Core Service-Based Architecture (SBA) [16 Rules]
+  # =========================================================================
+  - rule_id: "RULE-5GC-001"
+    name: "AMF SBI Client Pool Exhaustion"
+    domain: "5g_core_sba"
+    trigger_condition: "amf_active_ngap_contexts > threshold AND amf_cpu_saturation > 0.85"
+    propagation_chain:
+      - "Misconfigured SBI client pool on amf-01"
+      - "Frame 23: Registration Reject (Congestion) triggered"
+      - "HTTP/2 stream multiplexing queue starvation across AMF-SMF link"
+      - "Downstream packet drop on upf-edge-3"
+      - "SLA breach: PDU Session Setup Latency > 250ms"
+    mitigation_action: "horizontal_scale_and_pool_patch"
+    standard_mapping: "3GPP TS 29.518 Clause 5.2.2 / 3GPP TS 23.501 Clause 5.21"
+
+  - rule_id: "RULE-5GC-002"
+    name: "SMF N4 PFCP Association Timeout"
+    domain: "5g_core_sba"
+    trigger_condition: "smf_n4_pfcp_heartbeat_timeout_count > 3"
+    propagation_chain:
+      - "PFCP Heartbeat loss between SMF and UPF"
+      - "N4 session modification failure for active bearers"
+      - "SMF triggers PDU session release with cause Network Failure"
+      - "Mass user deregistration storm on radio access network"
+    mitigation_action: "restart_pfcp_agent_and_resync"
+    standard_mapping: "3GPP TS 29.244 Clause 6.2.2"
+
+  - rule_id: "RULE-5GC-003"
+    name: "NRF Service Discovery Stale Registration"
+    domain: "5g_core_sba"
+    trigger_condition: "nrf_discovery_stale_instance_rate > 0.15"
+    propagation_chain:
+      - "NRF heartbeat lease expiration skipped for crashed NF instance"
+      - "AMF attempts SBI request to non-responsive SMF endpoint"
+      - "HTTP/2 503 Service Unavailable returned to control plane"
+      - "Registration and handover procedures stall"
+    mitigation_action: "purge_nrf_stale_cache_and_notify"
+    standard_mapping: "3GPP TS 29.510 Clause 5.2.2"
+
+  - rule_id: "RULE-5GC-004"
+    name: "UDM Subscription Retrieval 504 Timeout"
+    domain: "5g_core_sba"
+    trigger_condition: "udm_sbi_p99_latency_ms > 450"
+    propagation_chain:
+      - "UDR database backend read lock contention"
+      - "Nudm_SDM_Get query timeout on AMF ingress"
+      - "AMF fails subscriber authentication phase"
+      - "UE receives NAS Registration Reject (Illegal UE)"
+    mitigation_action: "scale_udr_read_replicas"
+    standard_mapping: "3GPP TS 29.503 Clause 5.2.2"
+
+  - rule_id: "RULE-5GC-005"
+    name: "UPF GTP-U Ingress Buffer Overflow"
+    domain: "5g_core_sba"
+    trigger_condition: "upf_gtpu_rx_drop_ratio > 0.05"
+    propagation_chain:
+      - "eNodeB/gNodeB traffic burst during flash crowd event"
+      - "UPF N3 interface DPDK ring buffer saturation"
+      - "User plane packet drops and TCP throughput collapse"
+      - "eMBB SLA violation: Downlink Packet Loss > 1.0%"
+    mitigation_action: "scale_upf_dpdk_workers"
+    standard_mapping: "3GPP TS 29.281 Clause 5.1"
+
+  - rule_id: "RULE-5GC-006"
+    name: "AUSF Authentication Vector Starvation"
+    domain: "5g_core_sba"
+    trigger_condition: "ausf_auth_vector_pool_available < 100"
+    propagation_chain:
+      - "SIM card vendor HSM batch generation delay"
+      - "Nausf_UEAuthentication request failure"
+      - "Primary authentication failure for 5G AKA"
+      - "Subscribers barred from initial attach"
+    mitigation_action: "switch_to_secondary_hsm_and_reload"
+    standard_mapping: "3GPP TS 33.501 Clause 6.1"
+
+  - rule_id: "RULE-5GC-007"
+    name: "PCF Session Rule Evaluation Throttling"
+    domain: "5g_core_sba"
+    trigger_condition: "pcf_sm_policy_request_queue_depth > 500"
+    propagation_chain:
+      - "Complex dynamic slicing policy rule explosion"
+      - "Npcf_SMPolicyControl_Create latency spike > 300ms"
+      - "SMF PDU session establishment timer expiry"
+      - "SLA violation for URLLC ultra-low latency slicing"
+    mitigation_action: "cache_policy_decision_tables"
+    standard_mapping: "3GPP TS 29.512 Clause 4.2"
+
+  - rule_id: "RULE-5GC-008"
+    name: "NSSF Network Slice Selection Failure"
+    domain: "5g_core_sba"
+    trigger_condition: "nssf_nsselection_error_rate > 0.08"
+    propagation_chain:
+      - "Mismatched S-NSSAI slice configuration in NSSF table"
+      - "Nnssf_NSSelection_Get returns 404 Slice Not Supported"
+      - "AMF unable to select target AMF/SMF for enterprise slice"
+      - "Enterprise slice connection rejection"
+    mitigation_action: "resync_slice_profiles_from_oss"
+    standard_mapping: "3GPP TS 29.531 Clause 5.2"
+
+  - rule_id: "RULE-5GC-009"
+    name: "AMF NGAP Association Reset Storm"
+    domain: "5g_core_sba"
+    trigger_condition: "amf_sCTP_association_aborts_per_sec > 10"
+    propagation_chain:
+      - "Transport MTU mismatch causing SCTP chunk fragmentation"
+      - "gNodeB drops SCTP association and initiates restart"
+      - "AMF purges all active UE contexts on affected base station"
+      - "Radio service blackout across cellular sector"
+    mitigation_action: "clamp_sctp_pmtu_and_reset_link"
+    standard_mapping: "3GPP TS 38.412 Clause 7.1"
+
+  - rule_id: "RULE-5GC-010"
+    name: "UPF N6 SGi-LAN Gateway ARP Storm"
+    domain: "5g_core_sba"
+    trigger_condition: "upf_n6_arp_resolution_failures > 50"
+    propagation_chain:
+      - "Corrupted MAC table on external peering carrier switch"
+      - "UPF unable to resolve next-hop IP for internet egress"
+      - "Outbound user data queued until buffer overflow"
+      - "Complete internet access failure for all data sessions"
+    mitigation_action: "flush_arp_cache_and_failover_n6"
+    standard_mapping: "3GPP TS 23.501 Clause 5.6.8"
+
+  - rule_id: "RULE-5GC-011"
+    name: "SMF IP Pool Address Exhaustion"
+    domain: "5g_core_sba"
+    trigger_condition: "smf_ip_pool_utilization_pct > 98.0"
+    propagation_chain:
+      - "Stale IP allocations not reclaimed due to missed Session Release"
+      - "SMF rejects new PDU Session Establishment with Insufficient Resources"
+      - "Mobile data connectivity denied for new sessions"
+      - "Data connectivity availability drops below 99.0%"
+    mitigation_action: "run_stale_ip_reclamation_job"
+    standard_mapping: "3GPP TS 29.502 Clause 5.2.2"
+
+  - rule_id: "RULE-5GC-012"
+    name: "CHF Charging Gateway Quota Exhaustion"
+    domain: "5g_core_sba"
+    trigger_condition: "chf_converged_charging_reject_rate > 0.05"
+    propagation_chain:
+      - "Online Charging System (OCS) diameter link flap"
+      - "Nchf_ConvergedCharging_Create quota grant timeout"
+      - "SMF forces QoS downgrade to zero bandwidth"
+      - "Prepaid subscriber session termination"
+    mitigation_action: "enable_offline_quota_grant_fallback"
+    standard_mapping: "3GPP TS 32.291 Clause 5.2"
+
+  - rule_id: "RULE-5GC-013"
+    name: "SEPP Security Edge Protection Proxy TLS Handshake Failure"
+    domain: "5g_core_sba"
+    trigger_condition: "sepp_inter_plmn_tls_errors > 20"
+    propagation_chain:
+      - "Expired mTLS certificate on roaming partner SEPP"
+      - "N32 interface TLS handshake failure"
+      - "Inter-PLMN roaming signaling blocked"
+      - "Inbound/outbound roamers lose network registration"
+    mitigation_action: "renew_and_reload_sepp_certificates"
+    standard_mapping: "3GPP TS 33.501 Clause 13.1"
+
+  - rule_id: "RULE-5GC-014"
+    name: "LMF Location Measurement Unit Latency Degradation"
+    domain: "5g_core_sba"
+    trigger_condition: "lmf_positioning_calc_latency_ms > 2000"
+    propagation_chain:
+      - "High compute load on positioning calculation thread"
+      - "Emergency call E911 location estimation delayed"
+      - "Regulatory compliance SLA violation for emergency dispatch"
+    mitigation_action: "prioritize_emergency_positioning_queues"
+    standard_mapping: "3GPP TS 29.572 Clause 5.2"
+
+  - rule_id: "RULE-5GC-015"
+    name: "NWDAF Anomaly Analytics Model Divergence"
+    domain: "5g_core_sba"
+    trigger_condition: "nwdaf_prediction_residual_error > 0.40"
+    propagation_chain:
+      - "Non-stationary traffic drift after major software update"
+      - "NWDAF outputs inaccurate load analytics to PCF"
+      - "PCF allocates suboptimal QoS profiles to edge cells"
+    mitigation_action: "trigger_nwdaf_model_retraining"
+    standard_mapping: "3GPP TS 29.520 Clause 5.2"
+
+  - rule_id: "RULE-5GC-016"
+    name: "NEF External API Gateway Rate Throttling"
+    domain: "5g_core_sba"
+    trigger_condition: "nef_http429_too_many_requests_rate > 0.10"
+    propagation_chain:
+      - "Aggressive polling from 3rd party vertical IoT applications"
+      - "NEF token bucket rate limiter clamps API traffic"
+      - "Vehicle-to-Everything (V2X) event notification delivery delayed"
+    mitigation_action: "expand_v2x_partner_rate_quota"
+    standard_mapping: "3GPP TS 29.522 Clause 5.2"
+
+  # =========================================================================
+  # DOMAIN: Telecom Transport & Optical Backhaul [12 Rules]
+  # =========================================================================
+  - rule_id: "RULE-TRN-001"
+    name: "BGP Route Flapping from Optical Link Degradation"
+    domain: "telecom_transport"
+    trigger_condition: "interface_fec_uncorrectable_errors > 100 AND bgp_session_flaps_per_minute > 2"
+    propagation_chain:
+      - "Optical fiber bend inducing signal attenuation"
+      - "DWDM transponder bit error rate triggers interface bounce"
+      - "BGP route withdraw and re-advertisement storm"
+      - "Packet transit latency spikes from 8ms to 215ms"
+      - "5GC SBI HTTP/2 transport connection resets"
+    mitigation_action: "switch_optical_protection_path"
+    standard_mapping: "ETSI GS NFV-IFA 007 Clause 6.2.1"
+
+  - rule_id: "RULE-TRN-002"
+    name: "MPLS LDP Session Hold Timer Expiration"
+    domain: "telecom_transport"
+    trigger_condition: "mpls_ldp_session_state == DOWN"
+    propagation_chain:
+      - "High CPU on transit provider aggregation switch"
+      - "LDP Keepalive packets dropped"
+      - "Label switched paths torn down across backhaul"
+      - "Cell site base stations lose connectivity to Core"
+    mitigation_action: "reroute_mpls_te_tunnel"
+    standard_mapping: "IETF RFC 5036"
+
+  - rule_id: "RULE-TRN-003"
+    name: "Segment Routing SRv6 SID Table Exhaustion"
+    domain: "telecom_transport"
+    trigger_condition: "srv6_active_sids_pct > 95.0"
+    propagation_chain:
+      - "Excessive network slicing tunnel creation"
+      - "Hardware TCAM table overflow on spine router"
+      - "SRv6 encapsulated packets dropped in hardware pipeline"
+    mitigation_action: "compact_srv6_sid_allocations"
+    standard_mapping: "IETF RFC 8986"
+
+  - rule_id: "RULE-TRN-004"
+    name: "Micro-burst Queue Buffer Bloat"
+    domain: "telecom_transport"
+    trigger_condition: "router_egress_queue_drops_burst > 1000"
+    propagation_chain:
+      - "Synchronized video streaming traffic bursts"
+      - "Switch output buffer starvation"
+      - "Tail drop causes global TCP synchronization"
+    mitigation_action: "enable_wred_active_queue_management"
+    standard_mapping: "IETF RFC 7567"
+
+  - rule_id: "RULE-TRN-005"
+    name: "SyncE PTP IEEE 1588 Timing Loss"
+    domain: "telecom_transport"
+    trigger_condition: "ptp_clock_offset_ns > 1000"
+    propagation_chain:
+      - "Grandmaster GPS receiver antenna signal disruption"
+      - "PTP time-difference drift exceeds radio threshold"
+      - "gNodeB TDD frame synchronization lost"
+      - "Base stations shut down RF transmitters to avoid cross-slot interference"
+    mitigation_action: "failover_to_secondary_ptp_boundary_clock"
+    standard_mapping: "ITU-T G.8275.1"
+
+  - rule_id: "RULE-TRN-006"
+    name: "DWDM EDFA Optical Amplifier Saturation"
+    domain: "telecom_transport"
+    trigger_condition: "edfa_pump_laser_current_pct > 99.0"
+    propagation_chain:
+      - "Multiple new lambda channels provisioned without rebalancing"
+      - "Optical amplifier gain tilt causes OSNR degradation"
+      - "High FEC correctable error rate on all multiplexed wavelengths"
+    mitigation_action: "auto_rebalance_edfa_gain_tilt"
+    standard_mapping: "ITU-T G.661"
+
+  - rule_id: "RULE-TRN-007"
+    name: "VXLAN VTEP Tunnel Split-Brain"
+    domain: "telecom_transport"
+    trigger_condition: "vtep_mac_learning_flaps > 500"
+    propagation_chain:
+      - "Underlay multicast packet drop for BUM traffic"
+      - "EVPN route type 2 synchronization stall between leaf switches"
+      - "Inter-DC tenant microservice isolation failure"
+    mitigation_action: "re_establish_evpn_bgp_peering"
+    standard_mapping: "IETF RFC 7348"
+
+  - rule_id: "RULE-TRN-008"
+    name: "LACP EtherChannel Member Link CRC Errors"
+    domain: "telecom_transport"
+    trigger_condition: "lacp_port_fcs_errors_per_sec > 25"
+    propagation_chain:
+      - "Failing SFP+ optical transceiver on member link"
+      - "Flow hashing assigns traffic to degraded physical lane"
+      - "Intermittent 20% packet loss on bundled trunk"
+    mitigation_action: "isolate_and_disable_faulty_lacp_member"
+    standard_mapping: "IEEE 802.1AX"
+
+  - rule_id: "RULE-TRN-009"
+    name: "BFD Fast Failover False Positive Trigger"
+    domain: "telecom_transport"
+    trigger_condition: "bfd_state_changes_last_minute > 5"
+    propagation_chain:
+      - "Aggressive 50ms BFD detection multiplier with CPU scheduling lag"
+      - "Spurious route withdrawals on healthy links"
+      - "Network topology churn and routing protocol oscillation"
+    mitigation_action: "relax_bfd_multiplier_to_300ms"
+    standard_mapping: "IETF RFC 5880"
+
+  - rule_id: "RULE-TRN-0010"
+    name: "Carrier Carrier-Grade NAT (CGNAT) Port Block Depletion"
+    domain: "telecom_transport"
+    trigger_condition: "cgnat_port_allocation_exhaustion == True"
+    propagation_chain:
+      - "High density of IPv4 mobile subscribers in urban macro cell"
+      - "CGNAT deterministic port blocks exhausted"
+      - "New outbound IPv4 sessions dropped"
+    mitigation_action: "allocate_additional_public_ipv4_pool"
+    standard_mapping: "IETF RFC 6888"
+
+  - rule_id: "RULE-TRN-011"
+    name: "Transport MTU Path Discovery Black Hole"
+    domain: "telecom_transport"
+    trigger_condition: "icmp_fragmentation_needed_drops > 100"
+    propagation_chain:
+      - "Middlebox firewall blocking ICMP Type 3 Code 4"
+      - "Large packets above 1420 bytes dropped without notification"
+      - "TCP connections freeze during TLS certificate exchange"
+    mitigation_action: "clamp_tcp_mss_to_1360_bytes"
+    standard_mapping: "IETF RFC 1191"
+
+  - rule_id: "RULE-TRN-012"
+    name: "IPsec Security Association Re-keying Deadlock"
+    domain: "telecom_transport"
+    trigger_condition: "ipsec_ike_rekey_timeouts > 3"
+    propagation_chain:
+      - "IKEv2 daemon race condition during high traffic volume"
+      - "Existing IPsec tunnel expires before new SA established"
+      - "Security Gateway drops encrypted backhaul traffic"
+    mitigation_action: "force_soft_rekey_with_fallback"
+    standard_mapping: "IETF RFC 7296"
+
+  # =========================================================================
+  # DOMAIN: Kubernetes / Cloud-Native Network Functions (CNF) [12 Rules]
+  # =========================================================================
+  - rule_id: "RULE-K8S-001"
+    name: "Pod Memory Cgroup Limit Exhaustion (OOMKilled)"
+    domain: "kubernetes_cnf"
+    trigger_condition: "container_memory_working_set_bytes >= container_memory_limits_bytes"
+    propagation_chain:
+      - "Memory leak in subscriber session state caching daemon"
+      - "Linux kernel cgroup memory controller terminates pod via SIGKILL"
+      - "Pod enters CrashLoopBackOff"
+      - "Neighboring replicas absorb traffic and approach OOM threshold"
+    mitigation_action: "patch_memory_limits_and_drain_node"
+    standard_mapping: "ETSI GS NFV-SOL 003 Clause 8.3"
+
+  - rule_id: "RULE-K8S-002"
+    name: "CFS Bandwidth CPU Throttling on Critical CNF"
+    domain: "kubernetes_cnf"
+    trigger_condition: "node_cpu_cfs_throttled_seconds_total > 15.0"
+    propagation_chain:
+      - "CPU limit configured below burst requirements for signaling"
+      - "Linux CFS scheduler suspends container execution during 100ms quota period"
+      - "Signaling processing latency degrades from 2ms to 120ms"
+      - "Upstream NFs trigger timeout retransmissions"
+    mitigation_action: "switch_to_guaranteed_qos_cpu_pinning"
+    standard_mapping: "Kubernetes Quality of Service Classes RFC"
+
+  - rule_id: "RULE-K8S-003"
+    name: "CoreDNS Resolution Latency Spike"
+    domain: "kubernetes_cnf"
+    trigger_condition: "coredns_dns_request_duration_seconds_p99 > 0.25"
+    propagation_chain:
+      - "Default upstream resolver rate limiting UDP queries"
+      - "Internal service discovery (e.g. nrf.default.svc.cluster.local) delayed"
+      - "SBA HTTP/2 connection establishment timeouts cascade"
+    mitigation_action: "scale_coredns_replicas_and_enable_autopath"
+    standard_mapping: "Kubernetes Cluster DNS Specification"
+
+  - rule_id: "RULE-K8S-004"
+    name: "CNI IPAM Subnet Allocation Exhaustion"
+    domain: "kubernetes_cnf"
+    trigger_condition: "cni_ipam_free_ips_pct < 2.0"
+    propagation_chain:
+      - "Rapid scaling events leave terminated pods in unreleased IP state"
+      - "CNI plugin fails to assign PodIP to newly scheduled pods"
+      - "Pods remain stuck in ContainerCreating status"
+    mitigation_action: "run_cni_ipam_gc_and_expand_cidr"
+    standard_mapping: "Container Network Interface Specification v1.0"
+
+  - rule_id: "RULE-K8S-005"
+    name: "Kubelet Node NotReady Disk Pressure"
+    domain: "kubernetes_cnf"
+    trigger_condition: "node_filesystem_free_bytes_pct < 5.0"
+    propagation_chain:
+      - "Unrotated container log files accumulate on root partition"
+      - "Kubelet marks node condition DiskPressure"
+      - "Node controller initiates pod evictions across the worker"
+    mitigation_action: "clean_docker_overlay_logs_and_untaint"
+    standard_mapping: "Kubernetes Node Eviction Manager Spec"
+
+  - rule_id: "RULE-K8S-006"
+    name: "Multus Secondary Interface SRIOV VF Binding Failure"
+    domain: "kubernetes_cnf"
+    trigger_condition: "sriov_vf_allocation_failure_count > 0"
+    propagation_chain:
+      - "PCI device driver unbind failure during pod rescheduling"
+      - "UPF pod unable to attach hardware virtual function for user plane"
+      - "Pod fails readiness probe and is removed from Endpoints"
+    mitigation_action: "reload_sriov_device_plugin_and_reset_vf"
+    standard_mapping: "ETSI GS NFV-IFA 002 Clause 7.1"
+
+  - rule_id: "RULE-K8S-007"
+    name: "PersistentVolume Mount Stale NFS / CSI Lock"
+    domain: "kubernetes_cnf"
+    trigger_condition: "volume_attach_detach_duration_seconds > 180"
+    propagation_chain:
+      - "Previous worker node died abruptly without volume teardown"
+      - "CSI controller locks volume to previous node"
+      - "Database pod fails to mount state directory on new node"
+    mitigation_action: "force_detach_volumeattachment_resource"
+    standard_mapping: "Container Storage Interface (CSI) Spec"
+
+  - rule_id: "RULE-K8S-008"
+    name: "Calico eBPF Conntrack Table Saturation"
+    domain: "kubernetes_cnf"
+    trigger_condition: "ebpf_conntrack_entries_pct > 92.0"
+    propagation_chain:
+      - "High volume of short-lived microservice HTTP requests"
+      - "Linux conntrack hash table fills to maximum entries"
+      - "Kernel silently drops new SYN packets"
+    mitigation_action: "expand_sysctl_net_netfilter_conntrack_max"
+    standard_mapping: "Linux Kernel Networking Documentation"
+
+  - rule_id: "RULE-K8S-009"
+    name: "Etcd Cluster Leader Election Storm"
+    domain: "kubernetes_cnf"
+    trigger_condition: "etcd_server_leader_changes_seen_total > 3"
+    propagation_chain:
+      - "High disk fsync latency on etcd storage volume"
+      - "Heartbeat interval timeouts trigger repeated leader re-elections"
+      - "Kube-apiserver becomes unresponsive to mutation requests"
+    mitigation_action: "isolate_etcd_to_dedicated_nvme_storage"
+    standard_mapping: "Etcd Operations Guide"
+
+  - rule_id: "RULE-K8S-010"
+    name: "Ingress Controller Worker Process Starvation"
+    domain: "kubernetes_cnf"
+    trigger_condition: "ingress_active_connections_per_worker > 10000"
+    propagation_chain:
+      - "Keep-alive timeouts tuned too long for mobile clients"
+      - "Nginx ingress controller exhausts file descriptors"
+      - "HTTP 502 Bad Gateway returned to external API consumers"
+    mitigation_action: "tune_ingress_worker_rlimit_and_scale"
+    standard_mapping: "Nginx Ingress Controller Production Tuning"
+
+  - rule_id: "RULE-K8S-011"
+    name: "DaemonSet Pod Eviction on Low Memory Worker"
+    domain: "kubernetes_cnf"
+    trigger_condition: "daemonset_scheduled_vs_ready_mismatch == True"
+    propagation_chain:
+      - "Monitoring agents (Fluentbit, Node-exporter) exceed memory quota"
+      - "Kernel kills logging daemon, leaving node unmonitored"
+      - "Silent failure propagation undetected by observability"
+    mitigation_action: "raise_daemonset_priority_class"
+    standard_mapping: "Kubernetes PriorityClass Specification"
+
+  - rule_id: "RULE-K8S-012"
+    name: "Service Mesh Envoy Sidecar Circuit Breaker Trip"
+    domain: "kubernetes_cnf"
+    trigger_condition: "envoy_cluster_upstream_cx_overflow > 100"
+    propagation_chain:
+      - "Upstream microservice slow response triggers max_connections trip"
+      - "Envoy sidecar short-circuits all outbound calls with 503"
+      - "Artificial cascading failure across independent microservices"
+    mitigation_action: "increase_envoy_circuit_breaker_thresholds"
+    standard_mapping: "Envoy Architecture Guide: Circuit Breaking"
+
+  # =========================================================================
+  # DOMAIN: Data Services & State Management [12 Rules]
+  # =========================================================================
+  - rule_id: "RULE-DAT-001"
+    name: "PostgreSQL Database Connection Pool Exhaustion"
+    domain: "data_service"
+    trigger_condition: "pg_active_connections_pct > 95.0"
+    propagation_chain:
+      - "Unclosed database connections during unexpected service panic"
+      - "PostgreSQL rejects new connections with 'too many clients already'"
+      - "UDR and UDM microservices enter degraded read-only state"
+    mitigation_action: "deploy_pgbouncer_connection_pooler"
+    standard_mapping: "PostgreSQL High Availability Guide"
+
+  - rule_id: "RULE-DAT-002"
+    name: "Redis Session Store Maxmemory Eviction Throttling"
+    domain: "data_service"
+    trigger_condition: "redis_evicted_keys_per_second > 5000"
+    propagation_chain:
+      - "TTL not specified on transient 5G subscriber registration states"
+      - "Redis memory reaches maxmemory limit"
+      - "All write commands blocked with OOM command errors"
+    mitigation_action: "patch_redis_ttl_policies_and_cluster_scale"
+    standard_mapping: "Redis Memory Management Guide"
+
+  - rule_id: "RULE-DAT-003"
+    name: "Apache Kafka Consumer Group Lag Spike"
+    domain: "data_service"
+    trigger_condition: "kafka_consumer_lag_records > 100000"
+    propagation_chain:
+      - "Downstream analytics worker crash"
+      - "Telemetry messages accumulate in partition queues"
+      - "RCA anomaly detection pipeline operates on stale data"
+    mitigation_action: "increase_consumer_group_concurrency"
+    standard_mapping: "Kafka SRE Runbooks"
+
+  - rule_id: "RULE-DAT-004"
+    name: "EBS GP3 Volume IOPS Burst Depletion"
+    domain: "data_service"
+    trigger_condition: "ebs_disk_queue_depth > 16.0"
+    propagation_chain:
+      - "Heavy database write checkpointing during peak busy hour"
+      - "Storage throughput throttled to baseline 125 MB/s"
+      - "Write transactions stall, causing API response timeouts"
+    mitigation_action: "provision_dedicated_io2_ebs_volume"
+    standard_mapping: "AWS Storage Architecture Best Practices"
+
+  - rule_id: "RULE-DAT-005"
+    name: "Amazon S3 API 503 SlowDown Throttling"
+    domain: "data_service"
+    trigger_condition: "s3_http503_slowdown_rate > 0.05"
+    propagation_chain:
+      - "Over 3,500 PUT requests/sec targeted to single S3 prefix partition"
+      - "S3 returns 503 SlowDown responses"
+      - "PCAP extraction files backlog on ingestion gateways"
+    mitigation_action: "randomize_s3_prefix_hash_distribution"
+    standard_mapping: "AWS S3 Performance Guidelines"
+
+  - rule_id: "RULE-DAT-006"
+    name: "Elasticsearch / OpenSearch Unassigned Shards"
+    domain: "data_service"
+    trigger_condition: "opensearch_unassigned_shards > 0"
+    propagation_chain:
+      - "Data node out of disk space during log surge"
+      - "Index cluster status turns RED"
+      - "5GC signaling log search and audit queries fail"
+    mitigation_action: "delete_stale_indices_and_reroute_shards"
+    standard_mapping: "OpenSearch Operations Manual"
+
+  - rule_id: "RULE-DAT-007"
+    name: "Cassandra Read Repair Storm on 5G Profile Store"
+    domain: "data_service"
+    trigger_condition: "cassandra_read_repair_requests_per_sec > 500"
+    propagation_chain:
+      - "Network partition caused data inconsistency across replica nodes"
+      - "High read volume triggers continuous background repairs"
+      - "CPU spikes on all Cassandra coordinator nodes"
+    mitigation_action: "trigger_nodetool_repair_and_lower_chance"
+    standard_mapping: "Apache Cassandra SRE Guidelines"
+
+  - rule_id: "RULE-DAT-008"
+    name: "DynamoDB Provisioned WCU Throttling"
+    domain: "data_service"
+    trigger_condition: "dynamodb_throttled_requests_count > 100"
+    propagation_chain:
+      - "Hot partition key caused by single enterprise tenant slice attach"
+      - "Write capacity units throttled"
+      - "Incident audit log write pipeline delayed"
+    mitigation_action: "switch_dynamodb_table_to_on_demand"
+    standard_mapping: "AWS DynamoDB Developer Guide"
+
+  - rule_id: "RULE-DAT-009"
+    name: "RabbitMQ AMQP Memory High Watermark Lock"
+    domain: "data_service"
+    trigger_condition: "rabbitmq_memory_alarm_active == True"
+    propagation_chain:
+      - "Slow consumer blocks message consumption on alert queues"
+      - "RabbitMQ trips memory watermark and blocks incoming publishes"
+      - "OSS alert forwarding pipeline stalls"
+    mitigation_action: "purge_dead_letter_exchange_and_scale"
+    standard_mapping: "RabbitMQ Production Checklist"
+
+  - rule_id: "RULE-DAT-010"
+    name: "Vault Secrets Manager Transit Key Latency"
+    domain: "data_service"
+    trigger_condition: "vault_request_duration_seconds_p99 > 0.50"
+    propagation_chain:
+      - "Storage backend lock contention on HashiCorp Vault"
+      - "mTLS certificate issuance for new microservice pods stalls"
+      - "Pod startup time exceeds Kubernetes readiness timeout"
+    mitigation_action: "increase_vault_cache_size_and_read_replicas"
+    standard_mapping: "HashiCorp Vault Operational Guide"
+
+  - rule_id: "RULE-DAT-011"
+    name: "ZooKeeper Session Timeout / Split-Brain"
+    domain: "data_service"
+    trigger_condition: "zk_session_timeouts_total > 5"
+    propagation_chain:
+      - "Garbage collection stop-the-world pause on ZooKeeper node"
+      - "Kafka broker metadata quorum lost"
+      - "Partition leader re-election churn"
+    mitigation_action: "tune_jvm_g1gc_parameters_for_zookeeper"
+    standard_mapping: "Apache ZooKeeper Administrator's Guide"
+
+  - rule_id: "RULE-DAT-012"
+    name: "Prometheus TSDB Compaction Disk Outage"
+    domain: "data_service"
+    trigger_condition: "prometheus_tsdb_compaction_failed_total > 0"
+    propagation_chain:
+      - "High churn of ephemeral pod metrics creates massive series cardinality"
+      - "Head block compaction runs out of scratch disk space"
+      - "Prometheus stops ingesting new carrier metrics"
+    mitigation_action: "drop_short_lived_labels_and_expand_tsdb_volume"
+    standard_mapping: "Prometheus Storage Documentation"

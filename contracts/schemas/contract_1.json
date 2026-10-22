@@ -1,0 +1,246 @@
+{
+  "$defs": {
+    "EventMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "tenant_id": {
+          "description": "Tenant identifier",
+          "title": "Tenant Id",
+          "type": "string"
+        },
+        "cluster_id": {
+          "description": "Cluster identifier",
+          "title": "Cluster Id",
+          "type": "string"
+        },
+        "kpi_filter_passed": {
+          "default": true,
+          "description": "Passed 3-layer Shannon/noise/Pearson filter",
+          "title": "Kpi Filter Passed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "tenant_id",
+        "cluster_id"
+      ],
+      "title": "EventMetadata",
+      "type": "object"
+    },
+    "EventType": {
+      "enum": [
+        "metric",
+        "log",
+        "alarm",
+        "pcap_frame",
+        "trace"
+      ],
+      "title": "EventType",
+      "type": "string"
+    },
+    "PcapMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "frame_number": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Frame number in PCAP capture",
+          "title": "Frame Number"
+        },
+        "protocol": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Protocol name e.g. NGAP, NAS-5GS, HTTP2",
+          "title": "Protocol"
+        },
+        "procedure": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "3GPP procedure e.g. Registration, PDU_Session_Establishment",
+          "title": "Procedure"
+        },
+        "message_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Signaling message type e.g. RegistrationReject, 504_GatewayTimeout",
+          "title": "Message Type"
+        }
+      },
+      "title": "PcapMetadata",
+      "type": "object"
+    },
+    "Severity": {
+      "enum": [
+        "critical",
+        "major",
+        "minor",
+        "warning",
+        "info"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "SourceDomain": {
+      "enum": [
+        "telecom_transport",
+        "5g_core_sba",
+        "kubernetes_cnf",
+        "data_service"
+      ],
+      "title": "SourceDomain",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Contract 1: Normalized Telemetry Event & SOMP schema.",
+  "properties": {
+    "timestamp": {
+      "description": "ISO-8601 timestamp",
+      "format": "date-time",
+      "title": "Timestamp",
+      "type": "string"
+    },
+    "source_domain": {
+      "$ref": "#/$defs/SourceDomain",
+      "description": "Domain origin of event"
+    },
+    "source_component": {
+      "description": "Component identifier (e.g., amf-01, smf-02)",
+      "title": "Source Component",
+      "type": "string"
+    },
+    "event_type": {
+      "$ref": "#/$defs/EventType",
+      "description": "Type of event"
+    },
+    "severity": {
+      "$ref": "#/$defs/Severity",
+      "description": "Event severity"
+    },
+    "metric_name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "PM counter or KPI name",
+      "title": "Metric Name"
+    },
+    "metric_value_raw": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Raw metric value",
+      "title": "Metric Value Raw"
+    },
+    "metric_value_somp_delta": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "SOMP interval delta (x_t - x_{t-1})",
+      "title": "Metric Value Somp Delta"
+    },
+    "counter_reset_flag": {
+      "default": false,
+      "description": "Flag indicating monotonic counter wrap or reset",
+      "title": "Counter Reset Flag",
+      "type": "boolean"
+    },
+    "log_message": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Log line message",
+      "title": "Log Message"
+    },
+    "trace_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Distributed trace ID",
+      "title": "Trace Id"
+    },
+    "pcap_metadata": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PcapMetadata"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Signaling frame metadata if pcap_frame"
+    },
+    "metadata": {
+      "$ref": "#/$defs/EventMetadata",
+      "description": "Metadata including tenant and filter pass"
+    }
+  },
+  "required": [
+    "timestamp",
+    "source_domain",
+    "source_component",
+    "event_type",
+    "severity",
+    "metadata"
+  ],
+  "title": "NormalizedTelemetryEvent",
+  "type": "object"
+}

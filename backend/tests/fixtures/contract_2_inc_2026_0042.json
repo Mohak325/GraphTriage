@@ -1,0 +1,43 @@
+{
+  "incident_id": "INC-2026-0042",
+  "ranked_causes": [
+    {
+      "component_id": "amf-01",
+      "fault_type": "Registration Congestion / Thread Pool Exhaustion",
+      "domain": "5g_core_sba",
+      "anomaly_score": 0.942,
+      "method": "TeleGAN-Core + MNSUAD",
+      "xai_attributions": [
+        {"kpi": "amf_active_ngap_contexts", "shap_value": 0.42},
+        {"kpi": "amf_cpu_saturation", "shap_value": 0.35}
+      ]
+    },
+    {
+      "component_id": "router-core-2",
+      "fault_type": "BGP Route Flapping / Packet Drop",
+      "domain": "telecom_transport",
+      "anomaly_score": 0.681,
+      "method": "DTFL_transGNN"
+    }
+  ],
+  "pcap_verification": {
+    "protocol_violation": true,
+    "deviating_frame": 23,
+    "procedure": "User Registration",
+    "cause_code": "5GS_Congestion"
+  },
+  "active_probing_results": {
+    "probes_executed": ["dns_srv_query", "http2_ping_nrf"],
+    "isolated_cv": "amf.sbi.client_pool_size",
+    "confidence": 0.985
+  },
+  "topology_subgraph": {
+    "nodes": [
+      {"id": "amf-01", "status": "anomalous"},
+      {"id": "upf-edge-3", "status": "degraded"}
+    ],
+    "edges": [
+      {"source": "amf-01", "target": "upf-edge-3", "latency_ms": 142.5}
+    ]
+  }
+}

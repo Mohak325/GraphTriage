@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: telecom-rca-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - USE_FIXTURES=true
+      - MOCK_BEDROCK=true
+      - ENVIRONMENT=production
+      - AGORA_WINDOW_SECONDS=5.0
+      - HITL_SECRET_KEY=carrier-grade-hitl-hmac-secret-key-change-in-production-2026
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: telecom-rca-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

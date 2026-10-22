@@ -1,0 +1,83 @@
+[
+  {
+    "timestamp": "2026-10-15T14:30:00.000Z",
+    "source_domain": "5g_core_sba",
+    "source_component": "amf-01",
+    "event_type": "metric",
+    "severity": "critical",
+    "metric_name": "amf_active_ngap_contexts",
+    "metric_value_raw": 15420.0,
+    "metric_value_somp_delta": 420.0,
+    "counter_reset_flag": false,
+    "log_message": null,
+    "trace_id": null,
+    "pcap_metadata": null,
+    "metadata": {
+      "tenant_id": "tenant-mno-alpha",
+      "cluster_id": "cluster-core-eu-west-1",
+      "kpi_filter_passed": true
+    }
+  },
+  {
+    "timestamp": "2026-10-15T14:30:01.000Z",
+    "source_domain": "5g_core_sba",
+    "source_component": "amf-01",
+    "event_type": "log",
+    "severity": "critical",
+    "metric_name": null,
+    "metric_value_raw": null,
+    "metric_value_somp_delta": null,
+    "counter_reset_flag": false,
+    "log_message": "Thread pool exhaustion: SBI client connection queue full for target smf-02. Dropping incoming Registration requests.",
+    "trace_id": "trace-5gc-9821038",
+    "pcap_metadata": null,
+    "metadata": {
+      "tenant_id": "tenant-mno-alpha",
+      "cluster_id": "cluster-core-eu-west-1",
+      "kpi_filter_passed": true
+    }
+  },
+  {
+    "timestamp": "2026-10-15T14:30:02.000Z",
+    "source_domain": "5g_core_sba",
+    "source_component": "amf-01",
+    "event_type": "pcap_frame",
+    "severity": "critical",
+    "metric_name": null,
+    "metric_value_raw": null,
+    "metric_value_somp_delta": null,
+    "counter_reset_flag": false,
+    "log_message": null,
+    "trace_id": "trace-5gc-9821038",
+    "pcap_metadata": {
+      "frame_number": 23,
+      "protocol": "NAS-5GS",
+      "procedure": "Registration",
+      "message_type": "RegistrationReject"
+    },
+    "metadata": {
+      "tenant_id": "tenant-mno-alpha",
+      "cluster_id": "cluster-core-eu-west-1",
+      "kpi_filter_passed": true
+    }
+  },
+  {
+    "timestamp": "2026-10-15T14:30:03.000Z",
+    "source_domain": "5g_core_sba",
+    "source_component": "upf-edge-3",
+    "event_type": "metric",
+    "severity": "major",
+    "metric_name": "upf_packet_drop_rate",
+    "metric_value_raw": 14.8,
+    "metric_value_somp_delta": 9.2,
+    "counter_reset_flag": false,
+    "log_message": null,
+    "trace_id": null,
+    "pcap_metadata": null,
+    "metadata": {
+      "tenant_id": "tenant-mno-alpha",
+      "cluster_id": "cluster-core-eu-west-1",
+      "kpi_filter_passed": true
+    }
+  }
+]

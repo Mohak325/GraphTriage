@@ -1,0 +1,167 @@
+{
+  "$defs": {
+    "RemediationPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "description": "Remediation action e.g. horizontal_scale_and_pool_patch",
+          "title": "Action",
+          "type": "string"
+        },
+        "target": {
+          "description": "Target component or resource e.g. amf-01",
+          "title": "Target",
+          "type": "string"
+        },
+        "parameters": {
+          "additionalProperties": true,
+          "description": "Action parameters e.g. replicas, pool size",
+          "title": "Parameters",
+          "type": "object"
+        },
+        "state_estimation_compliance": {
+          "description": "AGORA compliance verdict e.g. 'PASSED (Live Prometheus queried at T-2s)'",
+          "title": "State Estimation Compliance",
+          "type": "string"
+        },
+        "hitl_approval_status": {
+          "description": "Status e.g. PENDING_OPERATOR_SIGNATURE, APPROVED, REJECTED, EXECUTED",
+          "title": "Hitl Approval Status",
+          "type": "string"
+        },
+        "approval_token": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Cryptographic single-use token if pending approval",
+          "title": "Approval Token"
+        }
+      },
+      "required": [
+        "action",
+        "target",
+        "state_estimation_compliance",
+        "hitl_approval_status"
+      ],
+      "title": "RemediationPlan",
+      "type": "object"
+    },
+    "SLALiabilityAttribution": {
+      "additionalProperties": false,
+      "properties": {
+        "culpable_actor": {
+          "description": "Actor responsible for the SLA violation",
+          "title": "Culpable Actor",
+          "type": "string"
+        },
+        "dynamic_trust_score": {
+          "description": "LASM calculated dynamic trust score",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Dynamic Trust Score",
+          "type": "number"
+        },
+        "mrc_penalty_percentage": {
+          "description": "Contractual penalty percentage (e.g., 10.0, 20.0, 30.0)",
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Mrc Penalty Percentage",
+          "type": "number"
+        },
+        "mrc_financial_penalty_usd": {
+          "description": "Calculated financial penalty in USD (mrc_usd * penalty %)",
+          "minimum": 0.0,
+          "title": "Mrc Financial Penalty Usd",
+          "type": "number"
+        }
+      },
+      "required": [
+        "culpable_actor",
+        "dynamic_trust_score",
+        "mrc_penalty_percentage",
+        "mrc_financial_penalty_usd"
+      ],
+      "title": "SLALiabilityAttribution",
+      "type": "object"
+    },
+    "Verdict": {
+      "additionalProperties": false,
+      "properties": {
+        "root_cause_service": {
+          "description": "Primary root cause component or service",
+          "title": "Root Cause Service",
+          "type": "string"
+        },
+        "domain": {
+          "description": "Domain of primary fault e.g. 5g_core_sba",
+          "title": "Domain",
+          "type": "string"
+        },
+        "confidence": {
+          "description": "Confidence score of verdict",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "synthesized_code_hash": {
+          "description": "SHA-256 hash of synthesized graph traversal code",
+          "title": "Synthesized Code Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "root_cause_service",
+        "domain",
+        "confidence",
+        "synthesized_code_hash"
+      ],
+      "title": "Verdict",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Contract 3: POST /api/rca/diagnose-and-remediate Response.",
+  "properties": {
+    "incident_id": {
+      "description": "Incident identifier",
+      "title": "Incident Id",
+      "type": "string"
+    },
+    "verdict": {
+      "$ref": "#/$defs/Verdict",
+      "description": "Root cause verdict with confidence and code hash"
+    },
+    "fault_propagation_chain": {
+      "description": "Step-by-step causal chain of failure propagation",
+      "items": {
+        "type": "string"
+      },
+      "title": "Fault Propagation Chain",
+      "type": "array"
+    },
+    "sla_liability_attribution": {
+      "$ref": "#/$defs/SLALiabilityAttribution",
+      "description": "LASM SLA liability and MRC penalty attribution"
+    },
+    "remediation_plan": {
+      "$ref": "#/$defs/RemediationPlan",
+      "description": "Actionable remediation plan with AGORA compliance"
+    }
+  },
+  "required": [
+    "incident_id",
+    "verdict",
+    "fault_propagation_chain",
+    "sla_liability_attribution",
+    "remediation_plan"
+  ],
+  "title": "DiagnoseAndRemediateResponse",
+  "type": "object"
+}

@@ -1,8 +1,13 @@
 # Intelligent Root Cause Analysis (RCA) Framework for Telecom Cloud Services
-## Layer 1 & 2: Telemetry Ingestion, Hygiene, Storage & Agent Abstraction Layer
-### Developer: Mohak Harsh (Person A — Data Pipeline & Infrastructure Engineer)
 
-This repository contains the production-grade data foundation and agent interface for the Telecom Cloud RCA Framework, grounded in 15 peer-reviewed research papers (2023–2026).
+Grounded in **15 peer-reviewed research papers (2023–2026)**, this repository contains the carrier-grade Root Cause Analysis framework for Telecom Cloud Services (5G Core SBA, Kubernetes CNFs/VNFs, transport, and multi-cloud continuum).
+
+---
+
+## 👥 Contributors & Work Distribution
+
+- **Person A (Data Pipeline & Infrastructure Engineer)**: Mohak Harsh — Telemetry Ingestion, 3-Layer Hygiene Pipeline, SOMP Normalization, Neptune Graph, PCAP Golden Flow extraction, MCP JSON-RPC Server, and Terraform IaC.
+- **Person B (ML / AI Engine & Digital Twin Engineer)**: Sandarbh Gupta — Contamination-Resilient Anomaly Detection (MNSUAD & DAGMM), Adversarial 5GC Anomaly Detection (TeleGAN-Core), Spatio-Temporal Dual-Branch CNN-Transformer, Digital Twin Fault Localization (transGNN / BDF-FL), Active Diagnostic Probing (ConfExp), and Contract 2 FastAPI Server.
 
 ---
 
@@ -29,56 +34,88 @@ This repository contains the production-grade data foundation and agent interfac
           │  - RDS pgvector (SOP Embeddings) │
           └──────────────────────────────────┘
                            │
-                           ▼
-          ┌──────────────────────────────────┐
-          │  Stage 3: Model Context Protocol │
-          │  - FastAPI MCP JSON-RPC Server   │
-          │  - Tools: Prometheus, NWDAF, K8s,│
-          │           Neptune Topology       │
-          └──────────────────────────────────┘
+             ┌─────────────┴─────────────┐
+             ▼                           ▼
+┌──────────────────────────┐┌──────────────────────────────────┐
+│ Stage 3: MCP Agent Layer ││ Stage 4: ML Engine & Twin (C2)   │
+│ - FastAPI MCP JSON-RPC   ││ - MNSUAD (5% Noise Contamination)│
+│ - Tools: Prometheus,     ││ - TeleGAN-Core (Dual-AE GAN)     │
+│   NWDAF, K8s, Neptune    ││ - DTFL TransGNN & BDF-FL         │
+│ - ETSI NFV RAG Store     ││ - Golden Flow Signaling + SVM    │
+└──────────────────────────┘│ - ConfExp Active Probing Engine  │
+                            │ - Dual-Branch Spatio-Temporal    │
+                            └──────────────────────────────────┘
 ```
 
 ---
 
-## 📂 Directory Layout
+## 📂 Repository Layout
 
-- `src/contracts/`: Contract 1 Normalized Telemetry Event Pydantic schemas, plus Contract 2 (ML API) and Contract 3 (Agentic API) definitions.
-- `src/hygiene/`:
-  - `entropy_filter.py`: Layer 1 Shannon Entropy screening ($\tau_1=0.05$).
-  - `noise_decomposition.py`: Layer 2 Stochastic Noise Decomposition with STL Loess.
-  - `correlation_consolidator.py`: Layer 3 Pearson cross-correlation consolidation ($\tau_3=0.95$).
-  - `somp_normalizer.py`: Service-Oriented Metric Preprocessing (monotonic delta intervals, counter reset safety, gauge pooling).
-  - `pipeline.py`: End-to-end 3-Layer Hygiene Pipeline.
-- `src/pcap/`:
-  - `golden_flows.yaml`: 3GPP TS 23.502 canonical call-flow sequences (Registration, PDU Session Establishment, Deregistration).
-  - `frame_parser.py`: Wireshark/tshark JSON frame extractor.
-  - `wireshark_extractor.py`: Deterministic call-flow state-machine verifier.
-- `src/graph/`:
-  - `neptune_loader.py`: Dual-mode graph engine (Gremlin for live Neptune + NetworkX for zero-cloud local execution) and incident subgraph extractor.
-- `src/ingest/`:
-  - `rcaeval_ingester.py`: RCAEval benchmark ingester (735 cases across metrics, logs, traces).
-  - `tn_rca530_ingester.py`: TN-RCA530 telecom base-station benchmark ingester (530 cases, BBU/RRU topologies, alarm storms).
-  - `vodafone_ingester.py`: Vodafone NFV 11-country dataset ingester with 5% contamination tagging.
-  - `encqor_ingester.py`: ENCQOR 5G SBA PM telemetry ingester with SOMP classification.
-- `src/mcp/`:
-  - `server.py`: FastAPI Model Context Protocol (MCP) server exposing Prometheus, NWDAF, K8s, and Neptune tools over REST and JSON-RPC 2.0.
-- `src/rag/`:
-  - `document_chunker.py`: Sliding-window ETSI NFV-MANO / 3GPP SOP chunker and semantic vector search index.
-- `infra/`:
-  - `main.tf`, `variables.tf`, `outputs.tf`: Complete Terraform IaC for all AWS services (kept ready for the final integration sprint).
-- `tests/`:
-  - Complete automated test suite covering all contracts, hygiene layers, PCAP verifiers, graph traversals, and MCP tools.
+```
+├── .agents/skills/              # Antigravity IDE telecom-rca-framework skill
+├── docs/                        # Master carrier-grade specs, PRD, plan, and reports
+│   ├── SYSTEM_SPECIFICATION_AND_ARCHITECTURE.md
+│   ├── PROJECT_REQUIREMENTS.md
+│   ├── IMPLEMENTATION_PLAN.md
+│   ├── complete_system_architecture.jpg
+│   ├── aws_cloud_architecture.jpg
+│   └── *.docx reports
+├── infra/                       # Terraform IaC for AWS services (MSK, Neptune, Timestream)
+├── src/
+│   ├── contracts/               # Shared Pydantic data contracts (Contract 1, 2, 3)
+│   ├── graph/                   # Amazon Neptune Gremlin & NetworkX topology engine
+│   ├── hygiene/                 # 3-Layer Shannon Entropy, STL Loess & SOMP pipeline
+│   ├── ingest/                  # Benchmark & telemetry ingesters (RCAEval, TN-RCA530, etc.)
+│   ├── mcp/                     # Model Context Protocol (MCP) server & agent tools
+│   ├── ml_engine/               # Person B: ML Engine, Digital Twin & Contract 2 Server
+│   │   ├── benchmark_eval.py    # RCAEval & TN-RCA530 evaluation suite
+│   │   ├── server.py            # Contract 2 REST FastAPI service (/analyze, /models, etc.)
+│   │   ├── data/                # PCAP loader, synthetic noise injection, RCAEval loader
+│   │   ├── explainability/      # Integrated Gradients & feature attribution (XAI)
+│   │   ├── models/
+│   │   │   ├── graph/           # TransGNN, TraceGraphBuilder, BDF-FL
+│   │   │   ├── mnsuad/          # DAGMM teacher, Transformer DevNet student, MNSUAD trainer
+│   │   │   ├── probing/         # ConfExp active diagnostic probing engine
+│   │   │   ├── signaling/       # Deterministic 5GC PCAP Golden Flow verifier + SVM
+│   │   │   ├── spatio_temporal/ # Dual-branch CNN-Transformer network
+│   │   │   └── telegan/         # TeleGAN-Core dual autoencoder GAN
+│   │   └── schemas/             # Strictly typed Contract 1 inputs & Contract 2 outputs
+│   ├── pcap/                    # Wireshark/tshark extractor & 3GPP TS 23.502 golden flows
+│   └── rag/                     # ETSI NFV-MANO SOP sliding-window vector store
+├── tests/                       # Automated test suite (34 passing tests)
+├── pyproject.toml               # Unified project metadata and dependencies
+└── requirements.txt             # Production pip requirements
+```
 
 ---
 
 ## 🚀 Running Tests & Local Execution
 
-Activate the virtual environment and run the test suite:
+### 1. Run Complete Automated Test Suite (34 Tests)
 
 ```bash
-# Run all tests
-.venv\Scripts\pytest.exe -v
-
-# Run MCP server locally
-.venv\Scripts\uvicorn.exe src.mcp.server:app --reload --port 8000
+# Run all tests across Layer 1-2 and Layer 3 ML engine
+pytest -v
 ```
+
+### 2. Start Model Context Protocol (MCP) Server (Port 8000)
+
+```bash
+uvicorn src.mcp.server:app --reload --port 8000
+```
+
+### 3. Start Contract 2 ML RCA Server (Port 8001)
+
+```bash
+uvicorn src.ml_engine.server:app --reload --port 8001
+```
+
+---
+
+## 📄 Documentation Index
+
+Detailed specifications, mathematical derivations, and research papers are available in [`docs/`](docs/):
+- **[System Specification & Architecture Reference](docs/SYSTEM_SPECIFICATION_AND_ARCHITECTURE.md)**
+- **[Project Requirements Document](docs/PROJECT_REQUIREMENTS.md)**
+- **[12-Week Implementation Plan](docs/IMPLEMENTATION_PLAN.md)**
+- **[Documentation Index & Reports](docs/README.md)**

@@ -4,12 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "telecom-cloud-rca"
-version = "0.1.0"
+version = "0.2.0"
 description = "Intelligent Root Cause Analysis (RCA) Framework for Telecom Cloud Services"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
-    { name = "Mohak Harsh", email = "mohak@example.com" }
+    { name = "Mohak Harsh", email = "mohak@example.com" },
+    { name = "Sandarbh Gupta", email = "sandarbhgupta425@gmail.com" }
 ]
 dependencies = [
     "pydantic>=2.0.0",
@@ -24,7 +25,8 @@ dependencies = [
     "structlog>=23.1.0",
     "pytest>=7.4.0",
     "pytest-asyncio>=0.21.0",
-    "httpx>=0.24.0"
+    "httpx>=0.24.0",
+    "scikit-learn>=1.2.0"
 ]
 
 [tool.pytest.ini_options]

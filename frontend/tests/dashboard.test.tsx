@@ -36,8 +36,8 @@ describe('Carrier NOC Dashboard Components', () => {
       />
     );
 
-    expect(screen.getByText('amf-01')).toBeInTheDocument();
-    expect(screen.getByText('(5g_core_sba)')).toBeInTheDocument();
+    expect(screen.getAllByText('amf-01').length).toBeGreaterThanOrEqual(2);
+    expect(screen.getByText('5g_core_sba')).toBeInTheDocument();
     expect(screen.getByText('96.2%')).toBeInTheDocument();
     expect(screen.getByText('INC-2026-0042')).toBeInTheDocument();
   });
@@ -111,7 +111,7 @@ describe('Carrier NOC Dashboard Components', () => {
     expect(screen.getByText('Person C')).toBeInTheDocument();
     expect(screen.getByText('Layer 4-5')).toBeInTheDocument();
     expect(screen.getByText('WebSocket Live')).toBeInTheDocument();
-    expect(screen.getByText('6 Active Incidents')).toBeInTheDocument();
+    expect(screen.getByText(/6\s+Real Cases/i)).toBeInTheDocument();
   });
 
   it('renders IncidentList and triggers onSelect when an incident is clicked', () => {
@@ -144,7 +144,7 @@ describe('Carrier NOC Dashboard Components', () => {
 
     expect(screen.getByText('INC-2026-0042')).toBeInTheDocument();
     expect(screen.getByText('INC-2026-0043')).toBeInTheDocument();
-    expect(screen.getByText('router-core-2')).toBeInTheDocument();
+    expect(screen.getAllByText('router-core-2').length).toBeGreaterThanOrEqual(1);
 
     const secondIncident = screen.getByText('INC-2026-0043');
     fireEvent.click(secondIncident);

@@ -21,6 +21,13 @@ share/python-wheels/
 .installed.cfg
 *.egg
 
+# Data & Large Datasets
+/data/
+*.parquet
+*.pcap
+*.tar.gz
+*.zip
+
 # Virtual Environment
 .venv/
 env/

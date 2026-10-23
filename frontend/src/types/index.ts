@@ -51,9 +51,19 @@ export interface RCAAnalysis {
 
 export interface Verdict {
   root_cause_service: string;
+  expected_root_cause?: string;
+  achieved_root_cause?: string;
+  is_correct?: boolean;
   domain: string;
   confidence: number;
   synthesized_code_hash: string;
+  system?: string;
+  cve_id?: string;
+  cve_title?: string;
+  severity?: string;
+  cvss_v3?: number;
+  fault_type?: string;
+  mitre_technique?: string;
 }
 
 export interface SLALiabilityAttribution {
@@ -83,15 +93,59 @@ export interface DiagnoseAndRemediateResponse {
 export interface IncidentSummary {
   incident_id: string;
   root_cause_service: string;
+  expected_output?: string;
+  achieved_output?: string;
+  is_correct?: boolean;
   domain: string;
+  system?: string;
   confidence: number;
   hitl_approval_status: string;
   culpable_actor: string;
   financial_penalty_usd: number;
+  cve_id?: string;
+  severity?: string;
+  fault_type?: string;
 }
 
 export interface FullIncidentData {
   incident_id: string;
   rca_analysis: RCAAnalysis;
   response: DiagnoseAndRemediateResponse;
+}
+
+export interface RcaEvalCase {
+  case_id: string;
+  system: string;
+  actual_root_cause: string;
+  predicted_root_cause: string;
+  expected_output: string;
+  achieved_output: string;
+  rca_is_correct: boolean;
+  rca_confidence: number;
+  actual_fault?: string;
+  predicted_fault?: string;
+  fault_is_correct?: boolean;
+  cve_id: string;
+  cve_title?: string;
+  cvss_v3?: number;
+  severity: 'CRITICAL' | 'HIGH' | string;
+  cwe_id?: string;
+  mitre_technique?: string;
+  remediation_action: string;
+}
+
+export interface RcaEvalSummary {
+  total_test_incidents: number;
+  rca_top1_accuracy: number;
+  rca_mrr: number;
+  critical_cve_count: number;
+  high_cve_count: number;
+  rca_top3_accuracy?: number;
+  fault_accuracy?: number;
+  fault_f1?: number;
+}
+
+export interface EvaluationData {
+  summary: RcaEvalSummary;
+  cases: RcaEvalCase[];
 }

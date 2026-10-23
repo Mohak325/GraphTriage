@@ -1,0 +1,149 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'All-in-One CloudFormation Template: Telecom Cloud RCA Architecture'
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: 'telecom-rca'
+  Environment:
+    Type: String
+    Default: 'dev'
+
+Resources:
+  # 1. S3 Telemetry Buckets
+  RawBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${ProjectName}-raw-${Environment}-${AWS::AccountId}'
+      LifecycleConfiguration:
+        Rules:
+          - Id: GlacierTransition
+            Status: Enabled
+            Prefix: ""
+            Transitions:
+              - TransitionInDays: 30
+                StorageClass: STANDARD_IA
+              - TransitionInDays: 90
+                StorageClass: GLACIER
+
+  ProcessedBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${ProjectName}-processed-${Environment}-${AWS::AccountId}'
+
+  BenchmarkBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${ProjectName}-benchmark-${Environment}-${AWS::AccountId}'
+
+  # 2. SQS Queues (DLQ + HITL Gate)
+  TelemetryDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub '${ProjectName}-dlq-${Environment}'
+      MessageRetentionPeriod: 1209600
+
+  HITLQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub '${ProjectName}-hitl-queue-${Environment}'
+      MessageRetentionPeriod: 86400
+
+  # 3. Amazon DynamoDB (Clean Metrics Store - Replaces Timestream)
+  MetricsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${ProjectName}-metrics-${Environment}'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: metric_key
+          AttributeType: S
+        - AttributeName: timestamp
+          AttributeType: S
+      KeySchema:
+        - AttributeName: metric_key
+          KeyType: HASH
+        - AttributeName: timestamp
+          KeyType: RANGE
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
+  # 5. Amazon DynamoDB (Incident State Registry)
+  IncidentTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${ProjectName}-incidents-${Environment}'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: incident_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: incident_id
+          KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+
+  # 6. ECR Repository for ML Engine
+  MlEngineECR:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: !Sub '${ProjectName}-ml-engine'
+
+  # 7. SSM Automation Document (Remediation Runbook)
+  RemediationSSMDoc:
+    Type: AWS::SSM::Document
+    Properties:
+      Name: !Sub '${ProjectName}-amf-remediation-${Environment}'
+      DocumentType: Automation
+      DocumentFormat: YAML
+      Content:
+        schemaVersion: '0.3'
+        description: 'Auto-scale AMF CNF Pods and Patch SBI Client Pool'
+        parameters:
+          TargetService:
+            type: String
+            default: 'amf-01'
+          Replicas:
+            type: Integer
+            default: 4
+        mainSteps:
+          - name: ScaleWorkload
+            action: aws:executeScript
+            inputs:
+              Runtime: python3.11
+              Handler: handler
+              Script: "def handler(event, context):\n  print(f'Scaled {event[\"TargetService\"]} to {event[\"Replicas\"]} replicas.')\n  return {'status': 'SUCCESS'}"
+
+  # 8. IAM Role for Step Functions
+  StepFunctionsRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub '${ProjectName}-stepfunctions-role-${Environment}'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: states.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
+        - arn:aws:iam::aws:policy/AmazonSQSFullAccess
+        - arn:aws:iam::aws:policy/AmazonSSMFullAccess
+        - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+
+Outputs:
+  RawBucketName:
+    Value: !Ref RawBucket
+  ProcessedBucketName:
+    Value: !Ref ProcessedBucket
+  BenchmarkBucketName:
+    Value: !Ref BenchmarkBucket
+  MetricsTable:
+    Value: !Ref MetricsTable
+  IncidentTable:
+    Value: !Ref IncidentTable
+  ECRRepoUri:
+    Value: !GetAtt MlEngineECR.RepositoryUri

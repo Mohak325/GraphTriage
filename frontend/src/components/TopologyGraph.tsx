@@ -54,7 +54,7 @@ export const TopologyGraph: React.FC<TopologyGraphProps> = ({ subgraph }) => {
       .attr('orient', 'auto')
       .append('path')
       .attr('d', 'M0,-5L10,0L0,5')
-      .attr('fill', '#64748B');
+      .attr('fill', '#A3A3A3');
 
     // Draw link lines
     const link = g.append('g')
@@ -63,7 +63,7 @@ export const TopologyGraph: React.FC<TopologyGraphProps> = ({ subgraph }) => {
       .data(edges)
       .enter()
       .append('line')
-      .attr('stroke', '#475569')
+      .attr('stroke', '#525252')
       .attr('stroke-width', 2)
       .attr('stroke-dasharray', '4 2')
       .attr('marker-end', 'url(#arrow)');
@@ -77,7 +77,7 @@ export const TopologyGraph: React.FC<TopologyGraphProps> = ({ subgraph }) => {
       .append('text')
       .attr('font-size', '10px')
       .attr('font-family', 'monospace')
-      .attr('fill', '#38BDF8')
+      .attr('fill', '#FFFFFF')
       .attr('text-anchor', 'middle')
       .attr('dy', -5)
       .text((d) => `${d.latency_ms}ms`);
@@ -116,9 +116,9 @@ export const TopologyGraph: React.FC<TopologyGraphProps> = ({ subgraph }) => {
       .append('circle')
       .attr('r', 24)
       .attr('fill', 'none')
-      .attr('stroke', '#F43F5E')
+      .attr('stroke', '#FFFFFF')
       .attr('stroke-width', 2)
-      .attr('opacity', 0.6)
+      .attr('opacity', 0.8)
       .attr('stroke-dasharray', '3 3')
       .append('animateTransform')
       .attr('attributeName', 'transform')
@@ -132,12 +132,12 @@ export const TopologyGraph: React.FC<TopologyGraphProps> = ({ subgraph }) => {
     node.append('circle')
       .attr('r', 18)
       .attr('fill', (d: any) => {
-        if (d.status === 'anomalous') return '#E11D48';
-        if (d.status === 'degraded') return '#D97706';
-        return '#059669';
+        if (d.status === 'anomalous') return '#FFFFFF';
+        if (d.status === 'degraded') return '#8A8A8A';
+        return '#262626';
       })
-      .attr('stroke', '#1E293B')
-      .attr('stroke-width', 3);
+      .attr('stroke', '#525252')
+      .attr('stroke-width', 2);
 
     // Node text labels
     node.append('text')
@@ -145,7 +145,7 @@ export const TopologyGraph: React.FC<TopologyGraphProps> = ({ subgraph }) => {
       .attr('dy', 32)
       .attr('font-size', '11px')
       .attr('font-weight', '600')
-      .attr('fill', '#F8FAFC')
+      .attr('fill', '#FFFFFF')
       .text((d: any) => d.id);
 
     // Node status badges
@@ -154,7 +154,7 @@ export const TopologyGraph: React.FC<TopologyGraphProps> = ({ subgraph }) => {
       .attr('dy', 44)
       .attr('font-size', '9px')
       .attr('font-family', 'monospace')
-      .attr('fill', (d: any) => d.status === 'anomalous' ? '#FDA4AF' : '#FDE68A')
+      .attr('fill', (d: any) => d.status === 'anomalous' ? '#FFFFFF' : '#A3A3A3')
       .text((d: any) => `[${d.status}]`);
 
     simulation.on('tick', () => {
@@ -177,51 +177,51 @@ export const TopologyGraph: React.FC<TopologyGraphProps> = ({ subgraph }) => {
   }, [subgraph]);
 
   return (
-    <div className="noc-panel p-5 flex flex-col h-full">
-      <div className="flex items-center justify-between pb-3 border-b border-gray-800">
+    <div className="noc-panel p-5 flex flex-col h-full border border-neutral-800">
+      <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
         <div className="flex items-center space-x-2">
-          <Network className="w-4 h-4 text-cyan-400" />
-          <h3 className="text-sm font-semibold text-slate-200 uppercase tracking-wider">
+          <Network className="w-4 h-4 text-white" />
+          <h3 className="text-sm font-semibold text-neutral-200 uppercase tracking-wider">
             D3.js Digital Twin SFC Topology
           </h3>
         </div>
         <div className="flex items-center space-x-4 text-xs font-mono">
           <div className="flex items-center space-x-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
-            <span className="text-slate-400">Anomalous</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-white shadow-sm shadow-white/50" />
+            <span className="text-neutral-400">Anomalous</span>
           </div>
           <div className="flex items-center space-x-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-            <span className="text-slate-400">Degraded</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-neutral-400" />
+            <span className="text-neutral-400">Degraded</span>
           </div>
           <div className="flex items-center space-x-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-            <span className="text-slate-400">Healthy</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-neutral-700 border border-neutral-500" />
+            <span className="text-neutral-400">Healthy</span>
           </div>
         </div>
       </div>
 
-      <div className="relative flex-1 mt-2 min-h-[360px] bg-gray-950/40 rounded-lg overflow-hidden border border-gray-800/80">
+      <div className="relative flex-1 mt-2 min-h-[360px] bg-black rounded-lg overflow-hidden border border-neutral-800">
         <svg ref={svgRef} className="w-full h-full" viewBox="0 0 600 360" />
 
         {selectedNode && (
-          <div className="absolute bottom-3 left-3 bg-gray-900/95 border border-cyan-500/50 rounded-lg p-3 shadow-2xl text-xs max-w-xs backdrop-blur-md">
-            <div className="flex items-center justify-between font-bold text-white pb-1 border-b border-gray-800">
+          <div className="absolute bottom-3 left-3 bg-[#0D0D0D]/95 border border-neutral-700 rounded-lg p-3 shadow-2xl text-xs max-w-xs backdrop-blur-md">
+            <div className="flex items-center justify-between font-bold text-white pb-1 border-b border-neutral-800">
               <span className="flex items-center space-x-1">
-                <Info className="w-3.5 h-3.5 text-cyan-400" />
+                <Info className="w-3.5 h-3.5 text-white" />
                 <span>Node Inspector</span>
               </span>
               <button
                 onClick={() => setSelectedNode(null)}
-                className="text-slate-400 hover:text-white"
+                className="text-neutral-400 hover:text-white"
               >
                 ✕
               </button>
             </div>
             <div className="mt-2 space-y-1 font-mono text-[11px]">
-              <div>Component: <span className="text-cyan-300 font-bold">{selectedNode.id}</span></div>
-              <div>Status: <span className={selectedNode.status === 'anomalous' ? 'text-rose-400 font-bold' : 'text-amber-400'}>{selectedNode.status}</span></div>
-              <div className="text-[10px] text-slate-400 pt-1">
+              <div>Component: <span className="text-white font-bold">{selectedNode.id}</span></div>
+              <div>Status: <span className="text-white font-bold">[{selectedNode.status}]</span></div>
+              <div className="text-[10px] text-neutral-400 pt-1">
                 Click-through hop verified via transGNN Digital Twin synchronization.
               </div>
             </div>

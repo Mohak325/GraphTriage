@@ -1,0 +1,7 @@
+{
+  "total_test_incidents": 147,
+  "rca_top1_accuracy": 0.8707482993197279,
+  "rca_mrr": 0.9239229024943311,
+  "critical_cve_count": 26,
+  "high_cve_count": 121
+}
